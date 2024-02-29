@@ -36,8 +36,7 @@ class _SignInWidgetState extends State<SignInWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
+    return Center(
         child: _isLoading
             ? CircularProgressIndicator()
             : Column(
@@ -48,7 +47,6 @@ class _SignInWidgetState extends State<SignInWidget> {
                   ElevatedButton(onPressed: _signInWithEmailAndPassword, child: Text('Sign In')),
                 ],
               ),
-      ),
-    );
+      );
   }
 }

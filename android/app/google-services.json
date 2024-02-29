@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "382888234390",
+    "project_id": "leaflore-a0c06",
+    "storage_bucket": "leaflore-a0c06.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382888234390:android:6da8a4707047cc0bebe1b7",
+        "android_client_info": {
+          "package_name": "com.example.leaf_lore_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCh_6gjw9ONyrZXFhH5NcbsrfYrb9ABOjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

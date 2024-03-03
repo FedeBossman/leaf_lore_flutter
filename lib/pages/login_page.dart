@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MyHomePage(title: "Leaf Lingo")));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MyHomePage()));
     } on FirebaseAuthException catch (e) {
       final String errorMessage = e.message ?? 'An unknown error occurred';
       _scaffoldMessengerKey.currentState?.showSnackBar(

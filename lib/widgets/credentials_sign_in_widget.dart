@@ -21,7 +21,7 @@ class _SignInWidgetState extends State<SignInWidget> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MyHomePage(title: "Leaf Lingo")));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MyHomePage()));
     } on FirebaseAuthException catch (e) {
       // Handle errors, e.g., show an alert dialog with the error message
       print(e); // For debugging

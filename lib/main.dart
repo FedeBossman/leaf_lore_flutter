@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:leaf_lore_flutter/pages/home_page.dart';
 import 'package:leaf_lore_flutter/pages/login_page.dart';
 import 'firebase_options.dart';
 
@@ -9,8 +13,12 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );  
-  // TODO: set upon environment variable
-  await FirebaseAuth.instance.useAuthEmulator('127.0.0.1', 9099);
+  if (kDebugMode) {
+    await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+    FirebaseFunctions.instance.useFunctionsEmulator('localhost', 5001);
+    FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+    FirebaseFirestore.setLoggingEnabled(true);
+  }
   runApp(const MyApp());
 }
 
@@ -42,7 +50,22 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.lightGreen),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+
+      home: StreamBuilder<User?>(
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.active) {
+            User? user = snapshot.data;
+            if (user == null) {
+              return LoginPage();
+            } else {
+              return MyHomePage();
+            }
+          } else {
+            return Scaffold(body: Center(child: CircularProgressIndicator()));
+          }
+        },
+      ),
     );
   }
 }

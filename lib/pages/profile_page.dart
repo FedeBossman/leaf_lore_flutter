@@ -9,6 +9,7 @@ Widget build(BuildContext context) {
     final User? user = _auth.currentUser;
     final String name = user?.displayName ?? 'No Name Available';
     final String email = user?.email ?? 'No Email Available';
+    final String uid = user?.uid ?? 'No Email Available';
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -21,6 +22,12 @@ Widget build(BuildContext context) {
                 leading: Icon(Icons.account_circle, size: 36, color: Colors.green),
                 title: Text(name, style: TextStyle(fontSize: 18)),
                 subtitle: Text('Name', style: TextStyle(color: Colors.black.withOpacity(0.6))),
+              ),
+              Divider(),
+              ListTile(
+                leading: Icon(Icons.perm_identity, size: 36, color: Colors.red),
+                title: Text(uid, style: TextStyle(fontSize: 18)),
+                subtitle: Text('UID', style: TextStyle(color: Colors.black.withOpacity(0.6))),
               ),
               Divider(),
               ListTile(

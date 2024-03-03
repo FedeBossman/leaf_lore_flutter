@@ -10,11 +10,20 @@ class ChatMessage {
     required this.role,
     this.status,
   });
+
+  factory ChatMessage.fromJson(Map<String, dynamic> json) {
+    return ChatMessage(
+      content: json['content'],
+      role: MessageRole.values.byName(json['role']),
+      timestamp: json['timestamp'].toDate(),
+    );
+  }
 }
 
 enum MessageRole {
-  user, // Messages sent by the user
-  assistant, // Messages sent by the assistant
+  system,
+  user,
+  assistant,
 }
 
 enum MessageStatus {

@@ -2,33 +2,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/model/chat_message.model.dart';
+import 'package:leaf_lore_flutter/widgets/chat_input_widget.dart';
 
 
 class ChatWidget extends StatefulWidget {
+  final String chatId;
+  const ChatWidget({super.key, required this.chatId});
+
   @override
   _ChatWidgetState createState() => _ChatWidgetState();
 }
 
 class _ChatWidgetState extends State<ChatWidget> {
-  final TextEditingController _controller = TextEditingController();
-
-  void sendMessage(String messageContent) async {
-    if (messageContent.trim().isEmpty) {
-      return;
-    }
-    debugPrint('Sending message: $messageContent');
-    await sendFirebaseMessage(messageContent);
-  }
-
-  Future<void> sendFirebaseMessage(String messageContent) async {
-    HttpsCallable callable = FirebaseFunctions.instance.httpsCallable('postMessage');
-    try {
-      final response = await callable.call({'chatId': 'Lz35JBgcWvHE1XNKmV3W', 'message': messageContent});
-      debugPrint('Function result: ${response.data}');
-    } catch (e) {
-      debugPrint('Error calling function: $e');
-    }
-  }
 
   Alignment getMessageAlignment(MessageRole role) {
     switch (role) {
@@ -65,18 +50,12 @@ class _ChatWidgetState extends State<ChatWidget> {
   }
 
   @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Column(
         children: [
           Expanded(
             child: StreamBuilder<DocumentSnapshot>(
-              stream: FirebaseFirestore.instance.collection('chats').doc('Lz35JBgcWvHE1XNKmV3W').snapshots(),
+              stream: FirebaseFirestore.instance.collection('chats').doc(widget.chatId).snapshots(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
 
@@ -114,25 +93,7 @@ class _ChatWidgetState extends State<ChatWidget> {
             child: Row(
               children: [
                 Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: "Type a message",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide.none,
-                      ),
-                      filled: true,
-                      fillColor: Colors.grey[200],
-                      suffixIcon: IconButton(
-                        icon: Icon(Icons.send, color: Colors.lightGreen),
-                        onPressed: () {
-                          sendMessage(_controller.text); // Use the text from the controller
-                          _controller.clear(); // Optionally clear the input after sending
-                        },
-                      ),
-                    ),
-                    controller: _controller,
-                  ),
+                  child: ChatInputField(chatId: widget.chatId)
                 ),
               ],
             ),

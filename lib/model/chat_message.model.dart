@@ -1,3 +1,22 @@
+class Chat {
+  // createdDate, id, messages, name, defaultChat, userId
+  final DateTime? createdDate;
+  final String id;
+  final List<ChatMessage> messages;
+  final String name;
+  final bool defaultChat;
+  final String userId;
+
+  Chat({
+    this.createdDate,
+    required this.id,
+    required this.defaultChat,
+    required this.userId,
+    required this.name,
+    required this.messages,
+  });
+}
+
 class ChatMessage {
   final String content;
   final DateTime? timestamp;
@@ -27,8 +46,8 @@ enum MessageRole {
 }
 
 enum MessageStatus {
-  sent, // Message has been sent
-  received, // Message has been received by the server or the other party
-  seen, // Message has been seen by the other party but not yet read
-  read, // Message has been read by the other party
+  sent,
+  received, 
+  seen, 
+  read, 
 }

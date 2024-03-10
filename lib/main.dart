@@ -14,9 +14,11 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );  
   if (kDebugMode) {
-    await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-    FirebaseFunctions.instance.useFunctionsEmulator('localhost', 5001);
-    FirebaseFirestore.instance.useFirestoreEmulator('localhost', 8080);
+    bool isAndroidDevice = false;
+    String host = isAndroidDevice ? '192.168.1.186' : 'localhost';
+    await FirebaseAuth.instance.useAuthEmulator(host, 9099);
+    FirebaseFunctions.instance.useFunctionsEmulator(host, 5001);
+    FirebaseFirestore.instance.useFirestoreEmulator(host, 8080);
     FirebaseFirestore.setLoggingEnabled(true);
   }
   runApp(const MyApp());

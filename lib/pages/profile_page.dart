@@ -4,10 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 class ProfilePage extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  const ProfilePage({super.key});
+  ProfilePage({super.key});
 
   @override
-Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
     final User? user = _auth.currentUser;
     final String name = user?.displayName ?? 'No Name Available';
     final String email = user?.email ?? 'No Email Available';

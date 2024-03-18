@@ -21,10 +21,10 @@ class ChatInputField extends StatefulWidget {
   const ChatInputField({super.key, required this.chatId});
 
   @override
-  _ChatInputFieldState createState() => _ChatInputFieldState();
+  ChatInputFieldState createState() => ChatInputFieldState();
 }
 
-class _ChatInputFieldState extends State<ChatInputField> {
+class ChatInputFieldState extends State<ChatInputField> {
   final TextEditingController _controller = TextEditingController();
   bool _isSendingMessage = false;
 

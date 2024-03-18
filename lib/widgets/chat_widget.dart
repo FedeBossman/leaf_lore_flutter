@@ -9,10 +9,10 @@ class ChatWidget extends StatefulWidget {
   const ChatWidget({super.key, required this.chatId});
 
   @override
-  _ChatWidgetState createState() => _ChatWidgetState();
+  ChatWidgetState createState() => ChatWidgetState();
 }
 
-class _ChatWidgetState extends State<ChatWidget> {
+class ChatWidgetState extends State<ChatWidget> {
 
   Alignment getMessageAlignment(MessageRole role) {
     switch (role) {

@@ -6,10 +6,10 @@ class SignInWidget extends StatefulWidget {
   const SignInWidget({super.key});
 
   @override
-  _SignInWidgetState createState() => _SignInWidgetState();
+  SignInWidgetState createState() => SignInWidgetState();
 }
 
-class _SignInWidgetState extends State<SignInWidget> {
+class SignInWidgetState extends State<SignInWidget> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _isLoading = false;
@@ -25,8 +25,7 @@ class _SignInWidgetState extends State<SignInWidget> {
       );
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const MyHomePage()));
     } on FirebaseAuthException catch (e) {
-      // Handle errors, e.g., show an alert dialog with the error message
-      print(e); // For debugging
+      debugPrintStack(stackTrace: e.stackTrace); // For debugging
     } finally {
       if (mounted) {
         setState(() {

@@ -5,10 +5,10 @@ class SocialSignInWidget extends StatefulWidget {
   const SocialSignInWidget({super.key});
 
   @override
-  _SocialSignInWidgetState createState() => _SocialSignInWidgetState();
+  SocialSignInWidgetState createState() => SocialSignInWidgetState();
 }
 
-class _SocialSignInWidgetState extends State<SocialSignInWidget> {
+class SocialSignInWidgetState extends State<SocialSignInWidget> {
   bool _isSigningIn = false;
 
   @override
@@ -28,11 +28,11 @@ class _SocialSignInWidgetState extends State<SocialSignInWidget> {
                 });
                 final userCredential = await signInWithGoogle();
                 if (userCredential.user != null) {
-                  print("Signed in successfully: ${userCredential.user?.displayName}");
+                  debugPrint("Signed in successfully: ${userCredential.user?.displayName}");
                   // Navigate to another screen or perform other actions
                 } else {
                   // Handle sign-in failure (e.g., show an error message)
-                  print("Failed to sign in with Google.");
+                  debugPrint("Failed to sign in with Google.");
                 }
                 setState(() {
                   _isSigningIn = false;

@@ -13,7 +13,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   String title = 'Leaf Lore';
-  final List<Widget> _pages = [DashboardPage(), ChatPage(), ProfilePage()]; // Add your pages here
+  final List<Widget> _pages = [const DashboardPage(), const ChatPage(), const ProfilePage()]; // Add your pages here
 
   void _onItemTapped(int index) {
     setState(() {

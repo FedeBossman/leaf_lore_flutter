@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/firebase/auth.dart';
 
 class SocialSignInWidget extends StatefulWidget {
+  const SocialSignInWidget({super.key});
+
   @override
   _SocialSignInWidgetState createState() => _SocialSignInWidgetState();
 }
@@ -13,7 +15,7 @@ class _SocialSignInWidgetState extends State<SocialSignInWidget> {
   Widget build(BuildContext context) {
     return Center(
       child: _isSigningIn
-          ? CircularProgressIndicator()
+          ? const CircularProgressIndicator()
           : ElevatedButton.icon(
               icon: const Icon(Icons.login),
               label: const Text('Sign in with Google'),

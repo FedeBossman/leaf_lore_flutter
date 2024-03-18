@@ -3,6 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:leaf_lore_flutter/pages/home_page.dart';
 
 class SignInWidget extends StatefulWidget {
+  const SignInWidget({super.key});
+
   @override
   _SignInWidgetState createState() => _SignInWidgetState();
 }
@@ -38,13 +40,13 @@ class _SignInWidgetState extends State<SignInWidget> {
   Widget build(BuildContext context) {
     return Center(
         child: _isLoading
-            ? CircularProgressIndicator()
+            ? const CircularProgressIndicator()
             : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  TextField(controller: _emailController, decoration: InputDecoration(labelText: 'Email')),
-                  TextField(controller: _passwordController, decoration: InputDecoration(labelText: 'Password'), obscureText: true),
-                  ElevatedButton(onPressed: _signInWithEmailAndPassword, child: Text('Sign In')),
+                  TextField(controller: _emailController, decoration: const InputDecoration(labelText: 'Email')),
+                  TextField(controller: _passwordController, decoration: const InputDecoration(labelText: 'Password'), obscureText: true),
+                  ElevatedButton(onPressed: _signInWithEmailAndPassword, child: const Text('Sign In')),
                 ],
               ),
       );

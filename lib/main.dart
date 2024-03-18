@@ -59,12 +59,12 @@ class MyApp extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.active) {
             User? user = snapshot.data;
             if (user == null) {
-              return LoginPage();
+              return const LoginPage();
             } else {
-              return MyHomePage();
+              return const MyHomePage();
             }
           } else {
-            return Scaffold(body: Center(child: CircularProgressIndicator()));
+            return const Scaffold(body: Center(child: CircularProgressIndicator()));
           }
         },
       ),

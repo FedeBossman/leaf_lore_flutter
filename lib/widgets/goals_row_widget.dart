@@ -4,7 +4,7 @@ import 'package:leaf_lore_flutter/extensions/text_extension.dart';
 class GoalsRow extends StatelessWidget {
   final List<String> goals;
 
-  GoalsRow({Key? key, required this.goals}) : super(key: key);
+  const GoalsRow({super.key, required this.goals});
 
   @override
   Widget build(BuildContext context) {

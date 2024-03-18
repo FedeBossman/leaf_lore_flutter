@@ -4,6 +4,8 @@ import 'package:leaf_lore_flutter/pages/home_page.dart';
 import 'package:leaf_lore_flutter/widgets/social_sign_in_widget.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -49,8 +51,8 @@ class _LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                FlutterLogo(size: 100), // Your logo here (replace `FlutterLogo`)
-                SizedBox(height: 50),
+                const FlutterLogo(size: 100), // Your logo here (replace `FlutterLogo`)
+                const SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: TextField(
@@ -60,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: TextField(
@@ -73,13 +75,13 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 24),
                 _isLoading
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : ElevatedButton(
                     onPressed: _signInWithEmailAndPassword,
                     child: const Text('Sign In'),
                   ),
                 const SizedBox(height: 12),
-                SocialSignInWidget(),
+                const SocialSignInWidget(),
                 TextButton(
                   onPressed: () {
                     // Navigate to forgot password page or functionality

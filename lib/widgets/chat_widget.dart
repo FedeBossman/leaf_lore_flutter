@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/model/chat_message.model.dart';
 import 'package:leaf_lore_flutter/widgets/chat_input_widget.dart';
@@ -41,11 +40,11 @@ class _ChatWidgetState extends State<ChatWidget> {
     const roleMargin = 40.0;
     switch (role) {
       case MessageRole.user:
-        return EdgeInsets.only(left: roleMargin, right: 8, top: 4, bottom: 4);
+        return const EdgeInsets.only(left: roleMargin, right: 8, top: 4, bottom: 4);
       case MessageRole.assistant:
-        return EdgeInsets.only(right: roleMargin, left: 8, top: 4, bottom: 4);
+        return const EdgeInsets.only(right: roleMargin, left: 8, top: 4, bottom: 4);
       case MessageRole.system:
-        return EdgeInsets.symmetric(horizontal: roleMargin, vertical: 4);
+        return const EdgeInsets.symmetric(horizontal: roleMargin, vertical: 4);
     }
   }
 
@@ -57,7 +56,7 @@ class _ChatWidgetState extends State<ChatWidget> {
             child: StreamBuilder<DocumentSnapshot>(
               stream: FirebaseFirestore.instance.collection('chats').doc(widget.chatId).snapshots(),
               builder: (context, snapshot) {
-                if (!snapshot.hasData) return Center(child: CircularProgressIndicator());
+                if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
 
                 var document = snapshot.data!;
                 var messagesData = document['messages'] as List<dynamic>?;
@@ -74,7 +73,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                       alignment: getMessageAlignment(message.role),
                       child: Container(
                         margin: getMessageMargin(message.role),
-                        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                         decoration: BoxDecoration(
                           color: getMessageColor(message.role),
                           borderRadius: BorderRadius.circular(20),

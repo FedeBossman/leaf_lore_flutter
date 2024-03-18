@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +84,7 @@ class _ChatInputFieldState extends State<ChatInputField> {
               filled: true,
               fillColor: Colors.grey[200],
               suffixIcon: _isSendingMessage
-                  ? CircularProgressIndicator()
+                  ? const CircularProgressIndicator()
                   : IconButton(
                       icon: const Icon(Icons.send, color: Colors.lightGreen),
                       onPressed: () => sendMessage(),

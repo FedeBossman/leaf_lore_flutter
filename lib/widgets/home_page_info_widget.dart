@@ -7,6 +7,8 @@ import 'package:leaf_lore_flutter/extensions/list_extension.dart';
 import 'package:leaf_lore_flutter/widgets/goals_row_widget.dart';
 
 class HomePageInfoWidget extends StatelessWidget {
+  const HomePageInfoWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     String weather = "24°C";

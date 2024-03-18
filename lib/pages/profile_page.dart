@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 class ProfilePage extends StatelessWidget {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  const ProfilePage({super.key});
+
   @override
 Widget build(BuildContext context) {
     final User? user = _auth.currentUser;
@@ -17,41 +19,41 @@ Widget build(BuildContext context) {
         Expanded(
           child: ListView(
             children: [
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               ListTile(
-                leading: Icon(Icons.account_circle, size: 36, color: Colors.green),
-                title: Text(name, style: TextStyle(fontSize: 18)),
+                leading: const Icon(Icons.account_circle, size: 36, color: Colors.green),
+                title: Text(name, style: const TextStyle(fontSize: 18)),
                 subtitle: Text('Name', style: TextStyle(color: Colors.black.withOpacity(0.6))),
               ),
-              Divider(),
+              const Divider(),
               ListTile(
-                leading: Icon(Icons.perm_identity, size: 36, color: Colors.red),
-                title: Text(uid, style: TextStyle(fontSize: 18)),
+                leading: const Icon(Icons.perm_identity, size: 36, color: Colors.red),
+                title: Text(uid, style: const TextStyle(fontSize: 18)),
                 subtitle: Text('UID', style: TextStyle(color: Colors.black.withOpacity(0.6))),
               ),
-              Divider(),
+              const Divider(),
               ListTile(
-                leading: Icon(Icons.email, size: 36, color: Colors.green),
-                title: Text(email, style: TextStyle(fontSize: 18)),
+                leading: const Icon(Icons.email, size: 36, color: Colors.green),
+                title: Text(email, style: const TextStyle(fontSize: 18)),
                 subtitle: Text('Email', style: TextStyle(color: Colors.black.withOpacity(0.6))),
               ),
-              Divider(),
+              const Divider(),
             ],
           ),
         ),
         Container(
-          padding: EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
           child: ElevatedButton(
             onPressed: () async {
               await _auth.signOut();
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
-            child: Text('Sign Out', style: TextStyle(fontSize: 16)),
             style: ElevatedButton.styleFrom(
               // primary: Colors.red, // Button color
               // onPrimary: Colors.white, // Text color
-              minimumSize: Size(double.infinity, 50), // Button size
+              minimumSize: const Size(double.infinity, 50), // Button size
             ),
+            child: const Text('Sign Out', style: TextStyle(fontSize: 16)),
           ),
         ),
       ],

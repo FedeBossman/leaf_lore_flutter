@@ -21,12 +21,12 @@ class HomePageInfoWidget extends StatelessWidget {
           return const CircularProgressIndicator();
         }
 
-        if (snapshot.hasError) {
-          return Text("Error: ${snapshot.error}");
-        }
-
         if (!snapshot.hasData) {
           return const Text("Chat with Sprout to get started!");
+        }
+
+        if (snapshot.hasError) {
+          return Text("Error: ${snapshot.error}");
         }
 
         var homePageInfo = HomePageInfo.fromSnapshot(snapshot.data!);
@@ -52,9 +52,9 @@ class HomePageInfoWidget extends StatelessWidget {
               children: [
                 const Icon(Icons.auto_awesome, color: Colors.green),
                 const SizedBox(width: 8),
-                Text(homePageInfo.type, style: const TextStyle(fontSize: 18)),
+                Text(homePageInfo.type ?? '', style: const TextStyle(fontSize: 18)),
                 const Spacer(),
-                Text(homePageInfo.experience.toFirstUpperCase(), style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green)),
+                Text(homePageInfo.experience?.toFirstUpperCase() ?? '', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green)),
               ],
             ),
             const Divider(height: 30, thickness: 2),
@@ -64,7 +64,7 @@ class HomePageInfoWidget extends StatelessWidget {
                 const SizedBox(width: 8),
                 Text('$plantCount Plants', style: const TextStyle(fontSize: 18)),
                 const Spacer(),
-                Text(homePageInfo.nickname, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green)),
+                Text(homePageInfo.nickname ?? '', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green)),
               ],
             ),
             const Divider(height: 30, thickness: 2),

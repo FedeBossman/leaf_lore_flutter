@@ -2,15 +2,15 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class HomePageInfo {
   final String userId;
-  final String experience;
+  final String? experience;
   final List<String> goals;
-  final String nickname;
+  final String? nickname;
   final Location location;
-  final String type;
+  final String? type;
 
   HomePageInfo({
     required this.userId,
-    required this.experience,
+    this.experience,
     required this.goals,
     required this.nickname,
     required this.location,
@@ -20,11 +20,11 @@ class HomePageInfo {
   factory HomePageInfo.fromMap(Map<String, dynamic> data) {
     return HomePageInfo(
       userId: data['userId'] as String,
-      experience: data['experience'] as String,
+      experience: data['experience'] as String?,
       goals: List<String>.from(data['goals']),
-      nickname: data['nickname'] as String,
+      nickname: data['nickname'] as String?,
       location: Location.fromMap(data['location'] as Map<String, dynamic>),
-      type: data['type'] as String,
+      type: data['type'] as String?,
     );
   }
 

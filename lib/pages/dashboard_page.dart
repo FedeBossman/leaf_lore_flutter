@@ -8,14 +8,14 @@ class DashboardPage extends StatelessWidget {
   @override
 Widget build(BuildContext context) {
 
-    return const SingleChildScrollView( // Ensures the page is scrollable if content doesn't fit
+    return SingleChildScrollView( // Ensures the page is scrollable if content doesn't fit
       child: Padding(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            HomePageInfoWidget(),
-            SizedBox(height: 20),
+            const HomePageInfoWidget(),
+            const SizedBox(height: 20),
             DailyTipWidget(),
           ],
         ),

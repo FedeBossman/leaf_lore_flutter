@@ -1,12 +1,27 @@
-
 import 'package:flutter/material.dart';
+import 'package:cloud_functions/cloud_functions.dart';
 
-class DailyTipWidget extends StatelessWidget {
-  final String dailyTip = "Rotate your indoor plants slightly each week for even light exposure.";
+class DailyTipWidget extends StatefulWidget {
+  @override
+  _DailyTipWidgetState createState() => _DailyTipWidgetState();
+}
 
-  const DailyTipWidget({
-    super.key,
-  });
+class _DailyTipWidgetState extends State<DailyTipWidget> {
+  String? dailyTip;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchDailyTip();
+  }
+
+  Future<void> fetchDailyTip() async {
+    final functions = FirebaseFunctions.instance;
+    final result = await functions.httpsCallable('getDailyTip').call();
+    setState(() {
+      dailyTip = result.data['tip'];
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +34,14 @@ class DailyTipWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Daily Tip:', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.green)),
+          const Text(
+            'Daily Tip:',
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.green),
+          ),
           const SizedBox(height: 8),
-          Text(dailyTip, style: const TextStyle(fontSize: 16)),
+          dailyTip == null
+              ? const CircularProgressIndicator()  // Show loading indicator while the tip is null
+              : Text(dailyTip!, style: const TextStyle(fontSize: 12)),
         ],
       ),
     );

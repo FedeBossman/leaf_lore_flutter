@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/features/chat/chat_message.model.dart';
+import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_detail_page.dart';
 
 class ChatListWidget extends StatelessWidget {
-  final List<ChatListItem> chats;
+  final List<Chat> chats;
 
   ChatListWidget({Key? key, required this.chats}) : super(key: key);
 

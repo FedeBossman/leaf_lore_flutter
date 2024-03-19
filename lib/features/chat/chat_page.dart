@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/features/chat/chat_message.model.dart';
+import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_list_widget.dart';
 
 
-List<ChatListItem> chats = [
-  ChatListItem(id: 'KoVtjQbgayiq6nizpBBK', name: 'Gardening Assistant', latestMessage: 'How can I help you today?', defaultChat: true),
-  ChatListItem(id: 'KoVtjQbgayiq6nizpBBK', name: 'Aloe Vera', latestMessage: 'I need water!', defaultChat: false),
-  ChatListItem(id: 'KoVtjQbgayiq6nizpBBK', name: 'Fern', latestMessage: 'Feeling great today!', defaultChat: false),
+List<Chat> chats = [
+  Chat(id: 'KoVtjQbgayiq6nizpBBK', name: 'Gardening Assistant', latestMessage: 'How can I help you today?', defaultChat: true),
+  Chat(id: 'KoVtjQbgayiq6nizpBBK', name: 'Aloe Vera', latestMessage: 'I need water!', defaultChat: false),
+  Chat(id: 'KoVtjQbgayiq6nizpBBK', name: 'Fern', latestMessage: 'Feeling great today!', defaultChat: false),
 ];
 
 class ChatPage extends StatelessWidget {

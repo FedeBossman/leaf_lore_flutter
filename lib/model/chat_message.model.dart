@@ -1,5 +1,20 @@
+class ChatListItem {
+  final DateTime? createdDate;
+  final String id;
+  final String name;
+  final bool defaultChat;
+  final String latestMessage;
+
+  ChatListItem({
+    this.createdDate,
+    required this.id,
+    required this.defaultChat,
+    required this.name,
+    required this.latestMessage,
+  });
+}
+
 class Chat {
-  // createdDate, id, messages, name, defaultChat, userId
   final DateTime? createdDate;
   final String id;
   final List<ChatMessage> messages;

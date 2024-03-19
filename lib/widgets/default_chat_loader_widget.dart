@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:leaf_lore_flutter/widgets/chat_widget.dart';
+import 'package:leaf_lore_flutter/widgets/chat_detail_widget.dart';
 
 class DefaultChatLoaderWidget extends StatelessWidget {
   const DefaultChatLoaderWidget({super.key});
@@ -22,7 +22,7 @@ class DefaultChatLoaderWidget extends StatelessWidget {
         if (snapshot.hasError) {
           return Center(child: Text("Error: ${snapshot.error}"));
         }
-        return ChatWidget(chatId: snapshot.data!); 
+        return ChatDetailWidget(chatId: snapshot.data!); 
       },
     );
   }

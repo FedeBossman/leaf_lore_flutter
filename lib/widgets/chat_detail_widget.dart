@@ -4,15 +4,15 @@ import 'package:leaf_lore_flutter/model/chat_message.model.dart';
 import 'package:leaf_lore_flutter/widgets/chat_input_widget.dart';
 
 
-class ChatWidget extends StatefulWidget {
+class ChatDetailWidget extends StatefulWidget {
   final String chatId;
-  const ChatWidget({super.key, required this.chatId});
+  const ChatDetailWidget({super.key, required this.chatId});
 
   @override
-  ChatWidgetState createState() => ChatWidgetState();
+  ChatDetailWidgetState createState() => ChatDetailWidgetState();
 }
 
-class ChatWidgetState extends State<ChatWidget> {
+class ChatDetailWidgetState extends State<ChatDetailWidget> {
 
   Alignment getMessageAlignment(MessageRole role) {
     switch (role) {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/firebase/auth.dart';
+import 'package:leaf_lore_flutter/core/firebase/auth.dart';
 
 class SocialSignInWidget extends StatefulWidget {
   const SocialSignInWidget({super.key});

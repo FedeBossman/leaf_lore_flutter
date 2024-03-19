@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/extensions/text_extension.dart';
-import 'package:leaf_lore_flutter/firebase/home_page_info_stream.dart';
-import 'package:leaf_lore_flutter/model/home_page_info.model.dart';
-import 'package:leaf_lore_flutter/extensions/list_extension.dart';
-import 'package:leaf_lore_flutter/widgets/goals_row_widget.dart';
+import 'package:leaf_lore_flutter/core/extensions/text_extension.dart';
+import 'package:leaf_lore_flutter/core/firebase/home_page_info_stream.dart';
+import 'package:leaf_lore_flutter/features/home/home_page_info.model.dart';
+import 'package:leaf_lore_flutter/core/extensions/list_extension.dart';
+import 'package:leaf_lore_flutter/features/home/goals_row_widget.dart';
 
 class HomePageInfoWidget extends StatelessWidget {
   const HomePageInfoWidget({super.key});

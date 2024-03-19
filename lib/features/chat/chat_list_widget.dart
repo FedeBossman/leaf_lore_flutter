@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/model/chat_message.model.dart';
-import 'package:leaf_lore_flutter/pages/chat_detail_page.dart';
+import 'package:leaf_lore_flutter/features/chat/chat_message.model.dart';
+import 'package:leaf_lore_flutter/features/chat/chat_detail_page.dart';
 
 class ChatListWidget extends StatelessWidget {
   final List<ChatListItem> chats;

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/model/chat_message.model.dart';
-import 'package:leaf_lore_flutter/widgets/chat_list_widget.dart';
+import 'package:leaf_lore_flutter/features/chat/chat_message.model.dart';
+import 'package:leaf_lore_flutter/features/chat/chat_list_widget.dart';
 
 
 List<ChatListItem> chats = [

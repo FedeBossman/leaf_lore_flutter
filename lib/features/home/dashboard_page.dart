@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/widgets/daily_tip_widget.dart';
-import 'package:leaf_lore_flutter/widgets/home_page_info_widget.dart';
+import 'package:leaf_lore_flutter/features/home/daily_tip_widget.dart';
+import 'package:leaf_lore_flutter/features/home/home_page_info_widget.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});

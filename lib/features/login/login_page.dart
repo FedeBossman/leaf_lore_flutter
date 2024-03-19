@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/pages/home_page.dart';
-import 'package:leaf_lore_flutter/widgets/social_sign_in_widget.dart';
+import 'package:leaf_lore_flutter/shared/pages/home_page.dart';
+import 'package:leaf_lore_flutter/features/login/social_sign_in_widget.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

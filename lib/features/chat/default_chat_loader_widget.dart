@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:leaf_lore_flutter/widgets/chat_detail_widget.dart';
+import 'package:leaf_lore_flutter/features/chat/chat_detail_widget.dart';
 
 class DefaultChatLoaderWidget extends StatelessWidget {
   const DefaultChatLoaderWidget({super.key});

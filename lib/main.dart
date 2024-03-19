@@ -4,9 +4,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:leaf_lore_flutter/pages/home_page.dart';
-import 'package:leaf_lore_flutter/pages/login_page.dart';
-import 'firebase_options.dart';
+import 'package:leaf_lore_flutter/shared/pages/home_page.dart';
+import 'package:leaf_lore_flutter/features/login/login_page.dart';
+import 'core/firebase/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized(); // Ensure Flutter bindings are initialized
@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'LeafLore',
       theme: ThemeData(
         // This is the theme of your application.
         //

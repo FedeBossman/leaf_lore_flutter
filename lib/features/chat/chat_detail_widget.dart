@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/model/chat_message.model.dart';
-import 'package:leaf_lore_flutter/widgets/chat_input_widget.dart';
+import 'package:leaf_lore_flutter/features/chat/chat_message.model.dart';
+import 'package:leaf_lore_flutter/features/chat/chat_input_widget.dart';
 
 
 class ChatDetailWidget extends StatefulWidget {

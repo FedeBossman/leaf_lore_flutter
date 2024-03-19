@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/pages/chat_page.dart';
-import 'package:leaf_lore_flutter/pages/dashboard_page.dart';
-import 'package:leaf_lore_flutter/pages/profile_page.dart';
-import 'package:leaf_lore_flutter/widgets/main_app_bar_widget.dart';
+import 'package:leaf_lore_flutter/features/chat/chat_page.dart';
+import 'package:leaf_lore_flutter/features/home/dashboard_page.dart';
+import 'package:leaf_lore_flutter/features/profile/profile_page.dart';
+import 'package:leaf_lore_flutter/shared/theme/main_app_bar_widget.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});

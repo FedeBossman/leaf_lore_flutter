@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:leaf_lore_flutter/core/firebase/tips_service.dart';
 
 class DailyTipWidget extends StatefulWidget {
   @override
@@ -16,8 +17,7 @@ class _DailyTipWidgetState extends State<DailyTipWidget> {
   }
 
   Future<void> fetchDailyTip() async {
-    final functions = FirebaseFunctions.instance;
-    final result = await functions.httpsCallable('getDailyTip').call();
+    final result = await getDailyTip();
     setState(() {
       dailyTip = result.data['tip'];
     });

@@ -3,6 +3,7 @@ import 'package:leaf_lore_flutter/features/chat/chat_page.dart';
 import 'package:leaf_lore_flutter/features/home/dashboard_page.dart';
 import 'package:leaf_lore_flutter/features/plants/plants_page.dart';
 import 'package:leaf_lore_flutter/features/profile/profile_page.dart';
+import 'package:leaf_lore_flutter/shared/theme/bottom_navigation_bar_widget.dart';
 import 'package:leaf_lore_flutter/shared/theme/main_app_bar_widget.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -31,23 +32,28 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: MainAppBar(title: title),
-      body: _pages.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
-          BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'Chat'),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.local_florist), label: 'Plants'),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        selectedItemColor: Colors.green, 
-        unselectedItemColor: Colors.grey,
-      ),
-    );
+        extendBody: true,
+        appBar: MainAppBar(title: title),
+        body: Container(
+            padding: const EdgeInsets.only(bottom: kBottomNavigationBarHeight),
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin:
+                    Alignment(-0.1, -1.0),
+                end: Alignment(0.1, 2.5),
+                colors: [
+                  Colors.white,
+                  Colors.lightGreen[300]!,
+                  Colors.green,
+                  Colors.green[900]!,
+                  Colors.lightGreen[
+                      300]!, 
+                ],
+                stops: [0.05, 0.25, 0.55, 0.75, 0.90],
+              ),
+            ),
+            child: _pages.elementAt(_selectedIndex)),
+        bottomNavigationBar: BottomNavigationBarWidget(
+            selectedIndex: _selectedIndex, onItemTapped: _onItemTapped));
   }
 }

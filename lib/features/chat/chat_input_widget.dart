@@ -75,10 +75,11 @@ class ChatInputFieldState extends State<ChatInputField> {
         child: Focus(
           autofocus: true,
           child: TextField(
+            style: const TextStyle(fontSize: 14.0, height: 1.0),
             decoration: InputDecoration(
               hintText: "Type a message",
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20),
+                borderRadius: BorderRadius.circular(50),
                 borderSide: BorderSide.none,
               ),
               filled: true,

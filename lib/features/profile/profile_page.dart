@@ -55,7 +55,7 @@ class ProfilePage extends StatelessWidget {
             ),
             child: const Text('Sign Out', style: TextStyle(fontSize: 16)),
           ),
-        ),
+        )
       ],
     );
   }

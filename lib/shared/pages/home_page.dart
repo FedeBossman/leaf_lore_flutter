@@ -36,22 +36,22 @@ class _MyHomePageState extends State<MyHomePage> {
         appBar: MainAppBar(title: title),
         body: Container(
             padding: const EdgeInsets.only(bottom: kBottomNavigationBarHeight),
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin:
-                    Alignment(-0.1, -1.0),
-                end: Alignment(0.1, 2.5),
-                colors: [
-                  Colors.white,
-                  Colors.lightGreen[300]!,
-                  Colors.green,
-                  Colors.green[900]!,
-                  Colors.lightGreen[
-                      300]!, 
-                ],
-                stops: [0.05, 0.25, 0.55, 0.75, 0.90],
-              ),
-            ),
+            // decoration: BoxDecoration(
+            //   gradient: LinearGradient(
+            //     begin:
+            //         Alignment(-0.1, -1.0),
+            //     end: Alignment(0.1, 2.5),
+            //     colors: [
+            //       Colors.white,
+            //       Colors.lightGreen[300]!,
+            //       Colors.green,
+            //       Colors.green[900]!,
+            //       Colors.lightGreen[
+            //           300]!, 
+            //     ],
+            //     stops: [0.05, 0.25, 0.55, 0.75, 0.90],
+            //   ),
+            // ),
             child: _pages.elementAt(_selectedIndex)),
         bottomNavigationBar: BottomNavigationBarWidget(
             selectedIndex: _selectedIndex, onItemTapped: _onItemTapped));

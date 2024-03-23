@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/core/extensions/text_extension.dart';
 import 'package:leaf_lore_flutter/core/firebase/home_page_info_stream.dart';
+import 'package:leaf_lore_flutter/features/home/dashboard_row_widget.dart';
 import 'package:leaf_lore_flutter/features/home/home_page_info.model.dart';
 import 'package:leaf_lore_flutter/core/extensions/list_extension.dart';
 import 'package:leaf_lore_flutter/features/home/goals_row_widget.dart';
@@ -14,9 +14,12 @@ class HomePageInfoWidget extends StatelessWidget {
     String weather = "24°C";
     int plantCount = 4;
 
+    const div = Divider(height: 14, thickness: 1);
+
     return StreamBuilder<DocumentSnapshot>(
       stream: getHomePageInfoStream(),
-      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+      builder:
+          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
         }
@@ -31,45 +34,68 @@ class HomePageInfoWidget extends StatelessWidget {
 
         var homePageInfo = HomePageInfo.fromSnapshot(snapshot.data!);
 
-        var location = [homePageInfo.location.city, homePageInfo.location.state].filterNotNull().join(", ");
+        var location = [homePageInfo.location.city, homePageInfo.location.state]
+            .filterNotNull()
+            .join(", ");
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            // Location and Weather
-            Row(
-              children: [
-                const Icon(Icons.location_on, color: Colors.green),
-                const SizedBox(width: 8),
-                Text(location, style: const TextStyle(fontSize: 18)),
-                const Spacer(), 
-                const Icon(Icons.wb_sunny, color: Colors.yellow),
-                const SizedBox(width: 8),
-                Text(weather, style: const TextStyle(fontSize: 18)),
-              ],
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: Row(
+                  children: [
+                    Icon(Icons.location_on, color: Colors.green),
+                    const SizedBox(width: 8),
+                    Text(location, style: const TextStyle(fontSize: 18)),
+                    const Spacer(),
+                    Text(weather,
+                        style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.green)),
+                  ],
+                ),
+              ),
             ),
-            const Divider(height: 30, thickness: 2),
-            Row(
-              children: [
-                const Icon(Icons.auto_awesome, color: Colors.green),
-                const SizedBox(width: 8),
-                Text(homePageInfo.type ?? '', style: const TextStyle(fontSize: 18)),
-                const Spacer(),
-                Text(homePageInfo.experience?.toFirstUpperCase() ?? '', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green)),
-              ],
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: Column(
+                  children: [
+                    DashboardRowWidget(
+                        icon: Icons.auto_awesome,
+                        title: 'Type',
+                        value: homePageInfo.type ?? ''),
+                    div,
+                    DashboardRowWidget(
+                        icon: Icons.work,
+                        title: 'Experience',
+                        value: homePageInfo.experience ?? ''),
+                    div,
+                    DashboardRowWidget(
+                        icon: Icons.local_florist,
+                        title: 'Plants',
+                        value: '$plantCount'),
+                    div,
+                    DashboardRowWidget(
+                        icon: Icons.flight_takeoff,
+                        title: 'Rank',
+                        value: homePageInfo.nickname ?? ''),
+                  ],
+                ),
+              ),
             ),
-            const Divider(height: 30, thickness: 2),
-            Row(
-              children: [
-                const Icon(Icons.local_florist, color: Colors.green),
-                const SizedBox(width: 8),
-                Text('$plantCount Plants', style: const TextStyle(fontSize: 18)),
-                const Spacer(),
-                Text(homePageInfo.nickname ?? '', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green)),
-              ],
-            ),
-            const Divider(height: 30, thickness: 2),
-            GoalsRow(goals: homePageInfo.goals),
-
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(32.0),
+                child: Column(
+                  children: [
+                    GoalsRow(goals: homePageInfo.goals),
+                  ],
+                ),
+              ),
+            )
           ],
         );
       },

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_input_widget.dart';
+import 'package:leaf_lore_flutter/features/chat/chat_stream.dart';
 
 
 class ChatDetailWidget extends StatefulWidget {
@@ -53,22 +54,24 @@ class ChatDetailWidgetState extends State<ChatDetailWidget> {
     return Column(
         children: [
           Expanded(
-            child: StreamBuilder<DocumentSnapshot>(
-              stream: FirebaseFirestore.instance.collection('chats').doc(widget.chatId).snapshots(),
+            child: StreamBuilder<Chat>(
+              stream: getChateDetailStream(widget.chatId),
               builder: (context, snapshot) {
-                if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                }
 
-                var document = snapshot.data!;
-                var messagesData = document['messages'] as List<dynamic>?;
-                var messages = messagesData != null
-                    ? messagesData.map((messageJson) => ChatMessage.fromJson(messageJson)).toList()
-                    : <ChatMessage>[];
+                if (!snapshot.hasData) {
+                  return const Text("No chat messages found.");
+                }
+
+                var chat = snapshot.data!;
                 
                 return ListView.builder(
-                  reverse: true, // Stack messages from the bottom
-                  itemCount: messages.length,
+                  reverse: true, 
+                  itemCount: chat.messages.length,
                   itemBuilder: (context, index) {
-                    final message = messages[messages.length - 1 - index]; // Reverse index for stacking from bottom
+                    final message = chat.messages[chat.messages.length - 1 - index]; 
                     return Align(
                       alignment: getMessageAlignment(message.role),
                       child: Container(

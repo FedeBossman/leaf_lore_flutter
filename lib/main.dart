@@ -50,7 +50,7 @@ class MyApp extends StatelessWidget {
           shadowColor: Colors.black,
         ),
         cardTheme: CardTheme(
-          elevation: 4.0,
+          elevation: 0.0,
           shadowColor: Colors.black,
           shape: ContinuousRectangleBorder(
             borderRadius: BorderRadius.lerp(BorderRadius.circular(100), BorderRadius.circular(150), 0.5)!,

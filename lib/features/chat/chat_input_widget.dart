@@ -46,7 +46,7 @@ class ChatInputFieldState extends State<ChatInputField> {
 
   Future<void> sendFirebaseMessage(String messageContent) async {
     HttpsCallable callable =
-        FirebaseFunctions.instance.httpsCallable('postMessage');
+        FirebaseFunctions.instance.httpsCallable('chat-postMessage');
     try {
       final response = await callable
           .call({'chatId': widget.chatId, 'message': messageContent});

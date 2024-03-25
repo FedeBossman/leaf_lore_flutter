@@ -1,17 +1,58 @@
-class Chat {
-  final DateTime? createdDate;
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+class ChatMeta {
+  final DateTime? createdAt;
   final String id;
   final String name;
   final bool defaultChat;
   final String latestMessage;
 
-  Chat({
-    this.createdDate,
+  ChatMeta({
+    this.createdAt,
     required this.id,
     required this.defaultChat,
     required this.name,
     required this.latestMessage,
   });
+
+  factory ChatMeta.fromDocument(DocumentSnapshot doc) {
+    return ChatMeta(
+      id: doc.id,
+      name: doc['name'],
+      defaultChat: doc['defaultChat'],
+      createdAt: doc['createdAt'].toDate(),
+      latestMessage: doc['messages'].last['content'],
+    );
+  }
+}
+
+
+class Chat {
+  final DateTime? createdAt;
+  final String id;
+  final String name;
+  final bool defaultChat;
+  final List<ChatMessage> messages;
+
+  Chat({
+    this.createdAt,
+    required this.id,
+    required this.defaultChat,
+    required this.name,
+    required this.messages,
+  });
+
+  factory Chat.fromDocument(DocumentSnapshot doc) {
+    final messagesData = doc['messages'] as List<dynamic>?;
+
+    return Chat(
+      id: doc.id,
+      name: doc['name'],
+      defaultChat: doc['defaultChat'],
+      createdAt: doc['createdAt'].toDate(),
+      messages: messagesData?.map((e) => ChatMessage.fromJson(e)).toList() ?? [],
+    );
+  }
 }
 
 class ChatMessage {

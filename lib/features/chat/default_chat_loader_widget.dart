@@ -6,7 +6,7 @@ class DefaultChatLoaderWidget extends StatelessWidget {
   const DefaultChatLoaderWidget({super.key});
 
   Future<String> getDefaultChat() async {
-    HttpsCallable callable = FirebaseFunctions.instance.httpsCallable('getDefaultChat');
+    HttpsCallable callable = FirebaseFunctions.instance.httpsCallable('chat-getDefaultChat');
     final results = await callable.call({});
     return results.data['chatId'];
   }

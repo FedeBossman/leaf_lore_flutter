@@ -3,7 +3,7 @@ import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_detail_page.dart';
 
 class ChatListWidget extends StatelessWidget {
-  final List<Chat> chats;
+  final List<ChatMeta> chats;
 
   ChatListWidget({Key? key, required this.chats}) : super(key: key);
 

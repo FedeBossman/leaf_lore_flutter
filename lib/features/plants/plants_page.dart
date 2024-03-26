@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/widgets/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_list_widget.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_model.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_stream.dart';
@@ -8,17 +9,9 @@ class PlantsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<PlantMeta>>(
+    return StreamHandler<List<PlantMeta>>(
       stream: getPlantsMetaStream(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        }
-
-        if (!snapshot.hasData) {
-          return const Text('No plants found');
-        }
-
         final plants = snapshot.data!;
 
         return PlantListWidget(plants: plants);

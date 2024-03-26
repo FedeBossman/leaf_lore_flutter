@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/widgets/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_list_widget.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_stream.dart';
@@ -8,17 +9,9 @@ class ChatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder<List<ChatMeta>>(
+    return StreamHandler<List<ChatMeta>>(
       stream: getChatsMetaStream(),
       builder: (context, snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        }
-
-        if (!snapshot.hasData) {
-          return const Text('No chats found');
-        }
-
         final chats = snapshot.data!;
 
         return ChatListWidget(chats: chats);

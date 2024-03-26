@@ -9,7 +9,7 @@ import 'package:leaf_lore_flutter/features/login/login_page.dart';
 import 'core/firebase/firebase_options.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); 
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -54,7 +54,8 @@ class MyApp extends StatelessWidget {
           elevation: 0.0,
           shadowColor: Colors.black,
           shape: ContinuousRectangleBorder(
-            borderRadius: BorderRadius.lerp(BorderRadius.circular(100), BorderRadius.circular(150), 0.5)!,
+            borderRadius: BorderRadius.lerp(
+                BorderRadius.circular(100), BorderRadius.circular(150), 0.5)!,
             // borderRadius: BorderRadius.only(
             //     topLeft: Radius.elliptical(40, 90),
             //     topRight: Radius.elliptical(60, 100),

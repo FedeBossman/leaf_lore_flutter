@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/widgets/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/home/home_page_info_stream.dart';
 import 'package:leaf_lore_flutter/features/home/dashboard_row_widget.dart';
 import 'package:leaf_lore_flutter/features/home/home_page_info.model.dart';
@@ -15,21 +16,17 @@ class HomePageInfoWidget extends StatelessWidget {
 
     const div = Divider(height: 14, thickness: 1);
 
-    return StreamBuilder<HomePageInfo>(
+    return StreamHandler<HomePageInfo>(
       stream: getHomePageInfoStream(),
       builder:
           (BuildContext context, AsyncSnapshot<HomePageInfo> snapshot) {
-        if (snapshot.connectionState == ConnectionState.waiting) {
-          return const CircularProgressIndicator();
-        }
+        // if (!snapshot.hasData) {
+        //   return const Text("Chat with Sprout to get started!");
+        // }
 
-        if (!snapshot.hasData) {
-          return const Text("Chat with Sprout to get started!");
-        }
-
-        if (snapshot.hasError) {
-          return Text("Error: ${snapshot.error}");
-        }
+        // if (snapshot.hasError) {
+        //   return Text("Error: ${snapshot.error}");
+        // }
 
         var homePageInfo = snapshot.data!;
 

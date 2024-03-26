@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/widgets/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_detail_widget.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_input_widget.dart';
@@ -13,19 +14,10 @@ class ChatDetailPage extends StatelessWidget {
     return Column(
         children: [
           Expanded(
-            child: StreamBuilder<Chat>(
+            child: StreamHandler<Chat>(
               stream: getChatDetailStream(chatId),
               builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
-                }
-
-                if (!snapshot.hasData) {
-                  return const Text("No chat messages found.");
-                }
-
                 var chat = snapshot.data!;
-                
                 return ChatDetailWidget(chat: chat);
               },
             ),

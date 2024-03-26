@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/core/firebase/tips_service.dart';
 
 class DailyTipWidget extends StatefulWidget {
+  const DailyTipWidget({super.key});
+
   @override
-  _DailyTipWidgetState createState() => _DailyTipWidgetState();
+  DailyTipWidgetState createState() => DailyTipWidgetState();
 }
 
-class _DailyTipWidgetState extends State<DailyTipWidget> {
+class DailyTipWidgetState extends State<DailyTipWidget> {
   String? dailyTip;
 
   @override

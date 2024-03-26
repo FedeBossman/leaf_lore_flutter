@@ -4,12 +4,12 @@ class MainAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
   final List<Widget>? actions;
 
-  MainAppBar({Key? key, required this.title, this.actions}) : super(key: key);
+  const MainAppBar({super.key, required this.title, this.actions});
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title, style: TextStyle(fontSize: 18.0),),
+      title: Text(title, style: const TextStyle(fontSize: 18.0),),
       actions: actions,
       shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.only(

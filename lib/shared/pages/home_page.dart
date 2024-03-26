@@ -18,10 +18,10 @@ class _MyHomePageState extends State<MyHomePage> {
   String title = 'Leaf Lore';
   final List<Widget> _pages = [
     const DashboardPage(),
-    ChatNavigationWrapper(),
-    PlantsPage(),
+    const ChatNavigationWrapper(),
+    const PlantNavigationWrapper(),
     ProfilePage()
-  ]; // Add your pages here
+  ];
 
   void _onItemTapped(int index) {
     setState(() {

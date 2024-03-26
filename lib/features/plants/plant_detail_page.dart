@@ -1,29 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/features/plants/plant_detail_widget.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_model.dart';
+import 'package:leaf_lore_flutter/features/plants/plant_stream.dart';
 
 class PlantDetailPage extends StatelessWidget {
-  final Plant plant;
+  final PlantMeta plantMeta;
 
-  PlantDetailPage({Key? key, required this.plant}) : super(key: key);
+  const PlantDetailPage({super.key, required this.plantMeta});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(plant.name),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Name: ${plant.name}', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-            SizedBox(height: 8),
-            Text('Age: ${plant.age}', style: TextStyle(fontSize: 16)),
-            // Add more plant details here
-          ],
-        ),
-      ),
+    return StreamBuilder<Plant>(
+      stream: getPlantDetailStream(plantMeta.id),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+
+        if (!snapshot.hasData) {
+          return const Text("No plant found.");
+        }
+
+        var plant = snapshot.data!;
+
+        return PlantDetailWidget(plant: plant);
+      }
     );
   }
 }

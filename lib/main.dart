@@ -4,14 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/widgets.dart';
 import 'package:leaf_lore_flutter/shared/pages/home_page.dart';
 import 'package:leaf_lore_flutter/features/login/login_page.dart';
 import 'core/firebase/firebase_options.dart';
 
 void main() async {
-  WidgetsFlutterBinding
-      .ensureInitialized(); // Ensure Flutter bindings are initialized
+  WidgetsFlutterBinding.ensureInitialized(); 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -20,6 +18,9 @@ void main() async {
     String host = isAndroidDevice ? '192.168.1.186' : 'localhost';
     await FirebaseAuth.instance.useAuthEmulator(host, 9099);
     FirebaseFunctions.instance.useFunctionsEmulator(host, 5001);
+    FirebaseFirestore.instance.settings = const Settings(
+      persistenceEnabled: false,
+    );
     FirebaseFirestore.instance.useFirestoreEmulator(host, 8080);
     FirebaseFirestore.setLoggingEnabled(true);
   }

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/features/home/home_page_info_stream.dart';
 import 'package:leaf_lore_flutter/features/home/dashboard_row_widget.dart';
@@ -16,10 +15,10 @@ class HomePageInfoWidget extends StatelessWidget {
 
     const div = Divider(height: 14, thickness: 1);
 
-    return StreamBuilder<DocumentSnapshot>(
+    return StreamBuilder<HomePageInfo>(
       stream: getHomePageInfoStream(),
       builder:
-          (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          (BuildContext context, AsyncSnapshot<HomePageInfo> snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
         }
@@ -32,7 +31,7 @@ class HomePageInfoWidget extends StatelessWidget {
           return Text("Error: ${snapshot.error}");
         }
 
-        var homePageInfo = HomePageInfo.fromSnapshot(snapshot.data!);
+        var homePageInfo = snapshot.data!;
 
         var location = [homePageInfo.location.city, homePageInfo.location.state]
             .filterNotNull()
@@ -45,7 +44,7 @@ class HomePageInfoWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(32.0),
                 child: Row(
                   children: [
-                    Icon(Icons.location_on, color: Colors.green),
+                    const Icon(Icons.location_on, color: Colors.green),
                     const SizedBox(width: 8),
                     Text(location, style: const TextStyle(fontSize: 18)),
                     const Spacer(),

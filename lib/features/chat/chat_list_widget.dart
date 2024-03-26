@@ -5,7 +5,7 @@ import 'package:leaf_lore_flutter/features/chat/chat_detail_page.dart';
 class ChatListWidget extends StatelessWidget {
   final List<ChatMeta> chats;
 
-  ChatListWidget({Key? key, required this.chats}) : super(key: key);
+  const ChatListWidget({super.key, required this.chats});
 
   @override
   Widget build(BuildContext context) {
@@ -14,9 +14,13 @@ class ChatListWidget extends StatelessWidget {
       itemBuilder: (context, index) {
         final chat = chats[index];
         return ListTile(
-          leading: Icon(Icons.chat),
+          leading: const Icon(Icons.chat),
           title: Text(chat.name),
-          subtitle: Text(chat.latestMessage),
+          subtitle: Text(
+            chat.latestMessage,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 1,
+          ),
           onTap: () {
             Navigator.of(context).push(MaterialPageRoute(
               builder: (context) => ChatDetailPage(chatId: chat.id),

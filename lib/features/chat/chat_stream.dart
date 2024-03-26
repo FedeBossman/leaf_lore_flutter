@@ -13,7 +13,7 @@ Stream<List<ChatMeta>> getChatsMetaStream() {
           snapshot.docs.map((doc) => ChatMeta.fromDocument(doc)).toList());
 }
 
-Stream<Chat> getChateDetailStream(String chatId) {
+Stream<Chat> getChatDetailStream(String chatId) {
   return FirebaseFirestore.instance
       .collection('chats')
       .doc(chatId)

@@ -38,7 +38,7 @@ class BubblyCard extends StatelessWidget {
     return CustomPaint(
       painter: BubblyCardPainter(),
       child: Container(
-        padding: EdgeInsets.all(16),
+        padding: const EdgeInsets.all(16),
         child: child,
       ),
     );

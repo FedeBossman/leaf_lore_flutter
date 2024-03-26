@@ -8,16 +8,16 @@ class DashboardPage extends StatelessWidget {
   @override
 Widget build(BuildContext context) {
 
-    return Container(
+    return const SizedBox(
       height: double.infinity,
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16.0),
+          padding: EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              const HomePageInfoWidget(),
-              const SizedBox(height: 20),
+              HomePageInfoWidget(),
+              SizedBox(height: 20),
               DailyTipWidget(),
             ],
           ),

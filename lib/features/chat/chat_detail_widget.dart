@@ -1,20 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
-import 'package:leaf_lore_flutter/features/chat/chat_input_widget.dart';
-import 'package:leaf_lore_flutter/features/chat/chat_stream.dart';
-
 
 class ChatDetailWidget extends StatefulWidget {
-  final String chatId;
-  const ChatDetailWidget({super.key, required this.chatId});
+  final Chat chat;
+  const ChatDetailWidget({super.key, required this.chat});
 
   @override
   ChatDetailWidgetState createState() => ChatDetailWidgetState();
 }
 
 class ChatDetailWidgetState extends State<ChatDetailWidget> {
-
   Alignment getMessageAlignment(MessageRole role) {
     switch (role) {
       case MessageRole.user:
@@ -41,9 +36,11 @@ class ChatDetailWidgetState extends State<ChatDetailWidget> {
     const roleMargin = 40.0;
     switch (role) {
       case MessageRole.user:
-        return const EdgeInsets.only(left: roleMargin, right: 8, top: 4, bottom: 4);
+        return const EdgeInsets.only(
+            left: roleMargin, right: 8, top: 4, bottom: 4);
       case MessageRole.assistant:
-        return const EdgeInsets.only(right: roleMargin, left: 8, top: 4, bottom: 4);
+        return const EdgeInsets.only(
+            right: roleMargin, left: 8, top: 4, bottom: 4);
       case MessageRole.system:
         return const EdgeInsets.symmetric(horizontal: roleMargin, vertical: 4);
     }
@@ -51,55 +48,25 @@ class ChatDetailWidgetState extends State<ChatDetailWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-        children: [
-          Expanded(
-            child: StreamBuilder<Chat>(
-              stream: getChateDetailStream(widget.chatId),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
-                }
-
-                if (!snapshot.hasData) {
-                  return const Text("No chat messages found.");
-                }
-
-                var chat = snapshot.data!;
-                
-                return ListView.builder(
-                  reverse: true, 
-                  itemCount: chat.messages.length,
-                  itemBuilder: (context, index) {
-                    final message = chat.messages[chat.messages.length - 1 - index]; 
-                    return Align(
-                      alignment: getMessageAlignment(message.role),
-                      child: Container(
-                        margin: getMessageMargin(message.role),
-                        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                        decoration: BoxDecoration(
-                          color: getMessageColor(message.role),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Text(message.content),
-                      ),
-                    );
-                  },
-                );
-              },
+    return ListView.builder(
+      reverse: true,
+      itemCount: widget.chat.messages.length,
+      itemBuilder: (context, index) {
+        final message =
+            widget.chat.messages[widget.chat.messages.length - 1 - index];
+        return Align(
+          alignment: getMessageAlignment(message.role),
+          child: Container(
+            margin: getMessageMargin(message.role),
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            decoration: BoxDecoration(
+              color: getMessageColor(message.role),
+              borderRadius: BorderRadius.circular(20),
             ),
+            child: Text(message.content),
           ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0, left: 8.0, right: 8.0, top: 4.0),
-            child: Row(
-              children: [
-                Expanded(
-                  child: ChatInputField(chatId: widget.chatId)
-                ),
-              ],
-            ),
-          ),
-        ],
+        );
+      },
     );
   }
 }

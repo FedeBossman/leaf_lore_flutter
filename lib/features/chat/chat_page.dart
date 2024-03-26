@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_list_widget.dart';
@@ -14,11 +12,11 @@ class ChatPage extends StatelessWidget {
       stream: getChatsMetaStream(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return CircularProgressIndicator();
+          return const CircularProgressIndicator();
         }
 
         if (!snapshot.hasData) {
-          return Text('No chats found');
+          return const Text('No chats found');
         }
 
         final chats = snapshot.data!;

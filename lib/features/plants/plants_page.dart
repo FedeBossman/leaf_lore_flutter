@@ -1,41 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/features/plants/plant_detail_page.dart';
+import 'package:leaf_lore_flutter/features/plants/plant_list_widget.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_model.dart';
+import 'package:leaf_lore_flutter/features/plants/plant_stream.dart';
 
 class PlantsPage extends StatelessWidget {
-  // list of plants
-  final List<Plant> plants = [
-    Plant(name: 'Aloe Vera', age: "2"),
-    Plant(name: 'Basil', age: "1"),
-    Plant(name: 'Mint', age: "3"),
-    Plant(name: 'Rosemary', age: "4"),
-  ];
-
-  PlantsPage({Key? key}) : super(key: key);
+  const PlantsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        itemCount: plants.length,
-        itemBuilder: (context, index) {
-          Plant plant = plants[index];
-          return Card(
-            child: ListTile(
-              title: Text(plant.name),
-              subtitle: Text('Age: ${plant.age}'),
-              trailing: ElevatedButton(
-                onPressed: () {
-                  // Navigate to the plant's detail page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PlantDetailPage(plant: plant)),
-                  );
-                },
-                child: Text('View Details'),
-              ),
-            ),
-          );
-        },
-      );
+    return StreamBuilder<List<PlantMeta>>(
+      stream: getPlantsMetaStream(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        }
+
+        if (!snapshot.hasData) {
+          return const Text('No plants found');
+        }
+
+        final plants = snapshot.data!;
+
+        return PlantListWidget(plants: plants);
+      },
+    );
+  }
+}
+
+
+class PlantNavigationWrapper extends StatelessWidget {
+  const PlantNavigationWrapper({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Navigator(
+      onGenerateRoute: (settings) {
+        return MaterialPageRoute(
+          builder: (context) {
+            return const PlantsPage();
+          },
+        );
+      },
+    );
   }
 }

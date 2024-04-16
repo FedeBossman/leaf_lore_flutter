@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/features/home/daily_tip_widget.dart';
 import 'package:leaf_lore_flutter/features/home/home_page_info_widget.dart';
+import 'package:leaf_lore_flutter/features/home/seasonal_tip_widget.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -19,6 +20,8 @@ Widget build(BuildContext context) {
               HomePageInfoWidget(),
               SizedBox(height: 20),
               DailyTipWidget(),
+              SizedBox(height: 20),
+              SeasonalTipWidget(),
             ],
           ),
         ),

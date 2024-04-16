@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/core/firebase/tips_service.dart';
 
-class DailyTipWidget extends StatefulWidget {
-  const DailyTipWidget({super.key});
+class SeasonalTipWidget extends StatefulWidget {
+  const SeasonalTipWidget({super.key});
 
   @override
-  DailyTipWidgetState createState() => DailyTipWidgetState();
+  SeasonalTipWidgetState createState() => SeasonalTipWidgetState();
 }
 
-class DailyTipWidgetState extends State<DailyTipWidget> {
-  String? dailyTip;
+class SeasonalTipWidgetState extends State<SeasonalTipWidget> {
+  String? seasonalTip;
 
   @override
   void initState() {
     super.initState();
-    fetchDailyTip();
+    fetchSeasonalTip();
   }
 
-  Future<void> fetchDailyTip() async {
-    final result = await getDailyTip();
+  Future<void> fetchSeasonalTip() async {
+    final result = await getSeasonalTip();
     setState(() {
-      dailyTip = result.data['tip'];
+      seasonalTip = result.data['tip'];
     });
   }
 
@@ -36,13 +36,13 @@ class DailyTipWidgetState extends State<DailyTipWidget> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           const Text(
-            'Daily Tip:',
+            'Seasonal Tip:',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.blue),
           ),
           const SizedBox(height: 8),
-          dailyTip == null
+          seasonalTip == null
               ? const Center(child: CircularProgressIndicator())
-              : Text(dailyTip!, style: const TextStyle(fontSize: 12)),
+              : Text(seasonalTip!, style: const TextStyle(fontSize: 12)),
         ],
       ),
     );

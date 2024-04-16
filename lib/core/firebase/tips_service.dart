@@ -4,3 +4,8 @@ Future<HttpsCallableResult> getDailyTip() async {
   final functions = FirebaseFunctions.instance;
   return functions.httpsCallable('tip-getDailyTip').call();
 }
+
+Future<HttpsCallableResult> getSeasonalTip() async {
+  final functions = FirebaseFunctions.instance;
+  return functions.httpsCallable('tip-getSeasonalTip').call();
+}

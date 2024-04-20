@@ -12,7 +12,6 @@ class HomePageInfoWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String weather = "24°C";
-    int plantCount = 4;
 
     const div = Divider(height: 14, thickness: 1);
 
@@ -30,7 +29,7 @@ class HomePageInfoWidget extends StatelessWidget {
 
         var homePageInfo = snapshot.data!;
 
-        var location = [homePageInfo.location.city, homePageInfo.location.state]
+        var location = [homePageInfo.location?.city, homePageInfo.location?.state]
             .filterNotNull()
             .join(", ");
         return Column(
@@ -72,7 +71,7 @@ class HomePageInfoWidget extends StatelessWidget {
                     DashboardRowWidget(
                         icon: Icons.local_florist,
                         title: 'Plants',
-                        value: '$plantCount'),
+                        value: '${homePageInfo.plantsCount}'),
                     div,
                     DashboardRowWidget(
                         icon: Icons.flight_takeoff,

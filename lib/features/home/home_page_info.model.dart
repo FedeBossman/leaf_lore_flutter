@@ -5,8 +5,9 @@ class HomePageInfo {
   final String? experience;
   final List<String> goals;
   final String? nickname;
-  final Location location;
+  final Location? location;
   final String? type;
+  final int plantsCount;
 
   HomePageInfo({
     required this.userId,
@@ -15,6 +16,7 @@ class HomePageInfo {
     required this.nickname,
     required this.location,
     required this.type,
+    required this.plantsCount,
   });
 
   factory HomePageInfo.fromMap(Map<String, dynamic> data) {
@@ -23,8 +25,9 @@ class HomePageInfo {
       experience: data['experience'] as String?,
       goals: List<String>.from(data['goals']),
       nickname: data['nickname'] as String?,
-      location: Location.fromMap(data['location'] as Map<String, dynamic>),
+      location: data['location'] != null ? Location.fromMap(data['location'] as Map<String, dynamic>) : null,
       type: data['type'] as String?,
+      plantsCount: data['plantsCount'] as int,
     );
   }
 

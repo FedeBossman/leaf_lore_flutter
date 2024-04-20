@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ChatMeta {
   final DateTime? createdAt;
+  final DateTime? updatedAt;
   final String id;
   final String name;
   final bool defaultChat;
@@ -9,6 +10,7 @@ class ChatMeta {
 
   ChatMeta({
     this.createdAt,
+    this.updatedAt,
     required this.id,
     required this.defaultChat,
     required this.name,
@@ -21,6 +23,7 @@ class ChatMeta {
       name: doc['name'],
       defaultChat: doc['defaultChat'],
       createdAt: doc['createdAt'].toDate(),
+      updatedAt: doc['updatedAt'].toDate(),
       latestMessage: doc['messages'].last['content'],
     );
   }
@@ -29,6 +32,7 @@ class ChatMeta {
 
 class Chat {
   final DateTime? createdAt;
+  final DateTime? updatedAt;
   final String id;
   final String name;
   final bool defaultChat;
@@ -36,6 +40,7 @@ class Chat {
 
   Chat({
     this.createdAt,
+    this.updatedAt,
     required this.id,
     required this.defaultChat,
     required this.name,
@@ -50,6 +55,7 @@ class Chat {
       name: doc['name'],
       defaultChat: doc['defaultChat'],
       createdAt: doc['createdAt'].toDate(),
+      updatedAt: doc['updatedAt'].toDate(),
       messages: messagesData?.map((e) => ChatMessage.fromJson(e)).toList() ?? [],
     );
   }

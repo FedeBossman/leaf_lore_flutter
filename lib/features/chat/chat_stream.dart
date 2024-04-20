@@ -7,7 +7,7 @@ Stream<List<ChatMeta>> getChatsMetaStream() {
   return FirebaseFirestore.instance
       .collection('chats')
       .where('userId', isEqualTo: userId)
-      .orderBy('createdAt', descending: true)
+      .orderBy('updatedAt', descending: true)
       .snapshots()
       .map((snapshot) =>
           snapshot.docs.map((doc) => ChatMeta.fromDocument(doc)).toList());

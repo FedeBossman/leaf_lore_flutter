@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/firebase/home_page_info_service.dart';
 import 'package:leaf_lore_flutter/core/widgets/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/home/home_page_info_stream.dart';
 import 'package:leaf_lore_flutter/features/home/dashboard_row_widget.dart';
@@ -6,13 +7,27 @@ import 'package:leaf_lore_flutter/features/home/home_page_info.model.dart';
 import 'package:leaf_lore_flutter/core/extensions/list_extension.dart';
 import 'package:leaf_lore_flutter/features/home/goals_row_widget.dart';
 
-class HomePageInfoWidget extends StatelessWidget {
+class HomePageInfoWidget extends StatefulWidget {
   const HomePageInfoWidget({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    String weather = "24°C";
+  State<HomePageInfoWidget> createState() => _HomePageInfoWidgetState();
+}
 
+class _HomePageInfoWidgetState extends State<HomePageInfoWidget> {
+
+  @override
+  void initState() {
+    super.initState();
+    updateWeather();
+  }
+
+  Future<void> updateWeather() async {
+    requestWeatherUpdate();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     const div = Divider(height: 14, thickness: 1);
 
     return StreamHandler<HomePageInfo>(
@@ -32,6 +47,7 @@ class HomePageInfoWidget extends StatelessWidget {
         var location = [homePageInfo.location?.city, homePageInfo.location?.state]
             .filterNotNull()
             .join(", ");
+        var weather = homePageInfo.weather?.temperature ?? '';
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -44,7 +60,7 @@ class HomePageInfoWidget extends StatelessWidget {
                     const SizedBox(width: 8),
                     Text(location, style: const TextStyle(fontSize: 18)),
                     const Spacer(),
-                    Text(weather,
+                    Text('$weather°C',
                         style: const TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,

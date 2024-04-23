@@ -22,6 +22,7 @@ class PlantsPage extends StatelessWidget {
 
 
 class PlantNavigationWrapper extends StatelessWidget {
+  static const String tabIndex = 'PlantsPage';
   const PlantNavigationWrapper({super.key});
 
   @override

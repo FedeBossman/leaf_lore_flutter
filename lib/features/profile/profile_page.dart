@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class ProfilePage extends StatelessWidget {
+  static const String tabIndex = 'ProfilePage';
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   ProfilePage({super.key});
@@ -21,21 +22,26 @@ class ProfilePage extends StatelessWidget {
             children: [
               const SizedBox(height: 20),
               ListTile(
-                leading: const Icon(Icons.account_circle, size: 36, color: Colors.green),
+                leading: const Icon(Icons.account_circle,
+                    size: 36, color: Colors.green),
                 title: Text(name, style: const TextStyle(fontSize: 18)),
-                subtitle: Text('Name', style: TextStyle(color: Colors.black.withOpacity(0.6))),
+                subtitle: Text('Name',
+                    style: TextStyle(color: Colors.black.withOpacity(0.6))),
               ),
               const Divider(),
               ListTile(
-                leading: const Icon(Icons.perm_identity, size: 36, color: Colors.red),
+                leading: const Icon(Icons.perm_identity,
+                    size: 36, color: Colors.red),
                 title: Text(uid, style: const TextStyle(fontSize: 18)),
-                subtitle: Text('UID', style: TextStyle(color: Colors.black.withOpacity(0.6))),
+                subtitle: Text('UID',
+                    style: TextStyle(color: Colors.black.withOpacity(0.6))),
               ),
               const Divider(),
               ListTile(
                 leading: const Icon(Icons.email, size: 36, color: Colors.green),
                 title: Text(email, style: const TextStyle(fontSize: 18)),
-                subtitle: Text('Email', style: TextStyle(color: Colors.black.withOpacity(0.6))),
+                subtitle: Text('Email',
+                    style: TextStyle(color: Colors.black.withOpacity(0.6))),
               ),
               const Divider(),
             ],

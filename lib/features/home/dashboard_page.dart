@@ -4,11 +4,11 @@ import 'package:leaf_lore_flutter/features/home/home_page_info_widget.dart';
 import 'package:leaf_lore_flutter/features/home/seasonal_tip_widget.dart';
 
 class DashboardPage extends StatelessWidget {
+  static const String tabIndex = 'DashboardPage';
   const DashboardPage({super.key});
 
   @override
-Widget build(BuildContext context) {
-
+  Widget build(BuildContext context) {
     return const SizedBox(
       height: double.infinity,
       child: SingleChildScrollView(

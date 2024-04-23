@@ -22,9 +22,11 @@ class ChatListWidget extends StatelessWidget {
             maxLines: 1,
           ),
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => ChatDetailPage(chatId: chat.id),
-            ));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (BuildContext context) =>
+                        ChatDetailPage(chatId: chat.id, chatName: chat.name)));
           },
         );
       },

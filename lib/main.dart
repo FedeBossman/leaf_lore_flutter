@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,11 +27,45 @@ void main() async {
     FirebaseFirestore.instance.useFirestoreEmulator(host, 8080);
     FirebaseFirestore.setLoggingEnabled(true);
   }
-  runApp(const MyApp());
+
+  final String defaultSystemLocale = Platform.localeName;
+  final List<Locale> systemLocales = WidgetsBinding.instance.platformDispatcher.locales;
+
+  runApp(MyApp(defaultSystemLocale, systemLocales));
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyApp extends StatefulWidget {
+  final String initialDefaultSystemLocale;
+  final List<Locale> initialSystemLocales;
+
+  const MyApp(this.initialDefaultSystemLocale, this.initialSystemLocales, {super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
+  late String currentDefaultSystemLocale;
+  late List<Locale> currentSystemLocales;
+
+  void setCurrentValues() {
+    currentSystemLocales = WidgetsBinding.instance.platformDispatcher.locales;
+    currentDefaultSystemLocale = Platform.localeName;
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addObserver(this); 
+    super.initState();
+  }
+
+  @override
+  void didChangeLocales(List<Locale>? locale) {
+    super.didChangeLocales(locale);
+    setState(() {
+      setCurrentValues();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +75,10 @@ class MyApp extends StatelessWidget {
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en'), 
+        Locale('es'),
       ],
       theme: ThemeData(
         fontFamily: 'Nunito',

@@ -24,7 +24,6 @@ class PlantListWidget extends StatelessWidget {
             // subtitle: Text('Age: ${plant.age}'),
             trailing: ElevatedButton(
               onPressed: () {
-                // Navigate to the plant's detail page
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => PlantDetailPage(plantMeta: plant)),

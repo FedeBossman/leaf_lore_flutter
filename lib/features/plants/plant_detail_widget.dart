@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_model.dart';
+import 'package:leaf_lore_flutter/shared/theme/main_app_bar_widget.dart';
 
 class PlantDetailWidget extends StatelessWidget {
   final Plant plant;
@@ -8,7 +9,9 @@ class PlantDetailWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Scaffold(
+      appBar: MainAppBar(title: plant.name, showBackButton: true),
+      body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -26,6 +29,7 @@ class PlantDetailWidget extends StatelessWidget {
             if (plant.notes != null) Text("Notes: ${plant.notes}"),
           ],
         ),
-      );
+      ),
+    );
   }
 }

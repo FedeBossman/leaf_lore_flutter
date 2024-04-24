@@ -3,6 +3,7 @@ import 'package:leaf_lore_flutter/core/widgets/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_list_widget.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_model.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_stream.dart';
+import 'package:leaf_lore_flutter/shared/theme/main_app_bar_widget.dart';
 
 class PlantsPage extends StatelessWidget {
   const PlantsPage({super.key});
@@ -27,14 +28,11 @@ class PlantNavigationWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Navigator(
-      onGenerateRoute: (settings) {
-        return MaterialPageRoute(
-          builder: (context) {
-            return const PlantsPage();
-          },
-        );
-      },
+    return const SafeArea(
+      child: Scaffold(
+        appBar: MainAppBar(title: "Plants"),
+        body: PlantsPage(),
+      ),
     );
   }
 }

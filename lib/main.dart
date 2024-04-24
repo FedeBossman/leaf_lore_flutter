@@ -7,7 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:leaf_lore_flutter/shared/pages/home_page.dart';
+import 'package:leaf_lore_flutter/features/home/home_page.dart';
 import 'package:leaf_lore_flutter/features/login/login_page.dart';
 import 'core/firebase/firebase_options.dart';
 

@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/features/register/register_page.dart';
-import 'package:leaf_lore_flutter/shared/pages/home_page.dart';
-import 'package:leaf_lore_flutter/features/login/social_sign_in_widget.dart';
+import 'package:leaf_lore_flutter/features/home/home_page.dart';
+import 'package:leaf_lore_flutter/shared/presentation/ll_loading_button.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -54,8 +54,8 @@ class LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const FlutterLogo(
-                    size: 100), // Your logo here (replace `FlutterLogo`)
+                Image.asset("assets/images/logo.png",
+                    width: 300, height: 300),
                 const SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -78,12 +78,14 @@ class LoginPageState extends State<LoginPage> {
                   ),
                 ),
                 const SizedBox(height: 24),
-                _isLoading
-                    ? const CircularProgressIndicator()
-                    : ElevatedButton(
-                        onPressed: _signInWithEmailAndPassword,
-                        child: const Text('Sign In'),
-                      ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                  child: LlLoadingButton(
+                    'Sign In',
+                    onPressed: _signInWithEmailAndPassword,
+                    isLoading: _isLoading,
+                  ),
+                ),
                 const SizedBox(height: 12),
                 // const SocialSignInWidget(),
                 // TextButton(

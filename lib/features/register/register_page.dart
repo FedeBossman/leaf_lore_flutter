@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:leaf_lore_flutter/shared/pages/home_page.dart';
+import 'package:leaf_lore_flutter/features/home/home_page.dart';
+import 'package:leaf_lore_flutter/shared/presentation/ll_loading_button.dart';
 import 'package:leaf_lore_flutter/shared/theme/main_app_bar_widget.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -111,10 +112,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                     const SizedBox(height: 24),
-                    if (_isLoading) const CircularProgressIndicator(),
-                    ElevatedButton(
-                      onPressed: _isLoading ? null : _register,
-                      child: const Text('Register'),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                      child: LlLoadingButton(
+                        'Register',
+                        onPressed: _register,
+                        isLoading: _isLoading,
+                      ),
                     ),
                   ],
                 ),

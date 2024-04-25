@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/core/firebase/home_page_info_service.dart';
-import 'package:leaf_lore_flutter/core/widgets/stream_handler_widget.dart';
+import 'package:leaf_lore_flutter/core/widget/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/home/home_page_info_stream.dart';
-import 'package:leaf_lore_flutter/features/home/dashboard_row_widget.dart';
-import 'package:leaf_lore_flutter/features/home/home_page_info.model.dart';
-import 'package:leaf_lore_flutter/core/extensions/list_extension.dart';
-import 'package:leaf_lore_flutter/features/home/goals_row_widget.dart';
+import 'package:leaf_lore_flutter/features/home/widget/dashboard_row_widget.dart';
+import 'package:leaf_lore_flutter/features/home/model/home_page_info.model.dart';
+import 'package:leaf_lore_flutter/core/extension/list_extension.dart';
+import 'package:leaf_lore_flutter/features/home/widget/goals_row_widget.dart';
 
-class HomePageInfoWidget extends StatefulWidget {
-  const HomePageInfoWidget({super.key});
+class DashboardInfoWidget extends StatefulWidget {
+  const DashboardInfoWidget({super.key});
 
   @override
-  State<HomePageInfoWidget> createState() => _HomePageInfoWidgetState();
+  State<DashboardInfoWidget> createState() => _DashboardInfoWidgetState();
 }
 
-class _HomePageInfoWidgetState extends State<HomePageInfoWidget> {
+class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
 
   @override
   void initState() {
@@ -76,22 +77,22 @@ class _HomePageInfoWidgetState extends State<HomePageInfoWidget> {
                   children: [
                     DashboardRowWidget(
                         icon: Icons.auto_awesome,
-                        title: 'Type',
+                        title: context.loc.dashboardInfo_type,
                         value: homePageInfo.type ?? ''),
                     div,
                     DashboardRowWidget(
                         icon: Icons.work,
-                        title: 'Experience',
+                        title: context.loc.dashboardInfo_experience,
                         value: homePageInfo.experience ?? ''),
                     div,
                     DashboardRowWidget(
                         icon: Icons.local_florist,
-                        title: 'Plants',
+                        title: context.loc.dashboardInfo_plants,
                         value: '${homePageInfo.plantsCount}'),
                     div,
                     DashboardRowWidget(
                         icon: Icons.flight_takeoff,
-                        title: 'Rank',
+                        title: context.loc.dashboardInfo_rank,
                         value: homePageInfo.nickname ?? ''),
                   ],
                 ),

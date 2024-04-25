@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/core/widgets/stream_handler_widget.dart';
+import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
+import 'package:leaf_lore_flutter/core/widget/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
-import 'package:leaf_lore_flutter/features/chat/chat_list_widget.dart';
+import 'package:leaf_lore_flutter/features/chat/widget/chat_list_widget.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_stream.dart';
 import 'package:leaf_lore_flutter/shared/theme/main_app_bar_widget.dart';
 
@@ -27,10 +28,10 @@ class ChatNavigationWrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
+    return SafeArea(
       child: Scaffold(
-        appBar: MainAppBar(title: "Chats"),
-        body: ChatPage(),
+        appBar: MainAppBar(title: context.loc.chatPage_title),
+        body: const ChatPage(),
       ),
     );
   }

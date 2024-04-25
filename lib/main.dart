@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:leaf_lore_flutter/features/home/home_page.dart';
 import 'package:leaf_lore_flutter/features/login/login_page.dart';
 import 'core/firebase/firebase_options.dart';
@@ -29,7 +30,8 @@ void main() async {
   }
 
   final String defaultSystemLocale = Platform.localeName;
-  final List<Locale> systemLocales = WidgetsBinding.instance.platformDispatcher.locales;
+  final List<Locale> systemLocales =
+      WidgetsBinding.instance.platformDispatcher.locales;
 
   runApp(MyApp(defaultSystemLocale, systemLocales));
 }
@@ -38,7 +40,8 @@ class MyApp extends StatefulWidget {
   final String initialDefaultSystemLocale;
   final List<Locale> initialSystemLocales;
 
-  const MyApp(this.initialDefaultSystemLocale, this.initialSystemLocales, {super.key});
+  const MyApp(this.initialDefaultSystemLocale, this.initialSystemLocales,
+      {super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -55,7 +58,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void initState() {
-    WidgetsBinding.instance.addObserver(this); 
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
   }
 
@@ -72,12 +75,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     return MaterialApp(
       title: 'LeafLore',
       localizationsDelegates: const [
+        AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [
-        Locale('en'), 
+        Locale('en'),
         Locale('es'),
       ],
       theme: ThemeData(

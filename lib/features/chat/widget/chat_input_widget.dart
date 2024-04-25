@@ -2,6 +2,7 @@
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 
 class SendMessageIntent extends Intent {
   const SendMessageIntent();
@@ -77,7 +78,7 @@ class ChatInputFieldState extends State<ChatInputField> {
           child: TextField(
             style: const TextStyle(fontSize: 14.0, height: 1.0),
             decoration: InputDecoration(
-              hintText: "Type a message",
+              hintText: context.loc.chatDetailPage_inputHint,
               border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(50),
                 borderSide: BorderSide.none,

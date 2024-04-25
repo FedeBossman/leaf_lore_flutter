@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:leaf_lore_flutter/features/home/home_page_info.model.dart';
+import 'package:leaf_lore_flutter/features/home/model/home_page_info.model.dart';
 
 Stream<HomePageInfo> getHomePageInfoStream() {
   final userId = FirebaseAuth.instance.currentUser?.uid;

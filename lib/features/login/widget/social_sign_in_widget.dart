@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/core/firebase/auth.dart';
 
 class SocialSignInWidget extends StatefulWidget {
@@ -18,7 +19,7 @@ class SocialSignInWidgetState extends State<SocialSignInWidget> {
           ? const CircularProgressIndicator()
           : ElevatedButton.icon(
               icon: const Icon(Icons.login),
-              label: const Text('Sign in with Google'),
+              label: Text(context.loc.socialSignIn_signInWithGoogle),
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(double.infinity, 50),
               ),
@@ -29,9 +30,10 @@ class SocialSignInWidgetState extends State<SocialSignInWidget> {
                 final userCredential = await signInWithGoogle();
                 if (userCredential.user != null) {
                   debugPrint("Signed in successfully: ${userCredential.user?.displayName}");
-                  // Navigate to another screen or perform other actions
+                  // TO DO: Navigate to another screen or perform other actions
                 } else {
                   // Handle sign-in failure (e.g., show an error message)
+                  // TO DO: Show error message
                   debugPrint("Failed to sign in with Google.");
                 }
                 setState(() {

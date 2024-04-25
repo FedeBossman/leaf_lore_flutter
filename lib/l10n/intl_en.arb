@@ -1,0 +1,42 @@
+{
+    "bottomNavigationBar_home": "Home",
+    "bottomNavigationBar_chat": "Chat",
+    "bottomNavigationBar_plants": "Plants",
+    "bottomNavigationBar_profile": "Profile",
+
+    "streamHandler_noDataFound": "No data found",
+
+    "chatPage_title": "Chat",
+    "chatDetailPage_inputHint": "Type a message",
+
+    "dailyTip_title": "Daily Tip",
+    "seasonalTip_title": "Seasonal Tip",
+
+    "dashboardInfo_type": "Type",
+    "dashboardInfo_experience": "Experience",
+    "dashboardInfo_plants": "Plants",
+    "dashboardInfo_rank": "Rank",
+
+    "loginPage_unknownErrorMessage": "An unknown error occurred",
+    "loginPage_emailLabel": "Email",
+    "loginPage_passwordLabel": "Password",
+    "loginPage_registerButtonLabel": "Register",
+    "loginPage_loginButtonLabel": "Sign In",
+    "socialSignIn_signInWithGoogle": "Sign in with Google",
+
+    "plantsPage_title": "Plants",
+
+    "plantList_viewDetails": "View Details",
+
+    "plantDetail_name": "Name",
+    "plantDetail_nickname": "Nickname",
+    "plantDetail_careLevel": "Care Level",
+    "plantDetail_sunlightRequirement": "Sunlight Requirement",
+    "plantDetail_wateringFrequency": "Watering Frequency",
+    "plantDetail_fertilizationFrequency": "Fertilization Frequency",
+    "plantDetail_soilType": "Soil Type",
+    "plantDetail_potSize": "Pot Size",
+    "plantDetail_humidityRequirement": "Humidity Requirement",
+    "plantDetail_notes": "Notes"
+
+}

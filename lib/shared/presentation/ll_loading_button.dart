@@ -49,7 +49,8 @@ class _LlLoadingButtonState extends State<LlLoadingButton>
 
   @override
   void didChangeDependencies() {
-      _initRaisedLoadingButtonAnimations();
+    super.didChangeDependencies();
+    _initRaisedLoadingButtonAnimations();
   }
 
   @override

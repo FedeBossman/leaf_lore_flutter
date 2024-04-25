@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/features/home/daily_tip_widget.dart';
-import 'package:leaf_lore_flutter/features/home/home_page_info_widget.dart';
-import 'package:leaf_lore_flutter/features/home/seasonal_tip_widget.dart';
+import 'package:leaf_lore_flutter/features/home/widget/daily_tip_widget.dart';
+import 'package:leaf_lore_flutter/features/home/widget/dashboard_info_widget.dart';
+import 'package:leaf_lore_flutter/features/home/widget/seasonal_tip_widget.dart';
 
 class DashboardPage extends StatelessWidget {
   static const String tabIndex = 'DashboardPage';
@@ -17,7 +17,7 @@ class DashboardPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              HomePageInfoWidget(),
+              DashboardInfoWidget(),
               SizedBox(height: 20),
               DailyTipWidget(),
               SizedBox(height: 20),

@@ -28,7 +28,7 @@ class LlAccentButton extends StatelessWidget {
       // Required
       onPressed: onPressed,
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(padding ?? EdgeInsets.fromLTRB(4, 12, 4, 12)),
+        padding: MaterialStateProperty.all(padding ?? const EdgeInsets.fromLTRB(4, 12, 4, 12)),
         // shape: MaterialStateProperty.all(shape ?? buttonTheme.shape),
         elevation: MaterialStateProperty.all(0),
       ),

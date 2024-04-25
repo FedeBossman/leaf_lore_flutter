@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/core/widgets/stream_handler_widget.dart';
-import 'package:leaf_lore_flutter/features/plants/plant_detail_widget.dart';
+import 'package:leaf_lore_flutter/core/widget/stream_handler_widget.dart';
+import 'package:leaf_lore_flutter/features/plants/widget/plant_detail_widget.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_model.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_stream.dart';
 

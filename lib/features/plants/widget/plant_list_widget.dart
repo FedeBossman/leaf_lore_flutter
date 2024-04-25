@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_detail_page.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_model.dart';
 
@@ -29,7 +30,7 @@ class PlantListWidget extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => PlantDetailPage(plantMeta: plant)),
                 );
               },
-              child: const Text('View Details'),
+              child: Text(context.loc.plantList_viewDetails),
             ),
           ),
         );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 
 class StreamHandler<T> extends StatelessWidget {
   final Stream<T> stream;
@@ -14,7 +15,8 @@ class StreamHandler<T> extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
         } else if (!snapshot.hasData) {
-          return const Text('No data found');
+          // TODO: text should be dynamic
+          return Text(context.loc.streamHandler_noDataFound);
         } else {
           return builder(context, snapshot);
         }

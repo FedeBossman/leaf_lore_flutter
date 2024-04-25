@@ -40,12 +40,8 @@ class _RegisterPageState extends State<RegisterPage> {
       } on FirebaseAuthException catch (e) {
         setState(() => _isLoading = false);
         if (e.code == 'weak-password') {
-          const String errorMessage =
-              'The password provided is too weak, please try another password.';
-          showErrorMessage(errorMessage);
+          showErrorMessage('The password provided is too weak, please try another password.');
         } else if (e.code == 'email-already-in-use') {
-          const String errorMessage =
-              'An account already exists for that email.';
           showErrorMessage('An account already exists for that email.');
         }
       } catch (e) {
@@ -131,14 +127,14 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void showSuccessMessage(String successMessage) {
-    print(successMessage);
+    debugPrint(successMessage);
     _scaffoldMessengerKey.currentState?.showSnackBar(
       SnackBar(content: Text(successMessage), backgroundColor: Colors.green),
     );
   }
 
   void showErrorMessage(String errorMessage) {
-    print(errorMessage);
+    debugPrint(errorMessage);
     _scaffoldMessengerKey.currentState?.showSnackBar(
       SnackBar(content: Text(errorMessage), backgroundColor: Colors.red),
     );

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/core/widgets/stream_handler_widget.dart';
+import 'package:leaf_lore_flutter/core/widget/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
-import 'package:leaf_lore_flutter/features/chat/chat_detail_widget.dart';
-import 'package:leaf_lore_flutter/features/chat/chat_input_widget.dart';
+import 'package:leaf_lore_flutter/features/chat/widget/chat_detail_widget.dart';
+import 'package:leaf_lore_flutter/features/chat/widget/chat_input_widget.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_stream.dart';
 import 'package:leaf_lore_flutter/shared/theme/main_app_bar_widget.dart';
 

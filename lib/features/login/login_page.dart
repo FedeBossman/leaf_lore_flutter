@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/features/register/register_page.dart';
 import 'package:leaf_lore_flutter/features/home/home_page.dart';
 import 'package:leaf_lore_flutter/shared/presentation/ll_loading_button.dart';
@@ -30,7 +31,8 @@ class LoginPageState extends State<LoginPage> {
       Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const MyHomePage()));
     } on FirebaseAuthException catch (e) {
-      final String errorMessage = e.message ?? 'An unknown error occurred';
+      // final String errorMessage = e.message ?? 'An unknown error occurred';
+      final String errorMessage = context.loc.loginPage_unknownErrorMessage;
       _scaffoldMessengerKey.currentState?.showSnackBar(
         SnackBar(content: Text(errorMessage), backgroundColor: Colors.red),
       );
@@ -61,8 +63,8 @@ class LoginPageState extends State<LoginPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: TextField(
                     controller: _emailController,
-                    decoration: const InputDecoration(
-                      labelText: 'Username',
+                    decoration: InputDecoration(
+                      labelText: context.loc.loginPage_emailLabel,
                     ),
                   ),
                 ),
@@ -72,8 +74,8 @@ class LoginPageState extends State<LoginPage> {
                   child: TextField(
                     controller: _passwordController,
                     obscureText: true,
-                    decoration: const InputDecoration(
-                      labelText: 'Password',
+                    decoration: InputDecoration(
+                      labelText: context.loc.loginPage_passwordLabel,
                     ),
                   ),
                 ),
@@ -81,7 +83,7 @@ class LoginPageState extends State<LoginPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
                   child: LlLoadingButton(
-                    'Sign In',
+                    context.loc.loginPage_loginButtonLabel,
                     onPressed: _signInWithEmailAndPassword,
                     isLoading: _isLoading,
                   ),
@@ -102,7 +104,7 @@ class LoginPageState extends State<LoginPage> {
                             builder: (BuildContext context) =>
                                 const RegisterPage()));
                   },
-                  child: const Text('Register'),
+                  child: Text(context.loc.loginPage_registerButtonLabel),
                 ),
               ],
             ),

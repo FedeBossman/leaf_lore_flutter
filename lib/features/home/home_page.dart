@@ -13,8 +13,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String title = 'Leaf Lore';
-
   String _currentPage = DashboardPage.tabIndex;
   final Map<String, GlobalKey<NavigatorState>> _navigatorKeys = {
     DashboardPage.tabIndex: GlobalKey<NavigatorState>(),

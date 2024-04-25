@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/core/extensions/text_extension.dart';
+import 'package:leaf_lore_flutter/core/extension/text_extension.dart';
 
 class GoalsRow extends StatelessWidget {
   final List<String> goals;

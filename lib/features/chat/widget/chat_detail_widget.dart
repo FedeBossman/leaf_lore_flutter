@@ -36,38 +36,11 @@ class ChatDetailWidgetState extends State<ChatDetailWidget> {
   LinearGradient getMessageBackground(MessageRole role) {
     switch (role) {
       case MessageRole.user:
-        return const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color.fromARGB(255, 148, 239, 224),
-            Color.fromARGB(255, 161, 234, 212),
-            Color.fromARGB(255, 131, 218, 162),
-          ],
-          stops: [0.05, 0.25, 0.85],
-        );
+        return LeafLoreColors.tiffanyBlueGradient;
       case MessageRole.assistant:
-        return const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color.fromARGB(255, 86, 197, 249),
-            Color.fromARGB(255, 115, 217, 246),
-            Color.fromARGB(255, 115, 233, 248)
-          ],
-          stops: [0.05, 0.25, 0.85],
-        );
+        return LeafLoreColors.skyBlueGradient;
       case MessageRole.system:
-        return const LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomRight,
-          colors: [
-            Color.fromARGB(255, 54, 53, 98),
-            LeafLoreColors.spaceCadet,
-            Color.fromARGB(255, 36, 50, 68),
-          ],
-          stops: [0.05, 0.25, 0.85],
-        );
+        return LeafLoreColors.devGradient;
     }
   }
 

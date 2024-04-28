@@ -80,13 +80,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 _buildOffstageNavigator(PlantNavigationWrapper.tabIndex),
                 _buildOffstageNavigator(ProfilePage.tabIndex),
               ])),
-          floatingActionButton: StreamHandler<List<ChatMeta>>(
-            stream: getChatsMetaStream(),
+          floatingActionButton: StreamHandler<ChatMeta>(
+            stream: getDefaultChatMetaStream(),
             builder: (context, snapshot) {
-              final chats = snapshot.data!;
-              ChatMeta? chatMeta =
-                  chats.firstWhere((element) => element.defaultChat);
-
+              final chatMeta = snapshot.data!;
               return Visibility(
                 visible: chatMeta != null && !_isChatPage(),
                 child: FloatingActionButton(

@@ -7,12 +7,23 @@ class ChatListWidget extends StatelessWidget {
 
   const ChatListWidget({super.key, required this.chats});
 
+  List<ChatMeta> _reorderList(List<ChatMeta> chatList) {
+    int defaultChatIndex = chatList.indexWhere((chat) => chat.defaultChat);
+    if (defaultChatIndex != -1) {
+      var defaultChat = chatList.removeAt(defaultChatIndex);
+      chatList.insert(0, defaultChat);
+    }
+    return chatList;
+  }
+
   @override
   Widget build(BuildContext context) {
+    final reorderedChat = _reorderList(chats);
+
     return ListView.separated(
-      itemCount: chats.length,
+      itemCount: reorderedChat.length,
       itemBuilder: (context, index) {
-        final chat = chats[index];
+        final chat = reorderedChat[index];
         return ChatListItemWidget(chatMeta: chat);
       },
       separatorBuilder: (context, index) => const SizedBox(height: 1),

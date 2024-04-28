@@ -4,6 +4,9 @@ import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 ThemeData appTheme() {
   return ThemeData(
     fontFamily: 'Nunito',
+    splashColor: LeafLoreColors.tiffanyBlue.withOpacity(0.4),
+    highlightColor: LeafLoreColors.tiffanyBlue.withOpacity(0.2),
+    hoverColor: LeafLoreColors.tiffanyBlue.withOpacity(0.2),
     textTheme: const TextTheme(
       bodyMedium: TextStyle(fontWeight: FontWeight.w300),
       bodySmall: TextStyle(fontWeight: FontWeight.w300),
@@ -11,7 +14,7 @@ ThemeData appTheme() {
     colorScheme: ColorScheme.fromSeed(
         seedColor: LeafLoreColors.tiffanyBlue,
         primary: LeafLoreColors.tiffanyBlue,
-        background: LeafLoreColors.leafWhite),
+        background: LeafLoreColors.lightLeafGray),
     appBarTheme: const AppBarTheme(
       backgroundColor: LeafLoreColors.leafWhite,
       elevation: 1.0,
@@ -54,7 +57,11 @@ ThemeData appTheme() {
         // ),
       ),
     ),
-    // input decoration theme with gradient border
+    dividerTheme: const DividerThemeData(
+      color: LeafLoreColors.lightTiffanyBlue,
+      thickness: 2,
+      space: 15.0,
+    ),
     inputDecorationTheme: InputDecorationTheme(
       errorStyle: const TextStyle(
         color: LeafLoreColors.errorRed,
@@ -87,6 +94,13 @@ ThemeData appTheme() {
       filled: true,
       fillColor: LeafLoreColors.leafWhite,
       contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+    ),
+    listTileTheme: ListTileThemeData(
+      tileColor: LeafLoreColors.leafWhite,
+      contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
     ),
     snackBarTheme: const SnackBarThemeData(
       behavior: SnackBarBehavior.floating,

@@ -87,6 +87,24 @@ class ChatDetailWidgetState extends State<ChatDetailWidget> {
     }
   }
 
+  BorderRadiusGeometry getBorderRadius(MessageRole role) {
+    const radius = 20.0;
+    switch (role) {
+      case MessageRole.user:
+        return const BorderRadius.only(
+            topLeft: Radius.circular(radius),
+            bottomRight: Radius.circular(radius),
+            bottomLeft: Radius.circular(radius));
+      case MessageRole.assistant:
+        return const BorderRadius.only(
+            bottomLeft: Radius.circular(radius),
+            topRight: Radius.circular(radius),
+            bottomRight: Radius.circular(radius));
+      case MessageRole.system:
+        return const BorderRadius.all(Radius.circular(radius));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -101,7 +119,7 @@ class ChatDetailWidgetState extends State<ChatDetailWidget> {
             margin: getMessageMargin(message.role),
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: getBorderRadius(message.role),
               gradient: getMessageBackground(message.role),
             ),
             child: Text(message.content, style: TextStyle(color: getMessageTextColor(message.role)),),

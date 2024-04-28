@@ -1,4 +1,3 @@
-
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -79,18 +78,15 @@ class ChatInputFieldState extends State<ChatInputField> {
             style: const TextStyle(fontSize: 14.0, height: 1.0),
             decoration: InputDecoration(
               hintText: context.loc.chatDetailPage_inputHint,
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50),
-                borderSide: BorderSide.none,
-              ),
-              filled: true,
-              fillColor: Colors.grey[200],
-              suffixIcon: _isSendingMessage
-                  ? const CircularProgressIndicator()
-                  : IconButton(
-                      icon: Icon(Icons.send, color: Theme.of(context).primaryColor),
-                      onPressed: () => sendMessage(),
-                    ),
+              suffixIcon: Container(
+                  margin: const EdgeInsets.only(right: 5.0),
+                  child: _isSendingMessage
+                      ? const CircularProgressIndicator()
+                      : IconButton(
+                          icon: Icon(Icons.send,
+                              color: Theme.of(context).primaryColor),
+                          onPressed: () => sendMessage(),
+                        )),
             ),
             controller: _controller,
             onSubmitted: (_) => sendMessage(),

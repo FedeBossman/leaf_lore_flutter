@@ -13,11 +13,13 @@ class LeafLoreColors {
   static const lightCherryBlossonPink = Color.fromARGB(255, 248, 221, 221);
   static const lighterCherryBlossonPink = Color.fromARGB(255, 250, 246, 246);
 
-  static const leafWhite = Color.fromARGB(255, 251, 250, 250);
 
   static const leafGreen = Color.fromARGB(255, 204, 230, 284);
 
   static const spaceCadet = Color(0xFF2e3452);
+
+  static const leafWhite = Color.fromARGB(255, 251, 250, 250);
+  static const lightLeafGray = Color.fromARGB(255, 239, 239, 239);
+    static const leafGray = Color.fromARGB(255, 149, 148, 152);
   static const devGray = Color.fromARGB(255, 230, 228, 234);
-  static const leafGray = Color.fromARGB(255, 149, 148, 152);
 }

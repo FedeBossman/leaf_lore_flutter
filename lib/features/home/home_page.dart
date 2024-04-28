@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/widget/stream_handler_widget.dart';
+import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
+import 'package:leaf_lore_flutter/features/chat/chat_detail_page.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_page.dart';
+import 'package:leaf_lore_flutter/features/chat/chat_stream.dart';
 import 'package:leaf_lore_flutter/features/home/dashboard_page.dart';
 import 'package:leaf_lore_flutter/features/plants/plants_page.dart';
 import 'package:leaf_lore_flutter/features/profile/profile_page.dart';
 import 'package:leaf_lore_flutter/shared/theme/bottom_navigation_bar_widget.dart';
+import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -40,13 +45,16 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  bool _isChatPage() {
+    return _currentPage == ChatNavigationWrapper.tabIndex;
+  }
+
   @override
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
       child: Scaffold(
           extendBody: true,
-          // appBar: MainAppBar(title: title),
           body: Container(
               padding:
                   const EdgeInsets.only(bottom: kBottomNavigationBarHeight),
@@ -72,6 +80,43 @@ class _MyHomePageState extends State<MyHomePage> {
                 _buildOffstageNavigator(PlantNavigationWrapper.tabIndex),
                 _buildOffstageNavigator(ProfilePage.tabIndex),
               ])),
+          floatingActionButton: StreamHandler<List<ChatMeta>>(
+            stream: getChatsMetaStream(),
+            builder: (context, snapshot) {
+              final chats = snapshot.data!;
+              ChatMeta? chatMeta =
+                  chats.firstWhere((element) => element.defaultChat);
+
+              return Visibility(
+                visible: chatMeta != null && !_isChatPage(),
+                child: FloatingActionButton(
+                  onPressed: () {
+                    setState(() {
+                      // _currentPage = pageKeys[1];
+                      // _selectedIndex = 1;
+
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (BuildContext context) => ChatDetailPage(
+                                  chatId: chatMeta.id,
+                                  chatName: chatMeta.name)));
+                    });
+                  },
+                  shape: const RoundedRectangleBorder(
+                      side: BorderSide(
+                          color: LeafLoreColors.tiffanyBlue, width: 3.0),
+                      borderRadius: BorderRadius.all(Radius.circular(50.0))),
+                  foregroundColor: LeafLoreColors.tiffanyBlue,
+                  backgroundColor: LeafLoreColors.leafWhite,
+                  tooltip: 'Assistant',
+                  child: const Icon(Icons.assistant), // Tooltip text
+                ),
+              );
+            },
+          ),
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.miniCenterDocked,
           bottomNavigationBar: BottomNavigationBarWidget(
               pageKeys: pageKeys,
               selectedIndex: _selectedIndex,

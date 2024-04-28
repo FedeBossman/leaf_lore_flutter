@@ -30,6 +30,7 @@ enum SoilType {
   clay,
   peaty,
   chalky,
+  wellDraining
 }
 
 enum PotSize {

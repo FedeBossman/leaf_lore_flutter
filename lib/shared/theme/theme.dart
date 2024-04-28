@@ -6,7 +6,7 @@ ThemeData appTheme() {
     fontFamily: 'Nunito',
     splashColor: LeafLoreColors.tiffanyBlue.withOpacity(0.4),
     highlightColor: LeafLoreColors.tiffanyBlue.withOpacity(0.2),
-    hoverColor: LeafLoreColors.tiffanyBlue.withOpacity(0.2),
+    hoverColor: LeafLoreColors.tiffanyBlue.withOpacity(0.3),
     textTheme: const TextTheme(
       bodyMedium: TextStyle(fontWeight: FontWeight.w300),
       bodySmall: TextStyle(fontWeight: FontWeight.w300),

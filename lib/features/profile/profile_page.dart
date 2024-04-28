@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:leaf_lore_flutter/shared/presentation/main_button.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String tabIndex = 'ProfilePage';
@@ -50,17 +51,12 @@ class ProfilePage extends StatelessWidget {
         ),
         Container(
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-          child: ElevatedButton(
+          child: MainButton(
             onPressed: () async {
               await _auth.signOut();
               Navigator.of(context).popUntil((route) => route.isFirst);
             },
-            style: ElevatedButton.styleFrom(
-              // primary: Colors.red, // Button color
-              // onPrimary: Colors.white, // Text color
-              minimumSize: const Size(double.infinity, 50), // Button size
-            ),
-            child: const Text('Sign Out', style: TextStyle(fontSize: 16)),
+            text: 'Sign Out',
           ),
         )
       ],

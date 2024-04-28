@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/core/firebase/home_page_info_service.dart';
 import 'package:leaf_lore_flutter/core/widget/stream_handler_widget.dart';
-import 'package:leaf_lore_flutter/features/home/home_page_info_stream.dart';
+import 'package:leaf_lore_flutter/features/home/streams/home_page_info_stream.dart';
 import 'package:leaf_lore_flutter/features/home/widget/dashboard_row_widget.dart';
 import 'package:leaf_lore_flutter/features/home/model/home_page_info.model.dart';
 import 'package:leaf_lore_flutter/core/extension/list_extension.dart';

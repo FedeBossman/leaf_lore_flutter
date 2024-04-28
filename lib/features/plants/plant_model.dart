@@ -6,13 +6,15 @@ import 'plant_enum.dart';
 class PlantMeta {
   final String id;
   final String name;
+  final String nickname;
 
-  PlantMeta({required this.id, required this.name});
+  PlantMeta({required this.id, required this.name, required this.nickname});
 
   factory PlantMeta.fromDocument(DocumentSnapshot doc) {
     return PlantMeta(
       id: doc.id,
       name: doc['name'],
+      nickname: doc['nickname'],
     );
   }
 }
@@ -55,12 +57,16 @@ class Plant extends UserOwned {
       nickname: doc['nickname'],
       // startDate: doc['startDate']?.toDate(),
       careLevel: CareLevel.values.byName(doc['careLevel']),
-      sunlightRequirement: SunlightRequirement.values.byName(doc['sunlightRequirement']),
-      wateringFrequency: WateringFrequency.values.byName(doc['wateringFrequency']),
-      fertilizationFrequency: FertilizationFrequency.values.byName(doc['fertilizationFrequency']),
+      sunlightRequirement:
+          SunlightRequirement.values.byName(doc['sunlightRequirement']),
+      wateringFrequency:
+          WateringFrequency.values.byName(doc['wateringFrequency']),
+      fertilizationFrequency:
+          FertilizationFrequency.values.byName(doc['fertilizationFrequency']),
       soilType: SoilType.values.byName(doc['soilType']),
       potSize: PotSize.values.byName(doc['potSize']),
-      humidityRequirement: HumidityRequirement.values.byName(doc['humidityRequirement']),
+      humidityRequirement:
+          HumidityRequirement.values.byName(doc['humidityRequirement']),
       notes: doc['notes'],
     );
   }

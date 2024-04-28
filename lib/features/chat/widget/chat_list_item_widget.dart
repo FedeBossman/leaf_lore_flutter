@@ -10,10 +10,12 @@ class ChatListItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8), // Add padding to each chat item
+      padding: const EdgeInsets.all(8), 
       child: ListTile(
           leading: CircleAvatar(
-            child: Text(chatMeta.name[0]), // Display the first letter
+            minRadius: 20,
+            maxRadius: 30,
+            child: Text(chatMeta.name[0]),
           ),
           title: Text(chatMeta.name),
           subtitle: Text(

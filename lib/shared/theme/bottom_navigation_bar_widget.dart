@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
+import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 
 class BottomNavigationBarWidget extends StatelessWidget {
   final List<String> pageKeys;
@@ -20,7 +21,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(30), topLeft: Radius.circular(30)),
         boxShadow: [
-          BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+          BoxShadow(color: LeafLoreColors.tiffanyBlue, spreadRadius: 0, blurRadius: 2.0),
         ],
       ),
       child: ClipRRect(
@@ -49,10 +50,8 @@ class BottomNavigationBarWidget extends StatelessWidget {
           onTap: (int index) {
             onItemTapped(pageKeys[index], index);
           },
-          backgroundColor: Colors.black12,
-          elevation: 0,
-          selectedItemColor: Colors.green,
-          unselectedItemColor: Colors.grey,
+          type: BottomNavigationBarType.fixed,
+          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         ),
       ),
     );

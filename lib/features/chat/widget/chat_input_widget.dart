@@ -88,7 +88,7 @@ class ChatInputFieldState extends State<ChatInputField> {
               suffixIcon: _isSendingMessage
                   ? const CircularProgressIndicator()
                   : IconButton(
-                      icon: const Icon(Icons.send, color: Colors.lightGreen),
+                      icon: Icon(Icons.send, color: Theme.of(context).primaryColor),
                       onPressed: () => sendMessage(),
                     ),
             ),

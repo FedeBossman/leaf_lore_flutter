@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:leaf_lore_flutter/features/home/home_page.dart';
 import 'package:leaf_lore_flutter/shared/presentation/ll_loading_button.dart';
+import 'package:leaf_lore_flutter/shared/presentation/main_button.dart';
+import 'package:leaf_lore_flutter/shared/presentation/unicorn_outline_button.dart';
 import 'package:leaf_lore_flutter/shared/theme/main_app_bar_widget.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -74,6 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         onChanged: (value) => _name = value,
                       ),
                     ),
+                    const SizedBox(height: 12),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24.0),
                       child: TextFormField(
@@ -83,6 +86,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         onChanged: (value) => _email = value,
                       ),
                     ),
+                    const SizedBox(height: 12),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24.0),
                       child: TextFormField(
@@ -95,6 +99,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         onChanged: (value) => _password = value,
                       ),
                     ),
+                    const SizedBox(height: 12),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24.0),
                       child: TextFormField(
@@ -110,10 +115,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 24),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                      child: LlLoadingButton(
-                        'Register',
+                      child: MainButton(
                         onPressed: _register,
-                        isLoading: _isLoading,
+                        text: 'Register',
                       ),
                     ),
                   ],
@@ -129,7 +133,7 @@ class _RegisterPageState extends State<RegisterPage> {
   void showSuccessMessage(String successMessage) {
     debugPrint(successMessage);
     _scaffoldMessengerKey.currentState?.showSnackBar(
-      SnackBar(content: Text(successMessage), backgroundColor: Colors.green),
+      SnackBar(content: Text(successMessage), backgroundColor: Theme.of(context).primaryColor),
     );
   }
 

@@ -1,15 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 
 class MainAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
   final List<Widget>? actions;
   final bool showBackButton;
 
-  const MainAppBar({super.key, required this.title, this.actions, this.showBackButton = false});
+  const MainAppBar(
+      {super.key,
+      required this.title,
+      this.actions,
+      this.showBackButton = false});
 
   @override
   State<MainAppBar> createState() => _MainAppBarState();
-  
+
   @override
   Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
@@ -35,10 +41,11 @@ class _MainAppBarState extends State<MainAppBar> {
         ],
       ),
       actions: widget.actions,
-      shape: const ContinuousRectangleBorder(
+      shape: const RoundedRectangleBorder(
+          // side: BorderSide(color: LeafLoreColors.tiffanyBlue, width: 2.0),
           borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(70.0),
-              bottomRight: Radius.circular(70.0))),
+              bottomLeft: Radius.circular(20.0),
+              bottomRight: Radius.circular(20.0))),
     );
   }
 }

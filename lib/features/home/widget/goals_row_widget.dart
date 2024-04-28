@@ -10,7 +10,7 @@ class GoalsRow extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        const Icon(Icons.flag, color: Colors.green),
+        Icon(Icons.flag, color: Theme.of(context).primaryColor),
         const SizedBox(width: 8),
         Column(
           children: goals.map((goal) =>  Text(goal.toFirstUpperCase(), style: const TextStyle(fontSize: 16))).toList(),

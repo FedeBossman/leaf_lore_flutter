@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
+import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 
 class ChatDetailWidget extends StatefulWidget {
   final Chat chat;
@@ -21,14 +22,54 @@ class ChatDetailWidgetState extends State<ChatDetailWidget> {
     }
   }
 
-  Color getMessageColor(MessageRole role) {
+  Color getMessageTextColor(MessageRole role) {
     switch (role) {
       case MessageRole.user:
-        return Colors.lightGreen[400]!;
+        return LeafLoreColors.jet;
       case MessageRole.assistant:
-        return Colors.blue[200]!;
+        return LeafLoreColors.jet;
       case MessageRole.system:
-        return Colors.grey[300]!;
+        return LeafLoreColors.devGray;
+    }
+  }
+
+  LinearGradient getMessageBackground(MessageRole role) {
+    switch (role) {
+      case MessageRole.user:
+        return const LinearGradient(
+                begin: Alignment.topLeft, 
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 148, 239, 224),
+                  Color.fromARGB(255, 161, 234, 212),
+                  Color.fromARGB(255, 131, 218, 162),
+                ],
+                stops: [0.05, 0.25, 0.85],
+              );
+      case MessageRole.assistant:
+        return const LinearGradient(
+                begin: Alignment.topLeft, 
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 86, 197, 249),
+                  Color.fromARGB(255, 115, 217, 246),
+                  Color.fromARGB(255, 115, 233, 248)
+
+                ],
+                stops: [0.05, 0.25, 0.85],
+              );
+      case MessageRole.system:
+        return const LinearGradient(
+                begin: Alignment.topLeft, 
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 54, 53, 98),
+                  LeafLoreColors.spaceCadet,
+                  Color.fromARGB(255, 36, 50, 68),
+
+                ],
+                stops: [0.05, 0.25, 0.85],
+              );
     }
   }
 
@@ -60,10 +101,10 @@ class ChatDetailWidgetState extends State<ChatDetailWidget> {
             margin: getMessageMargin(message.role),
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
             decoration: BoxDecoration(
-              color: getMessageColor(message.role),
               borderRadius: BorderRadius.circular(20),
+              gradient: getMessageBackground(message.role),
             ),
-            child: Text(message.content),
+            child: Text(message.content, style: TextStyle(color: getMessageTextColor(message.role)),),
           ),
         );
       },

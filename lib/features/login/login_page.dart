@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/features/register/register_page.dart';
 import 'package:leaf_lore_flutter/features/home/home_page.dart';
-import 'package:leaf_lore_flutter/shared/presentation/ll_loading_button.dart';
+import 'package:leaf_lore_flutter/shared/presentation/main_button.dart';
+import 'package:leaf_lore_flutter/shared/presentation/unicorn_outline_button.dart';
+import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -56,8 +58,7 @@ class LoginPageState extends State<LoginPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Image.asset("assets/images/logo.png",
-                    width: 300, height: 300),
+                Image.asset("assets/images/logo.png", width: 300, height: 300),
                 const SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -82,10 +83,9 @@ class LoginPageState extends State<LoginPage> {
                 const SizedBox(height: 24),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: LlLoadingButton(
-                    context.loc.loginPage_loginButtonLabel,
+                  child: MainButton(
                     onPressed: _signInWithEmailAndPassword,
-                    isLoading: _isLoading,
+                    text: context.loc.loginPage_loginButtonLabel,
                   ),
                 ),
                 const SizedBox(height: 12),

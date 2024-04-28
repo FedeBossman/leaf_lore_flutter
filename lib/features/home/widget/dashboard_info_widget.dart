@@ -57,15 +57,15 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
                 padding: const EdgeInsets.all(32.0),
                 child: Row(
                   children: [
-                    const Icon(Icons.location_on, color: Colors.green),
+                    Icon(Icons.location_on, color: Theme.of(context).primaryColor),
                     const SizedBox(width: 8),
                     Text(location, style: const TextStyle(fontSize: 18)),
                     const Spacer(),
                     Text('$weather°C',
-                        style: const TextStyle(
+                        style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: Colors.green)),
+                            color: Theme.of(context).primaryColor)),
                   ],
                 ),
               ),

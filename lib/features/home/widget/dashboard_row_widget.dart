@@ -15,13 +15,14 @@ class DashboardRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color color = Theme.of(context).primaryColor;
     return Row(
       children: [
-        Icon(icon, color: Colors.green),
+        Icon(icon, color: color),
         const SizedBox(width: 8),
         Text(title, style: const TextStyle(fontSize: 18)),
         const Spacer(),
-        Text(value, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.green)),
+        Text(value, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: color)),
       ],
     );
   }

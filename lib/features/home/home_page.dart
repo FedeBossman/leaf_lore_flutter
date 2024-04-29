@@ -87,6 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
               return Visibility(
                 visible: chatMeta != null && !_isChatPage(),
                 child: FloatingActionButton(
+                  heroTag: 'assistantFab',
                   onPressed: () {
                     setState(() {
                       // _currentPage = pageKeys[1];

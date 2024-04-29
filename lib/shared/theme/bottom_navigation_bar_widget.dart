@@ -21,7 +21,7 @@ class BottomNavigationBarWidget extends StatelessWidget {
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(30), topLeft: Radius.circular(30)),
         boxShadow: [
-          BoxShadow(color: LeafLoreColors.tiffanyBlue, spreadRadius: 0, blurRadius: 2.0),
+          BoxShadow(color: LeafLoreColors.tiffanyBlue, spreadRadius: 2.5, blurRadius: 0.0),
         ],
       ),
       child: ClipRRect(
@@ -51,7 +51,8 @@ class BottomNavigationBarWidget extends StatelessWidget {
             onItemTapped(pageKeys[index], index);
           },
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
+          backgroundColor: LeafLoreColors.leafWhite,
+          // backgroundColor: Theme.of(context).appBarTheme.backgroundColor,
         ),
       ),
     );

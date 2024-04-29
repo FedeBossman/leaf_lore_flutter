@@ -16,10 +16,10 @@ ThemeData appTheme() {
         primary: LeafLoreColors.tiffanyBlue,
         background: LeafLoreColors.lightLeafGray),
     appBarTheme: const AppBarTheme(
-      backgroundColor: LeafLoreColors.leafWhite,
-      elevation: 1.0,
-      surfaceTintColor: LeafLoreColors.leafWhite,
-      shadowColor: LeafLoreColors.tiffanyBlue,
+      backgroundColor: LeafLoreColors.transparent,
+      elevation: 0.0,
+      surfaceTintColor: LeafLoreColors.transparent,
+      shadowColor: LeafLoreColors.transparent,
     ),
     bottomAppBarTheme: const BottomAppBarTheme(
       color: LeafLoreColors.leafWhite,
@@ -69,7 +69,7 @@ ThemeData appTheme() {
       ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
-        borderSide: const BorderSide(color: LeafLoreColors.lightTiffanyBlue, width: 1),
+        borderSide: const BorderSide(color: LeafLoreColors.lightTiffanyBlue, width: 2),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
@@ -77,11 +77,11 @@ ThemeData appTheme() {
       ),
       enabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
-        borderSide: const BorderSide(color: LeafLoreColors.lightTiffanyBlue, width: 1),
+        borderSide: const BorderSide(color: LeafLoreColors.lightTiffanyBlue, width: 2),
       ),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
-        borderSide: const BorderSide(color: LeafLoreColors.errorRed, width: 1),
+        borderSide: const BorderSide(color: LeafLoreColors.errorRed, width: 2),
       ),
       focusedErrorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
@@ -89,7 +89,7 @@ ThemeData appTheme() {
       ),
       disabledBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(30),
-        borderSide: BorderSide(color: LeafLoreColors.jet.withOpacity(0.2), width: 1),
+        borderSide: BorderSide(color: LeafLoreColors.jet.withOpacity(0.2), width: 2),
       ),
       filled: true,
       fillColor: LeafLoreColors.leafWhite,
@@ -97,7 +97,7 @@ ThemeData appTheme() {
     ),
     listTileTheme: ListTileThemeData(
       tileColor: LeafLoreColors.leafWhite,
-      contentPadding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10),
       ),

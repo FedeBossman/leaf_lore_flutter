@@ -22,7 +22,7 @@ class ChatListItemWidget extends StatelessWidget {
           leading: CircleAvatar(
             minRadius: 20,
             maxRadius: 30,
-            child: Text(chatMeta.name[0]),
+            child: chatMeta.defaultChat ? const Icon(Icons.assistant) : Text(chatMeta.name[0]),
           ),
           title: Text(chatMeta.name),
           subtitle: Text(

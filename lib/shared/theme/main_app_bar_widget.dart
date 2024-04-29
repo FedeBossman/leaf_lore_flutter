@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 
 class MainAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -36,16 +34,16 @@ class _MainAppBarState extends State<MainAppBar> {
           Text(
             widget.title,
             textAlign: TextAlign.start,
-            style: const TextStyle(fontSize: 18.0),
+            style: const TextStyle(fontSize: 24.0),
           ),
         ],
       ),
       actions: widget.actions,
-      shape: const RoundedRectangleBorder(
-          // side: BorderSide(color: LeafLoreColors.tiffanyBlue, width: 2.0),
-          borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(20.0),
-              bottomRight: Radius.circular(20.0))),
+      // shape: const RoundedRectangleBorder(
+      //     // side: BorderSide(color: LeafLoreColors.tiffanyBlue, width: 2.0),
+      //     borderRadius: BorderRadius.only(
+      //         bottomLeft: Radius.circular(20.0),
+      //         bottomRight: Radius.circular(20.0))),
     );
   }
 }

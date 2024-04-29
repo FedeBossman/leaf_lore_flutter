@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/widgets.dart';
 import 'package:leaf_lore_flutter/features/home/home_page.dart';
-import 'package:leaf_lore_flutter/shared/presentation/ll_loading_button.dart';
 import 'package:leaf_lore_flutter/shared/presentation/main_button.dart';
-import 'package:leaf_lore_flutter/shared/presentation/unicorn_outline_button.dart';
 import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 import 'package:leaf_lore_flutter/shared/theme/main_app_bar_widget.dart';
 
@@ -48,6 +45,10 @@ class _RegisterPageState extends State<RegisterPage> {
               'The password provided is too weak, please try another password.');
         } else if (e.code == 'email-already-in-use') {
           showErrorMessage('An account already exists for that email.');
+        } else if (e.code == 'network-request-failed') {
+          showErrorMessage('Network request failed. Please try again later.');
+        } else {
+          showErrorMessage('An unknown error ocurred.');
         }
       } catch (e) {
         setState(() => _isLoading = false);
@@ -62,6 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
       key: _scaffoldMessengerKey,
       child: Scaffold(
         appBar: const MainAppBar(title: 'Register', showBackButton: true),
+        extendBodyBehindAppBar: true,
         body: Container(
           decoration: const BoxDecoration(
             gradient: LeafLoreColors.pinkGradient,
@@ -93,8 +95,17 @@ class _RegisterPageState extends State<RegisterPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 24.0),
                         child: TextFormField(
                           decoration: const InputDecoration(labelText: 'Email'),
-                          validator: (value) =>
-                              value!.isEmpty ? 'Please enter your email' : null,
+                          keyboardType: TextInputType.emailAddress,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'Please enter an email address';
+                            } else if (!RegExp(
+                                    r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+')
+                                .hasMatch(value)) {
+                              return 'Please enter a valid email address';
+                            }
+                            return null;
+                          },
                           onChanged: (value) => _email = value,
                         ),
                       ),

@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
+import 'package:leaf_lore_flutter/core/extension/text_extension.dart';
 import 'package:leaf_lore_flutter/core/firebase/home_page_info_service.dart';
 import 'package:leaf_lore_flutter/core/widget/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/home/streams/home_page_info_stream.dart';
-import 'package:leaf_lore_flutter/features/home/widget/dashboard_row_widget.dart';
 import 'package:leaf_lore_flutter/features/home/model/home_page_info.model.dart';
-import 'package:leaf_lore_flutter/core/extension/list_extension.dart';
-import 'package:leaf_lore_flutter/features/home/widget/goals_row_widget.dart';
+import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 
 class DashboardInfoWidget extends StatefulWidget {
   const DashboardInfoWidget({super.key});
@@ -16,7 +14,6 @@ class DashboardInfoWidget extends StatefulWidget {
 }
 
 class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
-
   @override
   void initState() {
     super.initState();
@@ -27,14 +24,27 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
     requestWeatherUpdate();
   }
 
+  Widget _buildGoalChip(String label, Color color) {
+    return Chip(
+      label: Text(label),
+      backgroundColor: Colors.white,
+      side: BorderSide(color: color, width: 1),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     const div = Divider();
 
+    const accentColor = LeafLoreColors.tiffanyBlue;
+    TextStyle rankStyle = TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.bold,
+        color: LeafLoreColors.tiffanyBlue);
+
     return StreamHandler<HomePageInfo>(
       stream: getHomePageInfoStream(),
-      builder:
-          (BuildContext context, AsyncSnapshot<HomePageInfo> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<HomePageInfo> snapshot) {
         // if (!snapshot.hasData) {
         //   return const Text("Chat with Sprout to get started!");
         // }
@@ -45,9 +55,6 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
 
         var homePageInfo = snapshot.data!;
 
-        var location = [homePageInfo.location?.city, homePageInfo.location?.state]
-            .filterNotNull()
-            .join(", ");
         var weather = homePageInfo.weather?.temperature ?? '';
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,14 +63,27 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
               child: Padding(
                 padding: const EdgeInsets.all(32.0),
                 child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(Icons.location_on, color: Theme.of(context).primaryColor),
-                    const SizedBox(width: 8),
-                    Text(location, style: const TextStyle(fontSize: 18)),
+                    Icon(
+                      Icons.location_on,
+                      color: Theme.of(context).primaryColor,
+                      size: 32,
+                    ),
+                    const SizedBox(width: 16),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(homePageInfo.location?.city ?? '',
+                            style: const TextStyle(fontSize: 24)),
+                        Text(homePageInfo.location?.state ?? '',
+                            style: const TextStyle(fontSize: 16)),
+                      ],
+                    ),
                     const Spacer(),
                     Text('$weather°C',
                         style: TextStyle(
-                            fontSize: 18,
+                            fontSize: 32,
                             fontWeight: FontWeight.bold,
                             color: Theme.of(context).primaryColor)),
                   ],
@@ -74,26 +94,26 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
               child: Padding(
                 padding: const EdgeInsets.all(32.0),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    DashboardRowWidget(
-                        icon: Icons.auto_awesome,
-                        title: context.loc.dashboardInfo_type,
-                        value: homePageInfo.type ?? ''),
-                    div,
-                    DashboardRowWidget(
-                        icon: Icons.work,
-                        title: context.loc.dashboardInfo_experience,
-                        value: homePageInfo.experience ?? ''),
-                    div,
-                    DashboardRowWidget(
-                        icon: Icons.local_florist,
-                        title: context.loc.dashboardInfo_plants,
-                        value: '${homePageInfo.plantsCount}'),
-                    div,
-                    DashboardRowWidget(
-                        icon: Icons.flight_takeoff,
-                        title: context.loc.dashboardInfo_rank,
-                        value: homePageInfo.nickname ?? ''),
+                    homePageInfo.nickname != null
+                        ? Column(
+                            children: [
+                              Text(homePageInfo.nickname!, style: rankStyle),
+                              const SizedBox(height: 16),
+                            ],
+                          )
+                        : Container(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(width: 8),
+                        Text(
+                            '${homePageInfo.type} - ${homePageInfo.experience}',
+                            style: const TextStyle(
+                                fontSize: 18, color: LeafLoreColors.leafGray)),
+                      ],
+                    ),
                   ],
                 ),
               ),
@@ -103,11 +123,24 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
                 padding: const EdgeInsets.all(32.0),
                 child: Column(
                   children: [
-                    GoalsRow(goals: homePageInfo.goals),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.flag, color: Theme.of(context).primaryColor),
+                        const SizedBox(width: 8),
+                        const Text('Goals', style: TextStyle(fontSize: 24)),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    Wrap(
+                      spacing: 8.0,
+                      runSpacing: 4.0,
+                      children: homePageInfo.goals.map((goal) =>  _buildGoalChip(goal.toFirstUpperCase(), accentColor)).toList(),
+                    ),
                   ],
                 ),
               ),
-            )
+            ),
           ],
         );
       },

@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/shared/theme/colors.dart';
+import 'package:leaf_lore_flutter/shared/theme/debug.dart';
 
 class ChatDetailWidget extends StatefulWidget {
   final Chat chat;
@@ -84,18 +86,21 @@ class ChatDetailWidgetState extends State<ChatDetailWidget> {
       itemBuilder: (context, index) {
         final message =
             widget.chat.messages[widget.chat.messages.length - 1 - index];
-        return Align(
-          alignment: getMessageAlignment(message.role),
-          child: Container(
-            margin: getMessageMargin(message.role),
-            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            decoration: BoxDecoration(
-              borderRadius: getBorderRadius(message.role),
-              gradient: getMessageBackground(message.role),
-            ),
-            child: Text(
-              message.content,
-              style: TextStyle(color: getMessageTextColor(message.role)),
+        return Visibility(
+          visible: debugMode || message.role != MessageRole.system,
+          child: Align(
+            alignment: getMessageAlignment(message.role),
+            child: Container(
+              margin: getMessageMargin(message.role),
+              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              decoration: BoxDecoration(
+                borderRadius: getBorderRadius(message.role),
+                gradient: getMessageBackground(message.role),
+              ),
+              child: Text(
+                message.content,
+                style: TextStyle(color: getMessageTextColor(message.role)),
+              ),
             ),
           ),
         );

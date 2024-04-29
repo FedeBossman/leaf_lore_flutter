@@ -29,7 +29,7 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    const div = Divider(height: 14, thickness: 1);
+    const div = Divider();
 
     return StreamHandler<HomePageInfo>(
       stream: getHomePageInfoStream(),

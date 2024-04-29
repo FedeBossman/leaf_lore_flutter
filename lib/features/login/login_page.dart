@@ -64,7 +64,7 @@ class LoginPageState extends State<LoginPage> {
                   Hero(
                     tag: 'logo',
                     child: Image.asset("assets/images/logo.png",
-                        width: 300, height: 300),
+                        width: 200, height: 200),
                   ),
                   const SizedBox(height: 50),
                   Padding(

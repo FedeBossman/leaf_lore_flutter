@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:leaf_lore_flutter/shared/presentation/main_button.dart';
+import 'package:leaf_lore_flutter/shared/theme/debug.dart';
 
 class ProfilePage extends StatelessWidget {
   static const String tabIndex = 'ProfilePage';
@@ -20,45 +21,79 @@ class ProfilePage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: <Widget>[
         Expanded(
-          child: ListView(
-            children: [
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              CircleAvatar(
+                  radius: 80,
+                  child: Image.asset("assets/images/logo.png",
+                      width: 120, height: 120)
+                  //   Text(
+                  //   name[0],
+                  //   style: const TextStyle(fontSize: 40, color: Colors.white),
+                  // ),
+                  ),
               const SizedBox(height: 20),
-              ListTile(
-                leading: Icon(Icons.account_circle,
-                    size: 36, color: color),
-                title: Text(name, style: const TextStyle(fontSize: 18)),
-                subtitle: Text('Name',
-                    style: TextStyle(color: Colors.black.withOpacity(0.6))),
+              Text(
+                name,
+                style:
+                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
               ),
-              const Divider(),
-              ListTile(
-                leading: const Icon(Icons.perm_identity,
-                    size: 36, color: Colors.red),
-                title: Text(uid, style: const TextStyle(fontSize: 18)),
-                subtitle: Text('UID',
-                    style: TextStyle(color: Colors.black.withOpacity(0.6))),
+              MinWidthDivider(
+                  child: Text(
+                email,
+                style: TextStyle(color: Colors.grey[600], fontSize: 18),
+              )),
+              Visibility(
+                visible: debugMode,
+                child: MinWidthDivider(
+                    child: Text(
+                  uid,
+                  style: TextStyle(color: Colors.grey[600], fontSize: 18),
+                )),
               ),
-              const Divider(),
-              ListTile(
-                leading: Icon(Icons.email, size: 36, color: color),
-                title: Text(email, style: const TextStyle(fontSize: 18)),
-                subtitle: Text('Email',
-                    style: TextStyle(color: Colors.black.withOpacity(0.6))),
-              ),
-              const Divider(),
+              const SizedBox(height: 40),
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
+                child: MainButton(
+                  onPressed: () async {
+                    await _auth.signOut();
+                    Navigator.of(context).popUntil((route) => route.isFirst);
+                  },
+                  text: 'Sign Out',
+                ),
+              )
             ],
           ),
         ),
-        Container(
-          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
-          child: MainButton(
-            onPressed: () async {
-              await _auth.signOut();
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            text: 'Sign Out',
+      ],
+    );
+  }
+}
+
+class MinWidthDivider extends StatelessWidget {
+  const MinWidthDivider({
+    super.key,
+    required this.child,
+  });
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: <Widget>[
+        IntrinsicWidth(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              const Divider(),
+              child,
+            ],
           ),
-        )
+        ),
       ],
     );
   }

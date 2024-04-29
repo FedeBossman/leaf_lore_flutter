@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/core/extension/text_extension.dart';
 import 'package:leaf_lore_flutter/core/firebase/home_page_info_service.dart';
 import 'package:leaf_lore_flutter/core/widget/stream_handler_widget.dart';
@@ -100,7 +101,7 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
                         ? Column(
                             children: [
                               Text(homePageInfo.nickname!, style: rankStyle),
-                              const SizedBox(height: 16),
+                              const SizedBox(height: 8),
                             ],
                           )
                         : Container(),
@@ -112,6 +113,20 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
                             '${homePageInfo.type} - ${homePageInfo.experience}',
                             style: const TextStyle(
                                 fontSize: 18, color: LeafLoreColors.leafGray)),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const SizedBox(width: 8),
+                        Text(
+                            context.loc.dashboardInfo_plants_under_care(
+                                homePageInfo.plantsCount),
+                            style: TextStyle(
+                                fontSize: 18,
+                                color: LeafLoreColors.leafGray.withOpacity(
+                                    0.7), // Lighter color for subtlety
+                                fontStyle: FontStyle.italic)),
                       ],
                     ),
                   ],
@@ -128,14 +143,18 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
                       children: [
                         Icon(Icons.flag, color: Theme.of(context).primaryColor),
                         const SizedBox(width: 8),
-                        const Text('Goals', style: TextStyle(fontSize: 24)),
+                        Text(context.loc.dashboardInfo_goals,
+                            style: const TextStyle(fontSize: 24)),
                       ],
                     ),
                     const SizedBox(height: 16),
                     Wrap(
                       spacing: 8.0,
                       runSpacing: 4.0,
-                      children: homePageInfo.goals.map((goal) =>  _buildGoalChip(goal.toFirstUpperCase(), accentColor)).toList(),
+                      children: homePageInfo.goals
+                          .map((goal) => _buildGoalChip(
+                              goal.toFirstUpperCase(), accentColor))
+                          .toList(),
                     ),
                   ],
                 ),

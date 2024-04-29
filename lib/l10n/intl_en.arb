@@ -16,6 +16,14 @@
     "dashboardInfo_experience": "Experience",
     "dashboardInfo_plants": "Plants",
     "dashboardInfo_rank": "Rank",
+    "dashboardInfo_goals": "Goals",
+
+    "dashboardInfo_plants_under_care": "{count, plural, =0 {Start chatting with Sprout to add new plants} =1 {1 plant under your care} other {{count} plants under your care}}",
+    "@dashboardInfo_plants_under_care": {
+      "placeholders": {
+        "count": {}
+      }
+    },
 
     "loginPage_unknownErrorMessage": "An unknown error occurred",
     "loginPage_emailLabel": "Email",

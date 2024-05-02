@@ -59,7 +59,7 @@ class ProfilePage extends StatelessWidget {
                 child: MainButton(
                   onPressed: () async {
                     await _auth.signOut();
-                    Navigator.of(context).popUntil((route) => route.isFirst);
+                    // Navigator.of(context).popUntil((route) => route.isFirst);
                   },
                   text: 'Sign Out',
                 ),

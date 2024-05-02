@@ -3,13 +3,13 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:leaf_lore_flutter/features/home/home_page.dart';
 import 'package:leaf_lore_flutter/features/login/login_page.dart';
+import 'package:leaf_lore_flutter/shared/theme/debug.dart';
 import 'package:leaf_lore_flutter/shared/theme/theme.dart';
 import 'core/firebase/firebase_options.dart';
 
@@ -18,7 +18,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  if (kDebugMode) {
+  if (debugMode) {
     bool isAndroidDevice = false;
     String host = isAndroidDevice ? '192.168.1.186' : 'localhost';
     await FirebaseAuth.instance.useAuthEmulator(host, 9099);
@@ -91,7 +91,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
             User? user = snapshot.data;
-            if (user == null) {
+            if (user == null) { //} || !user.emailVerified) {
               return const LoginPage();
             } else {
               return const MyHomePage();

@@ -35,11 +35,12 @@ class _RegisterPageState extends State<RegisterPage> {
         );
         User? user = userCredential.user;
         await user!.updateDisplayName(_name);
+        // await FirebaseAuth.instance.currentUser?.sendEmailVerification();
         showSuccessMessage('User created successfully');
-        Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const MyHomePage()));
+        Navigator.of(context).popUntil((route) => route.isFirst);
       } on FirebaseAuthException catch (e) {
         setState(() => _isLoading = false);
+        debugPrint('Firebase error: ${e.message}');
         if (e.code == 'weak-password') {
           showErrorMessage(
               'The password provided is too weak, please try another password.');
@@ -164,7 +165,6 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   void showErrorMessage(String errorMessage) {
-    debugPrint(errorMessage);
     _scaffoldMessengerKey.currentState?.showSnackBar(
       SnackBar(content: Text(errorMessage), backgroundColor: Colors.red),
     );

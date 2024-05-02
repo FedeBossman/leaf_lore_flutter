@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/features/register/register_page.dart';
-import 'package:leaf_lore_flutter/features/home/home_page.dart';
 import 'package:leaf_lore_flutter/shared/presentation/main_button.dart';
 import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 
@@ -20,6 +19,12 @@ class LoginPageState extends State<LoginPage> {
       GlobalKey<ScaffoldMessengerState>();
   bool _isLoading = false;
 
+  void _showErrorMessage(String errorMessage) {
+    _scaffoldMessengerKey.currentState?.showSnackBar(
+      SnackBar(content: Text(errorMessage), backgroundColor: Colors.red),
+    );
+  }
+
   Future<void> _signInWithEmailAndPassword() async {
     setState(() {
       _isLoading = true;
@@ -29,14 +34,15 @@ class LoginPageState extends State<LoginPage> {
         email: _emailController.text,
         password: _passwordController.text,
       );
-      Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const MyHomePage()));
     } on FirebaseAuthException catch (e) {
-      // final String errorMessage = e.message ?? 'An unknown error occurred';
-      final String errorMessage = context.loc.loginPage_unknownErrorMessage;
-      _scaffoldMessengerKey.currentState?.showSnackBar(
-        SnackBar(content: Text(errorMessage), backgroundColor: Colors.red),
-      );
+      debugPrint('Firebase error: ${e.message}');
+      if (e.code == 'network-request-failed') {
+        _showErrorMessage(context.loc.loginPage_networkErrorMessage);
+      } else if (e.code == 'invalid-credential') {
+        _showErrorMessage(context.loc.loginPage_invalidCredentialMessage);
+      } else {
+        _showErrorMessage(context.loc.loginPage_unknownErrorMessage);
+      }
     } finally {
       if (mounted) {
         setState(() {

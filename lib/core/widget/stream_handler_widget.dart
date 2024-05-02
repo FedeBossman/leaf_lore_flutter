@@ -15,6 +15,10 @@ class StreamHandler<T> extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const CircularProgressIndicator();
         } else if (!snapshot.hasData) {
+
+          if (snapshot.hasError) {
+            print(snapshot.stackTrace);
+          }
           // TODO: text should be dynamic
           return Text(context.loc.streamHandler_noDataFound);
         } else {

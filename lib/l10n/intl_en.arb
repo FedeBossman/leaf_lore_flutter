@@ -25,7 +25,9 @@
       }
     },
 
-    "loginPage_unknownErrorMessage": "An unknown error occurred",
+    "loginPage_unknownErrorMessage": "Something went wrong on our end. Please try again later. If the problem persists, don’t hesitate to reach out to our support team for help.",
+    "loginPage_invalidCredentialMessage": "The username or password you entered isn’t right. Please double-check your credentials and try again.",
+    "loginPage_networkErrorMessage": "Oops! It looks like you're having trouble connecting. Please check your internet connection and try again.",
     "loginPage_emailLabel": "Email",
     "loginPage_passwordLabel": "Password",
     "loginPage_registerButtonLabel": "Register",

@@ -145,6 +145,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: MainButton(
                           onPressed: _register,
                           text: 'Register',
+                          isLoading: _isLoading,
                         ),
                       ),
                     ],

@@ -5,10 +5,12 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:leaf_lore_flutter/features/home/home_page.dart';
 import 'package:leaf_lore_flutter/features/login/login_page.dart';
+import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 import 'package:leaf_lore_flutter/shared/theme/debug.dart';
 import 'package:leaf_lore_flutter/shared/theme/theme.dart';
 import 'core/firebase/firebase_options.dart';
@@ -73,6 +75,13 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+        statusBarColor: LeafLoreColors.transparent,
+        statusBarBrightness: Brightness.light,
+        statusBarIconBrightness: Brightness.dark,
+        systemNavigationBarDividerColor: LeafLoreColors.leafWhite,
+        systemNavigationBarColor: LeafLoreColors.leafWhite));
+
     return MaterialApp(
       title: 'LeafLore',
       localizationsDelegates: const [
@@ -91,7 +100,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.active) {
             User? user = snapshot.data;
-            if (user == null) { //} || !user.emailVerified) {
+            if (user == null) {
+              //} || !user.emailVerified) {
               return const LoginPage();
             } else {
               return const MyHomePage();

@@ -3,11 +3,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:leaf_lore_flutter/shared/presentation/main_button.dart';
 import 'package:leaf_lore_flutter/shared/theme/debug.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   static const String tabIndex = 'ProfilePage';
-  final FirebaseAuth _auth = FirebaseAuth.instance;
 
   ProfilePage({super.key});
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -57,12 +65,17 @@ class ProfilePage extends StatelessWidget {
                 padding:
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
                 child: MainButton(
-                  onPressed: () async {
-                    await _auth.signOut();
-                    // Navigator.of(context).popUntil((route) => route.isFirst);
-                  },
-                  text: 'Sign Out',
-                ),
+                    onPressed: () async {
+                      setState(() {
+                        _isLoading = true;
+                      });
+                      await _auth.signOut();
+                      setState(() {
+                        _isLoading = true;
+                      });
+                    },
+                    text: 'Sign Out',
+                    isLoading: _isLoading),
               )
             ],
           ),

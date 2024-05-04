@@ -13,7 +13,7 @@
             "name": "Launch Android",
             "request": "launch",
             "type": "dart",
-            "deviceId": "adb-11301FDD40027K-YEsWYZ._adb-tls-connect._tcp."
+            "deviceId": "192.168.1.170:5555"
         },
         {
             "name": "leaf_lore_flutter (profile mode)",

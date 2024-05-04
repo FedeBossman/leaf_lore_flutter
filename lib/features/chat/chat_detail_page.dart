@@ -30,7 +30,7 @@ class ChatDetailPage extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 8.0, left: 8.0, right: 8.0, top: 4.0),
+              padding: const EdgeInsets.only(bottom: 16.0, left: 8.0, right: 8.0, top: 4.0),
               child: Row(
                 children: [
                   Expanded(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:leaf_lore_flutter/core/widget/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_detail_page.dart';
@@ -53,33 +54,27 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return PopScope(
       canPop: false,
+      onPopInvoked: (bool didPop) {
+        if (_navigatorKeys[_currentPage]!.currentState!.canPop()) {
+          return;
+        } else if (Navigator.of(context).canPop()) {
+          Navigator.of(context).pop();
+        } else if (_selectedIndex != 0) {
+          _onItemTapped(DashboardPage.tabIndex, 0);
+        } else {
+          SystemNavigator.pop();
+        }
+      },
       child: Scaffold(
-          extendBody: true,
-          body: Container(
-              padding:
-                  const EdgeInsets.only(bottom: kBottomNavigationBarHeight),
-              // decoration: BoxDecoration(
-              //   gradient: LinearGradient(
-              //     begin:
-              //         Alignment(-0.1, -1.0),
-              //     end: Alignment(0.1, 2.5),
-              //     colors: [
-              //       Colors.white,
-              //       Colors.lightGreen[300]!,
-              //       Colors.green,
-              //       Colors.green[900]!,
-              //       Colors.lightGreen[
-              //           300]!,
-              //     ],
-              //     stops: [0.05, 0.25, 0.55, 0.75, 0.90],
-              //   ),
-              // ),
-              child: Stack(children: <Widget>[
-                _buildOffstageNavigator(DashboardPage.tabIndex),
-                _buildOffstageNavigator(ChatNavigationWrapper.tabIndex),
-                _buildOffstageNavigator(PlantNavigationWrapper.tabIndex),
-                _buildOffstageNavigator(ProfilePage.tabIndex),
-              ])),
+          extendBody: false,
+          body: SafeArea(
+            child: Stack(children: <Widget>[
+              _buildOffstageNavigator(DashboardPage.tabIndex),
+              _buildOffstageNavigator(ChatNavigationWrapper.tabIndex),
+              _buildOffstageNavigator(PlantNavigationWrapper.tabIndex),
+              _buildOffstageNavigator(ProfilePage.tabIndex),
+            ]),
+          ),
           floatingActionButton: StreamHandler<ChatMeta>(
             stream: getDefaultChatMetaStream(),
             builder: (context, snapshot) {
@@ -154,11 +149,16 @@ class TabNavigator extends StatelessWidget {
       child = const DashboardPage();
     }
 
-    return Navigator(
-      key: navigatorKey,
-      onGenerateRoute: (routeSettings) {
-        return MaterialPageRoute(builder: (context) => child);
+    return NavigatorPopHandler(
+      onPop: () {
+        navigatorKey.currentState?.maybePop();
       },
+      child: Navigator(
+        key: navigatorKey,
+        onGenerateRoute: (routeSettings) {
+          return MaterialPageRoute(builder: (context) => child);
+        },
+      ),
     );
   }
 }

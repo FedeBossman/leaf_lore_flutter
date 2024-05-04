@@ -39,7 +39,6 @@ class _RegisterPageState extends State<RegisterPage> {
         showSuccessMessage('User created successfully');
         Navigator.of(context).popUntil((route) => route.isFirst);
       } on FirebaseAuthException catch (e) {
-        setState(() => _isLoading = false);
         debugPrint('Firebase error: ${e.message}');
         if (e.code == 'weak-password') {
           showErrorMessage(
@@ -54,6 +53,10 @@ class _RegisterPageState extends State<RegisterPage> {
       } catch (e) {
         setState(() => _isLoading = false);
         print(e);
+      } finally {
+        if (mounted) {
+          setState(() => _isLoading = false);
+        }
       }
     }
   }

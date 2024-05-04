@@ -99,6 +99,7 @@ class LoginPageState extends State<LoginPage> {
                     child: MainButton(
                       onPressed: _signInWithEmailAndPassword,
                       text: context.loc.loginPage_loginButtonLabel,
+                      isLoading: _isLoading,
                     ),
                   ),
                   const SizedBox(height: 12),

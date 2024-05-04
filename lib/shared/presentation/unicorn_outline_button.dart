@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 
 class UnicornOutlineButton extends StatelessWidget {
   final _GradientPainter _painter;
@@ -39,7 +38,8 @@ class UnicornOutlineButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(_radius),
               onTap: _callback,
               child: Container(
-                constraints: const BoxConstraints(minWidth: 88, minHeight: 48),
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                constraints: const BoxConstraints(minWidth: 100, minHeight: 48),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,

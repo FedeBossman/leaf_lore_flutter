@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class LlAccentButton extends StatelessWidget {
@@ -9,7 +8,8 @@ class LlAccentButton extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final ShapeBorder? shape;
 
-  LlAccentButton({
+  const LlAccentButton({
+    super.key,
     required this.onPressed,
     this.child,
     this.text,
@@ -23,18 +23,18 @@ class LlAccentButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final buttonTheme = Theme.of(context).buttonTheme;
+    // final buttonTheme = Theme.of(context).buttonTheme;
     return ElevatedButton(
       // Required
       onPressed: onPressed,
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(padding ?? const EdgeInsets.fromLTRB(4, 12, 4, 12)),
+        padding: MaterialStateProperty.all(
+            padding ?? const EdgeInsets.fromLTRB(4, 12, 4, 12)),
         // shape: MaterialStateProperty.all(shape ?? buttonTheme.shape),
         elevation: MaterialStateProperty.all(0),
       ),
       // Override
-      child: child ??
-          Text(text!.toUpperCase()),
+      child: child ?? Text(text!.toUpperCase()),
     );
   }
 }

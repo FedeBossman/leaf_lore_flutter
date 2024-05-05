@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/shared/presentation/main_button.dart';
+import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 import 'package:leaf_lore_flutter/shared/theme/debug.dart';
 
 class ProfilePage extends StatefulWidget {
   static const String tabIndex = 'ProfilePage';
 
-  ProfilePage({super.key});
+  const ProfilePage({super.key});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -20,10 +22,11 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final User? user = _auth.currentUser;
-    final String name = user?.displayName ?? 'No Name Available';
-    final String email = user?.email ?? 'No Email Available';
-    final String uid = user?.uid ?? 'No Email Available';
-    final Color color = Theme.of(context).primaryColor;
+    final String name =
+        user?.displayName ?? context.loc.profilePage_noNameAvailable;
+    final String email =
+        user?.email ?? context.loc.profilePage_noEmailAvailable;
+    final String uid = user?.uid ?? context.loc.profilePage_noUidAvailable;
 
     return Column(
       mainAxisAlignment: MainAxisAlignment.start,
@@ -42,25 +45,36 @@ class _ProfilePageState extends State<ProfilePage> {
                   // ),
                   ),
               const SizedBox(height: 20),
-              Text(
-                name,
-                style:
-                    const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              Card(
+                child: Padding(
+                  padding: const EdgeInsets.all(32.0),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        name,
+                        style: const TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                      MinWidthDivider(
+                          child: Text(
+                        email,
+                        style: const TextStyle(
+                            color: LeafLoreColors.leafGray, fontSize: 18),
+                      )),
+                      Visibility(
+                        visible: debugMode,
+                        child: MinWidthDivider(
+                            child: Text(
+                          uid,
+                          style: const TextStyle(
+                              color: LeafLoreColors.leafGray, fontSize: 18),
+                        )),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              MinWidthDivider(
-                  child: Text(
-                email,
-                style: TextStyle(color: Colors.grey[600], fontSize: 18),
-              )),
-              Visibility(
-                visible: debugMode,
-                child: MinWidthDivider(
-                    child: Text(
-                  uid,
-                  style: TextStyle(color: Colors.grey[600], fontSize: 18),
-                )),
-              ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
               Container(
                 padding:
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
@@ -74,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         _isLoading = true;
                       });
                     },
-                    text: 'Sign Out',
+                    text: context.loc.profilePage_signOut,
                     isLoading: _isLoading),
               )
             ],

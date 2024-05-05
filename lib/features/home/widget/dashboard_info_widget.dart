@@ -35,10 +35,8 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    const div = Divider();
-
     const accentColor = LeafLoreColors.tiffanyBlue;
-    TextStyle rankStyle = TextStyle(
+    TextStyle rankStyle = const TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.bold,
         color: LeafLoreColors.tiffanyBlue);

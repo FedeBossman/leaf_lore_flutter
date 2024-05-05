@@ -144,7 +144,7 @@ class TabNavigator extends StatelessWidget {
     } else if (tabItem == PlantNavigationWrapper.tabIndex) {
       child = const PlantNavigationWrapper();
     } else if (tabItem == ProfilePage.tabIndex) {
-      child = ProfilePage();
+      child = const ProfilePage();
     } else {
       child = const DashboardPage();
     }

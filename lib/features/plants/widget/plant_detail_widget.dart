@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/features/plants/plant_model.dart';
-import 'package:leaf_lore_flutter/shared/theme/main_app_bar_widget.dart';
 
 class PlantDetailWidget extends StatelessWidget {
   final Plant plant;

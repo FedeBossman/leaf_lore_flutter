@@ -1,5 +1,73 @@
 {
-    "hello": "Hola Mundo",
-    "welcome": "Bienvenido a nuestra aplicación"
+    "bottomNavigationBar_home": "Inicio",
+    "bottomNavigationBar_chat": "Chat",
+    "bottomNavigationBar_plants": "Plantas",
+    "bottomNavigationBar_profile": "Perfil",
+
+    "streamHandler_noDataFound": "No se encontraron datos",
+
+    "chatPage_title": "Chat",
+    "chatDetailPage_inputHint": "Escribe un mensaje",
+
+    "dailyTip_title": "Consejo del Día",
+    "seasonalTip_title": "Consejo Estacional",
+
+    "dashboardInfo_type": "Tipo",
+    "dashboardInfo_experience": "Experiencia",
+    "dashboardInfo_plants": "Plantas",
+    "dashboardInfo_rank": "Rango",
+    "dashboardInfo_goals": "Metas",
+
+    "dashboardInfo_plants_under_care": "{count, plural, =0 {Empieza a chatear con Sprout para agregar nuevas plantas} =1 {1 planta a tu cuidado} other {{count} plantas a tu cuidado}}",
+    "@dashboardInfo_plants_under_care": {
+      "placeholders": {
+        "count": {}
+      }
+    },
+
+    "loginPage_unknownErrorMessage": "Algo salió mal de nuestra parte. Por favor intenta de nuevo más tarde. Si el problema persiste, no dudes en contactar a nuestro equipo de soporte.",
+    "loginPage_invalidCredentialMessage": "El nombre de usuario o contraseña que ingresaste no es correcto. Por favor verifica tus credenciales e intenta de nuevo.",
+    "loginPage_networkErrorMessage": "¡Vaya! Parece que tienes problemas para conectarte. Por favor verifica tu conexión a internet e intenta de nuevo.",
+    "loginPage_emailLabel": "Correo electrónico",
+    "loginPage_passwordLabel": "Contraseña",
+    "loginPage_registerButtonLabel": "Registrarse",
+    "loginPage_loginButtonLabel": "Iniciar sesión",
+    "socialSignIn_signInWithGoogle": "Iniciar sesión con Google",
+
+    "plantsPage_title": "Plantas",
+
+    "plantList_viewDetails": "Ver Detalles",
+
+    "plantDetail_name": "Nombre",
+    "plantDetail_nickname": "Apodo",
+    "plantDetail_careLevel": "Nivel de Cuidado",
+    "plantDetail_sunlightRequirement": "Requisito de Luz Solar",
+    "plantDetail_wateringFrequency": "Frecuencia de Riego",
+    "plantDetail_fertilizationFrequency": "Frecuencia de Fertilización",
+    "plantDetail_soilType": "Tipo de Suelo",
+    "plantDetail_potSize": "Tamaño de la Maceta",
+    "plantDetail_humidityRequirement": "Requisito de Humedad",
+    "plantDetail_notes": "Notas",
+
+    "profilePage_noNameAvailable": "Nombre no disponible",
+    "profilePage_noEmailAvailable": "Correo no disponible",
+    "profilePage_noUidAvailable": "UID no disponible",
+    "profilePage_signOut": "Cerrar sesión",
+
+    "registerPage_title": "Registro",
+    "registerPage_passwordsDoNotMatch": "Las contraseñas no coinciden.",
+    "registerPage_userCreatedSuccessfully": "Usuario creado exitosamente.",
+    "registerPage_passwordIsTooWeak": "La contraseña proporcionada es demasiado débil, por favor intenta con otra contraseña.",
+    "registerPage_accountAlreadyExists": "Ya existe una cuenta con esta dirección de correo electrónico.",
+    "registerPage_networkErrorMessage": "¡Vaya! Parece que tienes problemas para conectarte. Por favor verifica tu conexión a internet e intenta de nuevo.",
+    "registerPage_unknownErrorMessage": "Algo salió mal de nuestra parte. Por favor intenta de nuevo más tarde. Si el problema persiste, no dudes en contactar a nuestro equipo de soporte.",
+    "registerPage_nameLabel": "Nombre",
+    "registerPage_nameValidationMessage": "Por favor ingresa tu nombre.",
+    "registerPage_emailLabel": "Correo electrónico",
+    "registerPage_emailEmptyValidationMessage": "Por favor ingresa una dirección de correo electrónico.",
+    "registerPage_emailValidationMessage": "Por favor ingresa una dirección de correo electrónico válida.",
+    "registerPage_passwordLabel": "Contraseña",
+    "registerPage_passwordValidationMessage": "La contraseña debe tener al menos 6 caracteres.",
+    "registerPage_confirmPasswordLabel": "Confirmar Contraseña",
+    "registerPage_registerButtonLabel": "Registrar"
 }
-  

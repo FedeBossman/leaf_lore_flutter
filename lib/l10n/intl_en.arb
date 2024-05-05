@@ -47,6 +47,27 @@
     "plantDetail_soilType": "Soil Type",
     "plantDetail_potSize": "Pot Size",
     "plantDetail_humidityRequirement": "Humidity Requirement",
-    "plantDetail_notes": "Notes"
+    "plantDetail_notes": "Notes",
 
+    "profilePage_noNameAvailable": "No name available",
+    "profilePage_noEmailAvailable": "No email available",
+    "profilePage_noUidAvailable": "No UID available",
+    "profilePage_signOut": "Sign Out",
+
+    "registerPage_title": "Register",
+    "registerPage_passwordsDoNotMatch": "Passwords do not match.",
+    "registerPage_userCreatedSuccessfully": "User created successfully.",
+    "registerPage_passwordIsTooWeak": "The password provided is too weak, please try another password.",
+    "registerPage_accountAlreadyExists": "An account already exists with this email address.",
+    "registerPage_networkErrorMessage": "Oops! It looks like you're having trouble connecting. Please check your internet connection and try again.",
+    "registerPage_unknownErrorMessage": "Something went wrong on our end. Please try again later. If the problem persists, don’t hesitate to reach out to our support team for help.",
+    "registerPage_nameLabel": "Name",
+    "registerPage_nameValidationMessage": "Please enter your name.",
+    "registerPage_emailLabel": "Email",
+    "registerPage_emailEmptyValidationMessage": "Please enter an email address.",
+    "registerPage_emailValidationMessage": "Please enter a valid email address.",
+    "registerPage_passwordLabel": "Password",
+    "registerPage_passwordValidationMessage": "Password must be at least 6 characters.",
+    "registerPage_confirmPasswordLabel": "Confirm Password",
+    "registerPage_registerButtonLabel": "Register"
 }

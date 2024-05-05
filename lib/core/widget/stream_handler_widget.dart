@@ -17,7 +17,7 @@ class StreamHandler<T> extends StatelessWidget {
         } else if (!snapshot.hasData) {
 
           if (snapshot.hasError) {
-            print(snapshot.stackTrace);
+            debugPrintStack(stackTrace: snapshot.stackTrace);
           }
           // TODO: text should be dynamic
           return Text(context.loc.streamHandler_noDataFound);

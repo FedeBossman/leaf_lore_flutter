@@ -7,7 +7,7 @@ class MainButton extends StatelessWidget {
   final VoidCallback onPressed;
   final bool isLoading;
 
-  MainButton(
+  const MainButton(
       {super.key,
       required this.text,
       required this.onPressed,

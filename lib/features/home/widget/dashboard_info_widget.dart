@@ -117,14 +117,19 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(width: 8),
-                        Text(
+                        Expanded(
+                          // Wrap Text widget with Expanded to use available horizontal space
+                          child: Text(
                             context.loc.dashboardInfo_plants_under_care(
                                 homePageInfo.plantsCount),
                             style: TextStyle(
                                 fontSize: 18,
-                                color: LeafLoreColors.leafGray.withOpacity(
-                                    0.7), // Lighter color for subtlety
-                                fontStyle: FontStyle.italic)),
+                                color: LeafLoreColors.leafGray.withOpacity(0.7),
+                                fontStyle: FontStyle.italic),
+                            softWrap: true, // Allow text wrapping
+                            textAlign: TextAlign.center, // Center-align text
+                          ),
+                        ),
                       ],
                     ),
                   ],

@@ -6,7 +6,7 @@ ThemeData appTheme() {
     fontFamily: 'Nunito',
     splashColor: LeafLoreColors.tiffanyBlue.withOpacity(0.4),
     highlightColor: LeafLoreColors.tiffanyBlue.withOpacity(0.2),
-    hoverColor: LeafLoreColors.tiffanyBlue.withOpacity(0.3),
+    hoverColor: LeafLoreColors.tiffanyBlue.withOpacity(0.5),
     textTheme: const TextTheme(
       bodyMedium: TextStyle(fontWeight: FontWeight.w300),
       bodySmall: TextStyle(fontWeight: FontWeight.w300),
@@ -14,7 +14,7 @@ ThemeData appTheme() {
     colorScheme: ColorScheme.fromSeed(
         seedColor: LeafLoreColors.tiffanyBlue,
         primary: LeafLoreColors.tiffanyBlue,
-        background: LeafLoreColors.lightLeafGray),
+        background: LeafLoreColors.transparent),
     appBarTheme: const AppBarTheme(
       backgroundColor: LeafLoreColors.transparent,
       elevation: 0.0,
@@ -44,7 +44,7 @@ ThemeData appTheme() {
       shadowColor: LeafLoreColors.spaceCadet,
       shape: ContinuousRectangleBorder(
         borderRadius: BorderRadius.lerp(
-            BorderRadius.circular(100), BorderRadius.circular(150), 0.5)!,
+            BorderRadius.circular(40), BorderRadius.circular(150), .4)!,
         // borderRadius: BorderRadius.only(
         //     topLeft: Radius.elliptical(40, 90),
         //     topRight: Radius.elliptical(60, 100),

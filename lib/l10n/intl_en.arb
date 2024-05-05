@@ -6,6 +6,10 @@
 
     "streamHandler_noDataFound": "No data found",
 
+    "careLevel_low": "Low Care",
+    "careLevel_medium": "Medium Care",
+    "careLevel_high": "High Care",
+
     "chatPage_title": "Chat",
     "chatDetailPage_inputHint": "Type a message",
 
@@ -25,8 +29,18 @@
       }
     },
 
+    "fertilizationFrequency_weekly": "Fertilize Weekly",
+    "fertilizationFrequency_monthly": "Fertilize Monthly",
+    "fertilizationFrequency_quarterly": "Fertilize Quarterly",
+    "fertilizationFrequency_yearly": "Fertilize Yearly",
+
+    "humidityRequirement_low": "Low Humidity",
+    "humidityRequirement_medium": "Mid Humidity",
+    "humidityRequirement_high": "High Humidity",
+
     "loginPage_unknownErrorMessage": "Something went wrong on our end. Please try again later. If the problem persists, don’t hesitate to reach out to our support team for help.",
     "loginPage_invalidCredentialMessage": "The username or password you entered isn’t right. Please double-check your credentials and try again.",
+    "loginPage_invalidEmailMessage": "The email you entered doesn't have the correct format. Please double-check your credentials and try again.",
     "loginPage_networkErrorMessage": "Oops! It looks like you're having trouble connecting. Please check your internet connection and try again.",
     "loginPage_emailLabel": "Email",
     "loginPage_passwordLabel": "Password",
@@ -49,6 +63,11 @@
     "plantDetail_humidityRequirement": "Humidity Requirement",
     "plantDetail_notes": "Notes",
 
+    "potSize_small": "Small Pot",
+    "potSize_medium": "Medium Pot",
+    "potSize_large": "Large Pot",
+    "potSize_extraLarge": "Extra Large Pot",
+
     "profilePage_noNameAvailable": "No name available",
     "profilePage_noEmailAvailable": "No email available",
     "profilePage_noUidAvailable": "No UID available",
@@ -69,5 +88,21 @@
     "registerPage_passwordLabel": "Password",
     "registerPage_passwordValidationMessage": "Password must be at least 6 characters.",
     "registerPage_confirmPasswordLabel": "Confirm Password",
-    "registerPage_registerButtonLabel": "Register"
+    "registerPage_registerButtonLabel": "Register",
+
+    "soilType_loamy": "Loamy Soil",
+    "soilType_sandy": "Sandy Soil",
+    "soilType_clay": "Clay Soil",
+    "soilType_peaty": "Peaty Soil",
+    "soilType_chalky": "Chalky Soil",
+    "soilType_wellDraining": "Well Draining Soil",
+
+    "sunlightRequirement_fullSun": "Full Sun",
+    "sunlightRequirement_partialShade": "Partial Shade",
+    "sunlightRequirement_fullShade": "Full Shade",
+
+    "wateringFrequency_daily": "Water Daily",
+    "wateringFrequency_weekly": "Water Weekly",
+    "wateringFrequency_biweekly": "Water Biweekly",
+    "wateringFrequency_monthly": "Water Monthly"
 }

@@ -35,10 +35,12 @@ class LoginPageState extends State<LoginPage> {
         password: _passwordController.text,
       );
     } on FirebaseAuthException catch (e) {
-      debugPrint('Firebase error: ${e.message}');
+      debugPrint('Firebase error: ${e.message}. Code: ${e.code}');
       if (e.code == 'network-request-failed') {
         _showErrorMessage(context.loc.loginPage_networkErrorMessage);
-      } else if (e.code == 'invalid-credential') {
+      } else if (e.code == 'invalid-email') {
+        _showErrorMessage(context.loc.loginPage_invalidEmailMessage);
+      } else if (e.code == 'user-not-found' || e.code == 'invalid-credential' || e.code == 'wrong-password') {
         _showErrorMessage(context.loc.loginPage_invalidCredentialMessage);
       } else {
         _showErrorMessage(context.loc.loginPage_unknownErrorMessage);

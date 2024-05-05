@@ -65,55 +65,61 @@ class _MyHomePageState extends State<MyHomePage> {
           SystemNavigator.pop();
         }
       },
-      child: Scaffold(
-          extendBody: false,
-          body: SafeArea(
-            child: Stack(children: <Widget>[
-              _buildOffstageNavigator(DashboardPage.tabIndex),
-              _buildOffstageNavigator(ChatNavigationWrapper.tabIndex),
-              _buildOffstageNavigator(PlantNavigationWrapper.tabIndex),
-              _buildOffstageNavigator(ProfilePage.tabIndex),
-            ]),
-          ),
-          floatingActionButton: StreamHandler<ChatMeta>(
-            stream: getDefaultChatMetaStream(),
-            builder: (context, snapshot) {
-              final chatMeta = snapshot.data!;
-              return Visibility(
-                visible: chatMeta != null && !_isChatPage(),
-                child: FloatingActionButton(
-                  heroTag: 'assistantFab',
-                  onPressed: () {
-                    setState(() {
-                      // _currentPage = pageKeys[1];
-                      // _selectedIndex = 1;
+      child: Container(
+        decoration: const BoxDecoration(
+          gradient: LeafLoreColors.lightGradient,
+        ),
+        child: Scaffold(
+            extendBody: false,
+            body: SafeArea(
+              child: Stack(children: <Widget>[
+                _buildOffstageNavigator(DashboardPage.tabIndex),
+                _buildOffstageNavigator(ChatNavigationWrapper.tabIndex),
+                _buildOffstageNavigator(PlantNavigationWrapper.tabIndex),
+                _buildOffstageNavigator(ProfilePage.tabIndex),
+              ]),
+            ),
+            floatingActionButton: StreamHandler<ChatMeta>(
+              stream: getDefaultChatMetaStream(),
+              builder: (context, snapshot) {
+                final chatMeta = snapshot.data!;
+                return Visibility(
+                  visible: chatMeta != null && !_isChatPage(),
+                  child: FloatingActionButton(
+                    heroTag: 'assistantFab',
+                    onPressed: () {
+                      setState(() {
+                        // _currentPage = pageKeys[1];
+                        // _selectedIndex = 1;
 
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) => ChatDetailPage(
-                                  chatId: chatMeta.id,
-                                  chatName: chatMeta.name)));
-                    });
-                  },
-                  shape: const RoundedRectangleBorder(
-                      side: BorderSide(
-                          color: LeafLoreColors.tiffanyBlue, width: 3.0),
-                      borderRadius: BorderRadius.all(Radius.circular(50.0))),
-                  foregroundColor: LeafLoreColors.tiffanyBlue,
-                  backgroundColor: LeafLoreColors.leafWhite,
-                  tooltip: 'Assistant',
-                  child: const Icon(Icons.assistant), // Tooltip text
-                ),
-              );
-            },
-          ),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.miniCenterDocked,
-          bottomNavigationBar: BottomNavigationBarWidget(
-              pageKeys: pageKeys,
-              selectedIndex: _selectedIndex,
-              onItemTapped: _onItemTapped)),
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    ChatDetailPage(
+                                        chatId: chatMeta.id,
+                                        chatName: chatMeta.name)));
+                      });
+                    },
+                    shape: const RoundedRectangleBorder(
+                        side: BorderSide(
+                            color: LeafLoreColors.tiffanyBlue, width: 3.0),
+                        borderRadius: BorderRadius.all(Radius.circular(50.0))),
+                    foregroundColor: LeafLoreColors.tiffanyBlue,
+                    backgroundColor: LeafLoreColors.leafWhite,
+                    tooltip: 'Assistant',
+                    child: const Icon(Icons.assistant), // Tooltip text
+                  ),
+                );
+              },
+            ),
+            floatingActionButtonLocation:
+                FloatingActionButtonLocation.miniCenterDocked,
+            bottomNavigationBar: BottomNavigationBarWidget(
+                pageKeys: pageKeys,
+                selectedIndex: _selectedIndex,
+                onItemTapped: _onItemTapped)),
+      ),
     );
   }
 

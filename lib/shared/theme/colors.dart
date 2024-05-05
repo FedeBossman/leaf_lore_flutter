@@ -61,4 +61,15 @@ class LeafLoreColors {
     ],
     stops: [0.05, 0.25, 0.85],
   );
+
+  static const lightGradient = LinearGradient(
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+    colors: [
+      Color.fromARGB(255, 229, 248, 242),
+      Color.fromARGB(255, 229, 248, 242),
+      Color.fromARGB(255, 212, 255, 240),
+    ],
+    stops: [0.15, 0.75, 1],
+  );
 }

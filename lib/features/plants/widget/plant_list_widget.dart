@@ -19,12 +19,12 @@ class PlantListWidget extends StatelessWidget {
         PlantMeta plant = plants[index];
 
         return Container(
-          padding: const EdgeInsets.all(8), // Add padding to each chat item
+          padding: const EdgeInsets.all(8), 
           child: ListTile(
               leading: CircleAvatar(
                 minRadius: 20,
                 maxRadius: 30,
-                child: Text(plant.name[0]), // Display the first letter
+                child: Text(plant.name[0]),
               ),
               title: Text(plant.name),
               subtitle: Text(

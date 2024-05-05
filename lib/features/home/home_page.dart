@@ -89,11 +89,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     heroTag: 'assistantFab',
                     onPressed: () {
                       setState(() {
-                        // _currentPage = pageKeys[1];
-                        // _selectedIndex = 1;
+                        _onItemTapped(ChatNavigationWrapper.tabIndex, 1);
+                        var chatContext =
+                            _navigatorKeys[ChatNavigationWrapper.tabIndex]!
+                                .currentContext;
 
                         Navigator.push(
-                            context,
+                            chatContext!,
                             MaterialPageRoute(
                                 builder: (BuildContext context) =>
                                     ChatDetailPage(

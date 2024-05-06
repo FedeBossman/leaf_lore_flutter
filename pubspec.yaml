@@ -91,6 +91,9 @@ flutter:
           weight: 700
         - asset: fonts/Nunito-Italic.ttf
           style: italic
+    - family: LeafLoreIcon
+      fonts:
+        - asset: fonts/leaf_lore.ttf
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 

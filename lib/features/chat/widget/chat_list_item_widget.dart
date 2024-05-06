@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_detail_page.dart';
 import 'package:leaf_lore_flutter/shared/theme/colors.dart';
+import 'package:leaf_lore_flutter/shared/theme/icons.dart';
 
 class ChatListItemWidget extends StatelessWidget {
   final ChatMeta chatMeta;
@@ -22,7 +23,7 @@ class ChatListItemWidget extends StatelessWidget {
           leading: CircleAvatar(
             minRadius: 20,
             maxRadius: 30,
-            child: chatMeta.defaultChat ? const Icon(Icons.assistant) : Text(chatMeta.name[0]),
+            child: chatMeta.defaultChat ? const Icon(LeafLoreIcons.sprout) : Text(chatMeta.name[0]),
           ),
           title: Text(chatMeta.name),
           subtitle: Text(

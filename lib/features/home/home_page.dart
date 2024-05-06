@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/core/widget/stream_handler_widget.dart';
 import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_detail_page.dart';
@@ -10,6 +11,7 @@ import 'package:leaf_lore_flutter/features/plants/plants_page.dart';
 import 'package:leaf_lore_flutter/features/profile/profile_page.dart';
 import 'package:leaf_lore_flutter/shared/theme/bottom_navigation_bar_widget.dart';
 import 'package:leaf_lore_flutter/shared/theme/colors.dart';
+import 'package:leaf_lore_flutter/shared/theme/icons.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -109,8 +111,8 @@ class _MyHomePageState extends State<MyHomePage> {
                         borderRadius: BorderRadius.all(Radius.circular(50.0))),
                     foregroundColor: LeafLoreColors.tiffanyBlue,
                     backgroundColor: LeafLoreColors.leafWhite,
-                    tooltip: 'Assistant',
-                    child: const Icon(Icons.assistant), // Tooltip text
+                    tooltip: context.loc.floatingActionButton_tooltip,
+                    child: const Icon(LeafLoreIcons.sprout), // Tooltip text
                   ),
                 );
               },

@@ -34,6 +34,8 @@
     "fertilizationFrequency_quarterly": "Fertilize Quarterly",
     "fertilizationFrequency_yearly": "Fertilize Yearly",
 
+    "floatingActionButton_tooltip": "Assistant",
+
     "humidityRequirement_low": "Low Humidity",
     "humidityRequirement_medium": "Mid Humidity",
     "humidityRequirement_high": "High Humidity",

@@ -31,9 +31,9 @@ class PlantDetailWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(width: 8),
-                      Text('${plant.nickname} - ${CareLevel.low.loc(context)}',
+                      Text('${plant.officialSpeciesName} - ${CareLevel.low.loc(context)}',
                           style: const TextStyle(
-                              fontSize: 18, color: LeafLoreColors.leafGray)),
+                              fontSize: 18, color: LeafLoreColors.spaceCadet)),
                     ],
                   ),
                   const SizedBox(height: 16),
@@ -85,7 +85,7 @@ class PlantDetailWidget extends StatelessWidget {
                 children: [
                   Column(
                     children: [
-                      Text(plant.name, style: accentStyle),
+                      Text(plant.nickname, style: accentStyle),
                       const SizedBox(height: 8),
                     ],
                   ),
@@ -108,9 +108,9 @@ class PlantDetailWidget extends StatelessWidget {
                         // Wrap Text widget with Expanded to use available horizontal space
                         child: Text(
                           plant.notes ?? '',
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 18,
-                              color: LeafLoreColors.leafGray.withOpacity(0.7),
+                              color: LeafLoreColors.leafGray,
                               fontStyle: FontStyle.italic),
                           softWrap: true, // Allow text wrapping
                           textAlign: TextAlign.center, // Center-align text

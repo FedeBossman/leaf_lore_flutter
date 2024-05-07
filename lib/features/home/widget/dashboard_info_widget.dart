@@ -37,14 +37,6 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
     return StreamHandler<HomePageInfo>(
       stream: getHomePageInfoStream(),
       builder: (BuildContext context, AsyncSnapshot<HomePageInfo> snapshot) {
-        // if (!snapshot.hasData) {
-        //   return const Text("Chat with Sprout to get started!");
-        // }
-
-        // if (snapshot.hasError) {
-        //   return Text("Error: ${snapshot.error}");
-        // }
-
         var homePageInfo = snapshot.data!;
 
         var weather = homePageInfo.weather?.temperature ?? '';
@@ -97,7 +89,7 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
                       const SizedBox(width: 8),
                       Text('${homePageInfo.type} - ${homePageInfo.experience}',
                           style: const TextStyle(
-                              fontSize: 18, color: LeafLoreColors.leafGray)),
+                              fontSize: 18, color: LeafLoreColors.spaceCadet)),
                     ],
                   ),
                   Row(
@@ -109,9 +101,9 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
                         child: Text(
                           context.loc.dashboardInfo_plants_under_care(
                               homePageInfo.plantsCount),
-                          style: TextStyle(
+                          style: const TextStyle(
                               fontSize: 18,
-                              color: LeafLoreColors.leafGray.withOpacity(0.7),
+                              color: LeafLoreColors.leafGray,
                               fontStyle: FontStyle.italic),
                           softWrap: true, // Allow text wrapping
                           textAlign: TextAlign.center, // Center-align text

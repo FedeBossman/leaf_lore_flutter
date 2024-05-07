@@ -4,7 +4,10 @@
     "bottomNavigationBar_plants": "Plants",
     "bottomNavigationBar_profile": "Profile",
 
+    "streamHandler_errorMessage": "An error has occurred while trying to load data.",
+    "streamHandler_error": "An error ocurred",
     "streamHandler_noDataFound": "No data found",
+
 
     "careLevel_low": "Low Care",
     "careLevel_medium": "Medium Care",
@@ -51,6 +54,8 @@
     "socialSignIn_signInWithGoogle": "Sign in with Google",
 
     "plantsPage_title": "Plants",
+    "plantsPage_emptyText": "Chat with Sprout to start adding plants to this screen.",
+    "plantsPage_emptySubText": "Say things like 'I just bought a new Ponytail Palm' or 'I just planted carrots in my garden' to add to your collection.",
 
     "plantList_viewDetails": "View Details",
 

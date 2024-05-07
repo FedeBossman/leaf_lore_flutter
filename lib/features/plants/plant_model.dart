@@ -23,6 +23,7 @@ class Plant extends UserOwned {
   String id;
   String name;
   String nickname;
+  String officialSpeciesName;
   // DateTime startDate;
   CareLevel careLevel;
   SunlightRequirement sunlightRequirement;
@@ -38,6 +39,7 @@ class Plant extends UserOwned {
     required this.id,
     required this.name,
     required this.nickname,
+    required this.officialSpeciesName,
     // required this.startDate,
     required this.careLevel,
     required this.sunlightRequirement,
@@ -55,6 +57,7 @@ class Plant extends UserOwned {
       userId: doc['userId'],
       name: doc['name'],
       nickname: doc['nickname'],
+      officialSpeciesName: doc['officialSpeciesName'],
       // startDate: doc['startDate']?.toDate(),
       careLevel: CareLevel.values.byName(doc['careLevel']),
       sunlightRequirement:

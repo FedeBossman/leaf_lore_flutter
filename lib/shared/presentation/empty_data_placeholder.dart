@@ -5,9 +5,13 @@ import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 class EmptyDataPlaceholder extends StatelessWidget {
   final String text;
   final String subText;
+  final bool loader;
 
   const EmptyDataPlaceholder(
-      {super.key, required this.text, required this.subText});
+      {super.key,
+      required this.text,
+      required this.subText,
+      this.loader = false});
 
   @override
   Widget build(BuildContext context) {
@@ -33,18 +37,23 @@ class EmptyDataPlaceholder extends StatelessWidget {
                       subText,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                          fontSize: 14.0, color: LeafLoreColors.leafGray),
+                          fontSize: 14.0,
+                          color: LeafLoreColors.leafGray,
+                          fontStyle: FontStyle.italic),
                     ),
                   ],
                 ),
               ),
             ),
             const SizedBox(height: 20), // Space between text and icon
-            const Icon(
-              Icons.arrow_downward_rounded,
-              size: 84.0,
-              color: LeafLoreColors.tiffanyBlue, // Custom color for the icon
-            ),
+            loader
+                ? const CircularProgressIndicator()
+                : const Icon(
+                    Icons.arrow_downward_rounded,
+                    size: 84.0,
+                    color:
+                        LeafLoreColors.tiffanyBlue, // Custom color for the icon
+                  ),
           ],
         ),
       ),

@@ -47,7 +47,7 @@ class SeasonalTipWidgetState extends State<SeasonalTipWidget> {
           const SizedBox(height: 8),
           seasonalTip == null
               ? const Center(child: CircularProgressIndicator())
-              : Text(seasonalTip!, style: const TextStyle(fontSize: 12)),
+              : Text(seasonalTip!, style: const TextStyle(fontSize: 14)),
         ],
       ),
     );

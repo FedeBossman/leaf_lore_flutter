@@ -47,7 +47,7 @@ class DailyTipWidgetState extends State<DailyTipWidget> {
           const SizedBox(height: 8),
           dailyTip == null
               ? const Center(child: CircularProgressIndicator())
-              : Text(dailyTip!, style: const TextStyle(fontSize: 12)),
+              : Text(dailyTip!, style: const TextStyle(fontSize: 14)),
         ],
       ),
     );

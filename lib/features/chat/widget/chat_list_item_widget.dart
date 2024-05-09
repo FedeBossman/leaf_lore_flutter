@@ -29,7 +29,7 @@ class ChatListItemWidget extends StatelessWidget {
           subtitle: Text(
             chatMeta.latestMessage,
             overflow: TextOverflow.ellipsis,
-            maxLines: 1,
+            maxLines: 2,
           ),
           onTap: () {
             Navigator.push(

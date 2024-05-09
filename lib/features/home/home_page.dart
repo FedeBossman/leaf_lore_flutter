@@ -81,12 +81,14 @@ class _MyHomePageState extends State<MyHomePage> {
                 _buildOffstageNavigator(ProfilePage.tabIndex),
               ]),
             ),
-            floatingActionButton: StreamHandler<ChatMeta>(
+            floatingActionButton: StreamHandler<ChatMeta?>(
               stream: getDefaultChatMetaStream(),
+              empty: Container(),
+              error: Container(),
               builder: (context, snapshot) {
                 final chatMeta = snapshot.data!;
                 return Visibility(
-                  visible: chatMeta != null && !_isChatPage(),
+                  visible: !_isChatPage(),
                   child: FloatingActionButton(
                     heroTag: 'assistantFab',
                     onPressed: () {

@@ -14,18 +14,19 @@ Stream<List<ChatMeta>> getChatsMetaStream() {
           snapshot.docs.map((doc) => ChatMeta.fromDocument(doc)).toList());
 }
 
-
-Stream<ChatMeta> getDefaultChatMetaStream() {
+Stream<ChatMeta?> getDefaultChatMetaStream() {
   final userId = FirebaseAuth.instance.currentUser?.uid;
   return FirebaseFirestore.instance
       .collection('chats')
       .where('userId', isEqualTo: userId)
       .where('defaultChat', isEqualTo: true)
       .snapshots()
-      .map((snapshot) =>
-          snapshot.docs.map((doc) => ChatMeta.fromDocument(doc)).toList().first);
+      .map((snapshot) {
+    List<ChatMeta> chats =
+        snapshot.docs.map((doc) => ChatMeta.fromDocument(doc)).toList();
+    return chats.isNotEmpty ? chats.first : null;
+  });
 }
-
 
 Stream<Chat> getChatDetailStream(String chatId) {
   return FirebaseFirestore.instance

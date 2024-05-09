@@ -4,8 +4,7 @@
     "bottomNavigationBar_plants": "Plants",
     "bottomNavigationBar_profile": "Profile",
 
-    "streamHandler_errorMessage": "An error has occurred while trying to load data.",
-    "streamHandler_error": "An error ocurred",
+    "streamHandler_errorMessage": "An error has occurred while trying to load data. Please try again later.",
     "streamHandler_noDataFound": "No data found",
 
 
@@ -19,6 +18,8 @@
     "dailyTip_title": "Daily Tip",
     "seasonalTip_title": "Seasonal Tip",
 
+    "dashboardInfo_settingUpUser": "Setting up your user",
+    "dashboardInfo_pleaseWait": "Please wait a moment...",
     "dashboardInfo_type": "Type",
     "dashboardInfo_experience": "Experience",
     "dashboardInfo_plants": "Plants",
@@ -31,6 +32,16 @@
         "count": {}
       }
     },
+
+    "dashboardInfo_noLocationData": "Your location an weather goes here.",
+    "dashboardInfo_noLocationDataSubText": "Chat with Sprout to let him know your city for a better experience.",
+
+    "dashboardInfo_missingExperienceData": "We still have a lot to know about you.",
+    "dashboardInfo_missingExperienceDataSubtext": "Let Sprout know about your experience with gardening.",
+    "dashboardInfo_missingPlantsData": "Ask Sprout to add plants to your collection to get more information about each plant.",
+
+    "dashboardInfo_missingGoalsData": "You haven't set any goals yet.",
+    "dashboardInfo_missingGoalsDataSubtext": "Set goals with Sprout to keep track of your gardening progress.",
 
     "fertilizationFrequency_weekly": "Fertilize Weekly",
     "fertilizationFrequency_monthly": "Fertilize Monthly",

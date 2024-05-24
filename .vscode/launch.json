@@ -16,6 +16,12 @@
             "deviceId": "192.168.1.170:5555"
         },
         {
+            "name": "Launch Android (USB)",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "3B291FDJH001EL"
+        },
+        {
             "name": "leaf_lore_flutter (profile mode)",
             "request": "launch",
             "type": "dart",

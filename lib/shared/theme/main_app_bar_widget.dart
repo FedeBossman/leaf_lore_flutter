@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 
 class MainAppBar extends StatefulWidget implements PreferredSizeWidget {
   final String title;
@@ -22,6 +24,12 @@ class _MainAppBarState extends State<MainAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: LeafLoreColors.transparent,
+          statusBarBrightness: Brightness.light,
+          statusBarIconBrightness: Brightness.dark,
+          systemNavigationBarDividerColor: LeafLoreColors.leafWhite,
+          systemNavigationBarColor: LeafLoreColors.leafWhite),
       leading: widget.showBackButton
           ? IconButton(
               icon: const Icon(Icons.arrow_back),

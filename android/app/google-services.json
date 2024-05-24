@@ -12,7 +12,12 @@
           "package_name": "com.example.leaf_lore_flutter"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "382888234390-ugm1dillmpcvvvaappa2aj7m7tfdfngl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyCh_6gjw9ONyrZXFhH5NcbsrfYrb9ABOjM"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382888234390-ugm1dillmpcvvvaappa2aj7m7tfdfngl.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "382888234390-2c60mc8bh0ugr9a6otatflq4r0b4r0fd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.leafLoreFlutter"
+              }
+            }
+          ]
         }
       }
     }

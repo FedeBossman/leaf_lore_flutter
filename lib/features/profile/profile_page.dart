@@ -62,7 +62,7 @@ class _ProfilePageState extends State<ProfilePage> {
                             color: LeafLoreColors.leafGray, fontSize: 18),
                       )),
                       Visibility(
-                        visible: debugMode,
+                        visible: debugModeElements,
                         child: MinWidthDivider(
                             child: Text(
                           uid,

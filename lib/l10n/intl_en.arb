@@ -33,7 +33,7 @@
       }
     },
 
-    "dashboardInfo_noLocationData": "Your location an weather goes here.",
+    "dashboardInfo_noLocationData": "Your location and weather goes here.",
     "dashboardInfo_noLocationDataSubText": "Chat with Sprout to let him know your city for a better experience.",
 
     "dashboardInfo_missingExperienceData": "We still have a lot to know about you.",

@@ -1,8 +1,11 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
@@ -20,6 +23,18 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+  FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
+
+  FlutterError.onError = (FlutterErrorDetails details) { 
+    FirebaseCrashlytics.instance.recordFlutterFatalError(details);
+  };
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+
   if (debugMode) {
     bool isAndroidDevice = false;
     String host = isAndroidDevice ? '192.168.1.186' : 'localhost';
@@ -35,6 +50,7 @@ void main() async {
   final String defaultSystemLocale = Platform.localeName;
   final List<Locale> systemLocales =
       WidgetsBinding.instance.platformDispatcher.locales;
+
 
   runApp(MyApp(defaultSystemLocale, systemLocales));
 }

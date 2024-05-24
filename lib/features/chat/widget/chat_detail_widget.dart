@@ -86,7 +86,7 @@ class ChatDetailWidgetState extends State<ChatDetailWidget> {
         final message =
             widget.chat.messages[widget.chat.messages.length - 1 - index];
         return Visibility(
-          visible: debugMode || message.role != MessageRole.system,
+          visible: debugModeElements || message.role != MessageRole.system,
           child: Align(
             alignment: getMessageAlignment(message.role),
             child: Container(

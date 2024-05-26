@@ -1,4 +1,5 @@
 import 'package:cloud_functions/cloud_functions.dart';
+import 'package:firebase_performance/firebase_performance.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
@@ -29,6 +30,9 @@ class ChatInputFieldState extends State<ChatInputField> {
   bool _isSendingMessage = false;
 
   void sendMessage() async {
+    Trace customTrace = FirebasePerformance.instance.newTrace('send_message');
+    await customTrace.start();
+
     final messageContent = _controller.text.trim();
     if (messageContent.trim().isEmpty) {
       return;
@@ -42,6 +46,7 @@ class ChatInputFieldState extends State<ChatInputField> {
     setState(() {
       _isSendingMessage = false;
     });
+    await customTrace.stop();
   }
 
   Future<void> sendFirebaseMessage(String messageContent) async {

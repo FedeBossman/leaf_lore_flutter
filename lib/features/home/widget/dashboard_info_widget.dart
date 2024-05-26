@@ -47,27 +47,26 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
 
     return LeafCard(
       child: city == null
-          ? Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    context.loc.dashboardInfo_noLocationData,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        fontSize: 18.0, color: LeafLoreColors.spaceCadet),
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    context.loc.dashboardInfo_noLocationDataSubText,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        fontSize: 14.0,
-                        color: LeafLoreColors.leafGray,
-                        fontStyle: FontStyle.italic),
-                  ),
-                ],
-              ),
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  context.loc.dashboardInfo_noLocationData,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontSize: 18.0, color: LeafLoreColors.spaceCadet),
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  context.loc.dashboardInfo_noLocationDataSubText,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                      fontSize: 14.0,
+                      color: LeafLoreColors.leafGray,
+                      fontStyle: FontStyle.italic),
+                ),
+              ],
             )
           : Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -185,6 +184,7 @@ class _DashboardInfoWidgetState extends State<DashboardInfoWidget> {
     return LeafCard(
       child: homePageInfo.goals.isEmpty
           ? Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
                   context.loc.dashboardInfo_missingGoalsData,

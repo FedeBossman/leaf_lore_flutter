@@ -2,6 +2,9 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "dev.flutter.flutter-gradle-plugin"
+    id "com.google.gms.google-services"
+    id 'com.google.firebase.firebase-perf'
+    id "com.google.firebase.crashlytics"
 }
 
 def localProperties = new Properties()
@@ -26,7 +29,6 @@ android {
     namespace "com.example.leaf_lore_flutter"
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
-
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -67,4 +69,6 @@ flutter {
 
 dependencies {
     implementation 'androidx.multidex:multidex:2.0.1'
+    implementation(platform("com.google.firebase:firebase-bom:32.6.0"))
+    implementation("com.google.firebase:firebase-analytics") 
 }

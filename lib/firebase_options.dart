@@ -27,10 +27,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.macOS:
         return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -73,11 +70,22 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions macos = FirebaseOptions(
     apiKey: 'AIzaSyAYA1zzbDEZ23ue9DsSV7-qQtngU7RcCxU',
-    appId: '1:382888234390:ios:f30e297be9ecafe8ebe1b7',
+    appId: '1:382888234390:ios:e2a0740646d789aaebe1b7',
     messagingSenderId: '382888234390',
     projectId: 'leaflore-a0c06',
     storageBucket: 'leaflore-a0c06.appspot.com',
-    iosClientId: '382888234390-697b6cta8mh0kp2u0h2mmlo3kvb6jdc1.apps.googleusercontent.com',
-    iosBundleId: 'com.example.leafLoreFlutter.RunnerTests',
+    iosClientId: '382888234390-2c60mc8bh0ugr9a6otatflq4r0b4r0fd.apps.googleusercontent.com',
+    iosBundleId: 'com.example.leafLoreFlutter',
   );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCj_-GapGd3L_2U0JeCSMrh-Vjd-lmq2rk',
+    appId: '1:382888234390:web:08f24ac3d50c99a9ebe1b7',
+    messagingSenderId: '382888234390',
+    projectId: 'leaflore-a0c06',
+    authDomain: 'leaflore-a0c06.firebaseapp.com',
+    storageBucket: 'leaflore-a0c06.appspot.com',
+    measurementId: 'G-GS101PTGSB',
+  );
+
 }

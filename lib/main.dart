@@ -5,18 +5,18 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:cloud_functions/cloud_functions.dart';
 import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+// import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:leaf_lore_flutter/features/home/home_page.dart';
+import 'package:leaf_lore_flutter/features/dashboard/home_page.dart';
 import 'package:leaf_lore_flutter/features/login/login_page.dart';
 import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 import 'package:leaf_lore_flutter/shared/theme/debug.dart';
 import 'package:leaf_lore_flutter/shared/theme/theme.dart';
-import 'core/firebase/firebase_options.dart';
+import 'firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,16 +24,16 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
   FirebaseAnalytics.instance.setAnalyticsCollectionEnabled(true);
 
-  FlutterError.onError = (FlutterErrorDetails details) { 
-    FirebaseCrashlytics.instance.recordFlutterFatalError(details);
-  };
-  PlatformDispatcher.instance.onError = (error, stack) {
-    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
-    return true;
-  };
+  // FirebaseCrashlytics.instance.setCrashlyticsCollectionEnabled(true);
+  // FlutterError.onError = (FlutterErrorDetails details) { 
+  //   FirebaseCrashlytics.instance.recordFlutterFatalError(details);
+  // };
+  // PlatformDispatcher.instance.onError = (error, stack) {
+  //   FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+  //   return true;
+  // };
 
   if (debugMode) {
     bool isAndroidDevice = false;

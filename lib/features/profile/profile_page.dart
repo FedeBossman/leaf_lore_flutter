@@ -4,6 +4,7 @@ import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/shared/presentation/main_button.dart';
 import 'package:leaf_lore_flutter/shared/theme/colors.dart';
 import 'package:leaf_lore_flutter/shared/theme/debug.dart';
+import 'package:provider/provider.dart';
 
 class ProfilePage extends StatefulWidget {
   static const String tabIndex = 'ProfilePage';
@@ -15,13 +16,13 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-
   bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
-    final User? user = _auth.currentUser;
+    final FirebaseAuth auth = Provider.of<FirebaseAuth>(context);
+
+    final User? user = auth.currentUser;
     final String name =
         user?.displayName ?? context.loc.profilePage_noNameAvailable;
     final String email =
@@ -79,11 +80,12 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding:
                     const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
                 child: MainButton(
+                    key: const ValueKey('signOutButton'),
                     onPressed: () async {
                       setState(() {
                         _isLoading = true;
                       });
-                      await _auth.signOut();
+                      await auth.signOut();
                       setState(() {
                         _isLoading = true;
                       });

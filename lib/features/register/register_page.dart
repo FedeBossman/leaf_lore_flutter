@@ -35,24 +35,12 @@ class _RegisterPageState extends State<RegisterPage> {
         );
         User? user = userCredential.user;
         await user!.updateDisplayName(_name);
-        // await FirebaseAuth.instance.currentUser?.sendEmailVerification();
         showSuccessMessage(context.loc.registerPage_userCreatedSuccessfully);
         Navigator.of(context).popUntil((route) => route.isFirst);
       } on FirebaseAuthException catch (e) {
-        debugPrint('Firebase error: ${e.message}');
-        if (e.code == 'weak-password') {
-          showErrorMessage(
-              context.loc.registerPage_passwordIsTooWeak);
-        } else if (e.code == 'email-already-in-use') {
-          showErrorMessage(context.loc.registerPage_accountAlreadyExists);
-        } else if (e.code == 'network-request-failed') {
-          showErrorMessage(context.loc.registerPage_networkErrorMessage);
-        } else {
-          showErrorMessage(context.loc.registerPage_unknownErrorMessage);
-        }
+        showFirebaseErrorMessage(e);
       } catch (e) {
         setState(() => _isLoading = false);
-        debugPrint(e.toString());
       } finally {
         if (mounted) {
           setState(() => _isLoading = false);
@@ -66,7 +54,8 @@ class _RegisterPageState extends State<RegisterPage> {
     return ScaffoldMessenger(
       key: _scaffoldMessengerKey,
       child: Scaffold(
-        appBar: MainAppBar(title: context.loc.registerPage_title, showBackButton: true),
+        appBar: MainAppBar(
+            title: context.loc.registerPage_title, showBackButton: true),
         extendBodyBehindAppBar: true,
         body: Container(
           decoration: const BoxDecoration(
@@ -88,9 +77,11 @@ class _RegisterPageState extends State<RegisterPage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24.0),
                         child: TextFormField(
-                          decoration: InputDecoration(labelText: context.loc.registerPage_nameLabel),
-                          validator: (value) =>
-                              value!.isEmpty ? context.loc.registerPage_nameValidationMessage : null,
+                          decoration: InputDecoration(
+                              labelText: context.loc.registerPage_nameLabel),
+                          validator: (value) => value!.isEmpty
+                              ? context.loc.registerPage_nameValidationMessage
+                              : null,
                           onChanged: (value) => _name = value,
                         ),
                       ),
@@ -98,15 +89,18 @@ class _RegisterPageState extends State<RegisterPage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24.0),
                         child: TextFormField(
-                          decoration: InputDecoration(labelText: context.loc.registerPage_emailLabel),
+                          decoration: InputDecoration(
+                              labelText: context.loc.registerPage_emailLabel),
                           keyboardType: TextInputType.emailAddress,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return context.loc.registerPage_emailEmptyValidationMessage;
+                              return context
+                                  .loc.registerPage_emailEmptyValidationMessage;
                             } else if (!RegExp(
                                     r'^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+')
                                 .hasMatch(value)) {
-                              return context.loc.registerPage_emailValidationMessage;
+                              return context
+                                  .loc.registerPage_emailValidationMessage;
                             }
                             return null;
                           },
@@ -117,10 +111,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 24.0),
                         child: TextFormField(
-                          decoration: InputDecoration(labelText: context.loc.registerPage_passwordLabel),
+                          decoration: InputDecoration(
+                              labelText:
+                                  context.loc.registerPage_passwordLabel),
                           obscureText: true,
                           validator: (value) => value!.length < 6
-                              ? context.loc.registerPage_passwordValidationMessage
+                              ? context
+                                  .loc.registerPage_passwordValidationMessage
                               : null,
                           onChanged: (value) => _password = value,
                         ),
@@ -130,10 +127,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         padding: const EdgeInsets.symmetric(horizontal: 24.0),
                         child: TextFormField(
                           decoration: InputDecoration(
-                              labelText: context.loc.registerPage_confirmPasswordLabel),
+                              labelText: context
+                                  .loc.registerPage_confirmPasswordLabel),
                           obscureText: true,
                           validator: (value) => value!.length < 6
-                              ? context.loc.registerPage_passwordValidationMessage
+                              ? context
+                                  .loc.registerPage_passwordValidationMessage
                               : null,
                           onChanged: (value) => _confirmPassword = value,
                         ),
@@ -171,5 +170,18 @@ class _RegisterPageState extends State<RegisterPage> {
     _scaffoldMessengerKey.currentState?.showSnackBar(
       SnackBar(content: Text(errorMessage), backgroundColor: Colors.red),
     );
+  }
+
+  void showFirebaseErrorMessage(FirebaseAuthException firebaseException) {
+    debugPrint('Firebase error: ${firebaseException.message}');
+    if (firebaseException.code == 'weak-password') {
+      showErrorMessage(context.loc.registerPage_passwordIsTooWeak);
+    } else if (firebaseException.code == 'email-already-in-use') {
+      showErrorMessage(context.loc.registerPage_accountAlreadyExists);
+    } else if (firebaseException.code == 'network-request-failed') {
+      showErrorMessage(context.loc.registerPage_networkErrorMessage);
+    } else {
+      showErrorMessage(context.loc.registerPage_unknownErrorMessage);
+    }
   }
 }

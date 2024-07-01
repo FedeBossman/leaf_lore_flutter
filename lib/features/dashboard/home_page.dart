@@ -6,7 +6,7 @@ import 'package:leaf_lore_flutter/features/chat/chat.model.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_detail_page.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_page.dart';
 import 'package:leaf_lore_flutter/features/chat/chat_stream.dart';
-import 'package:leaf_lore_flutter/features/home/dashboard_page.dart';
+import 'package:leaf_lore_flutter/features/dashboard/dashboard_page.dart';
 import 'package:leaf_lore_flutter/features/plants/plants_page.dart';
 import 'package:leaf_lore_flutter/features/profile/profile_page.dart';
 import 'package:leaf_lore_flutter/shared/theme/bottom_navigation_bar_widget.dart';

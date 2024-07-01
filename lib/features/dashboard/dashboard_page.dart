@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:leaf_lore_flutter/core/extension/build_context_extensions.dart';
 import 'package:leaf_lore_flutter/core/widget/stream_handler_widget.dart';
-import 'package:leaf_lore_flutter/features/home/model/home_page_info.model.dart';
-import 'package:leaf_lore_flutter/features/home/streams/home_page_info_stream.dart';
-import 'package:leaf_lore_flutter/features/home/widget/daily_tip_widget.dart';
-import 'package:leaf_lore_flutter/features/home/widget/dashboard_info_widget.dart';
-import 'package:leaf_lore_flutter/features/home/widget/seasonal_tip_widget.dart';
+import 'package:leaf_lore_flutter/features/dashboard/model/home_page_info.model.dart';
+import 'package:leaf_lore_flutter/features/dashboard/streams/home_page_info_stream.dart';
+import 'package:leaf_lore_flutter/features/dashboard/widget/daily_tip_widget.dart';
+import 'package:leaf_lore_flutter/features/dashboard/widget/dashboard_info_widget.dart';
+import 'package:leaf_lore_flutter/features/dashboard/widget/seasonal_tip_widget.dart';
 import 'package:leaf_lore_flutter/shared/presentation/empty_data_placeholder.dart';
 
 class DashboardPage extends StatelessWidget {
